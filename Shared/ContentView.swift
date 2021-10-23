@@ -8,11 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
-    let api = OpenSeaAPI()
+    
+    @ObservedObject var model: OpenSeaModel = OpenSeaModel.shared
     
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        if model.activeProfile != nil {
+            ProfileView()
+        } else {
+            SignInView()
+        }
     }
 }
 

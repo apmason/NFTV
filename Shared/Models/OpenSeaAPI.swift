@@ -7,24 +7,26 @@
 
 import Foundation
 
+class OpenSeaModel: ObservableObject {
+    
+    static let shared = OpenSeaModel()
+    
+    @Published var activeProfile: OpenSeaProfile?
+    
+    private init() {}
+}
+
 class OpenSeaAPI {
     
-    init() {
-        fetchAssets(for: "0x0738f702d1a7364d356729cb8845701885c487a1")
-    }
-    
-    func fetchAssets(for userAddress: String) {
+    static func fetchAssets(for userAddress: String, completion: @escaping ((Error?) -> Void)) {
         let url = URL(string: "https://api.opensea.io/api/v1/assets?owner=\(userAddress)")!
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard error == nil, let data = data else {
-                // present error to user
-                if error != nil {
-                    print("Error: \(error!.localizedDescription)")
-                }
-                
+                // need to handle bad errors
+                completion(error)
                 print("Error, or no data")
                 return
             }
@@ -40,6 +42,7 @@ class OpenSeaAPI {
                     return
                 }
                 
+                let profile = OpenSeaProfile(ethAddress: userAddress)
                 for asset in assets {
                     let imageURL = asset["image_url"] as! String
                     let videoURL = asset["animation_url"] as? String
@@ -47,7 +50,12 @@ class OpenSeaAPI {
                         print("Video url is \(videoURL!)")
                     }
                     print("Image url is \(imageURL)")
+                
+                    let asset = OpenSeaAsset(imageURL: URL(string: imageURL)!)
+                    profile.assets.append(asset)
                 }
+                
+                completion(nil)
                 
             } catch {
                 print("Deserializing error: \(error.localizedDescription)")
@@ -66,11 +74,6 @@ enum OpenSeaAssetType {
 
 struct OpenSeaAsset {
     
-    let ownerName: String
-    let type: OpenSeaAssetType
-    let url: URL
-    
-    // add content here?
-    
-    // if animation_url !? null use. mp4 (play video)
+    let imageURL: URL
+
 }
