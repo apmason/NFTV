@@ -15,6 +15,13 @@
 		C3025BE42723199700EE1688 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3025BB92723199400EE1688 /* ContentView.swift */; };
 		C3025BE52723199700EE1688 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3025BBA2723199700EE1688 /* Assets.xcassets */; };
 		C3025BE62723199700EE1688 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3025BBA2723199700EE1688 /* Assets.xcassets */; };
+		C3025BFC27231ACC00EE1688 /* NFTVApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3025BFB27231ACC00EE1688 /* NFTVApp.swift */; };
+		C3025BFE27231ACC00EE1688 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3025BFD27231ACC00EE1688 /* ContentView.swift */; };
+		C3025C0027231ACD00EE1688 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3025BFF27231ACD00EE1688 /* Assets.xcassets */; };
+		C3025C0327231ACD00EE1688 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3025C0227231ACD00EE1688 /* Preview Assets.xcassets */; };
+		C3025C0E27231ACD00EE1688 /* NFTVTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3025C0D27231ACD00EE1688 /* NFTVTests.swift */; };
+		C3025C1927231ACD00EE1688 /* NFTVUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3025C1827231ACD00EE1688 /* NFTVUITests.swift */; };
+		C3025C2627234FE800EE1688 /* OpenSeaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3025C2527234FE800EE1688 /* OpenSeaAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +38,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = C3025BC62723199700EE1688;
 			remoteInfo = "NFTV (macOS)";
+		};
+		C3025C0A27231ACD00EE1688 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C3025BB32723199300EE1688 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C3025BF827231ACC00EE1688;
+			remoteInfo = NFTV;
+		};
+		C3025C1527231ACD00EE1688 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C3025BB32723199300EE1688 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C3025BF827231ACC00EE1688;
+			remoteInfo = NFTV;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -49,6 +70,19 @@
 		C3025BDA2723199700EE1688 /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3025BDE2723199700EE1688 /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		C3025BE02723199700EE1688 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C3025BF927231ACC00EE1688 /* NFTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NFTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3025BFB27231ACC00EE1688 /* NFTVApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTVApp.swift; sourceTree = "<group>"; };
+		C3025BFD27231ACC00EE1688 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C3025BFF27231ACD00EE1688 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C3025C0227231ACD00EE1688 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C3025C0427231ACD00EE1688 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C3025C0927231ACD00EE1688 /* NFTVTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NFTVTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3025C0D27231ACD00EE1688 /* NFTVTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTVTests.swift; sourceTree = "<group>"; };
+		C3025C0F27231ACD00EE1688 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C3025C1427231ACD00EE1688 /* NFTVUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NFTVUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3025C1827231ACD00EE1688 /* NFTVUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTVUITests.swift; sourceTree = "<group>"; };
+		C3025C1A27231ACD00EE1688 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C3025C2527234FE800EE1688 /* OpenSeaAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSeaAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +114,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C3025BF627231ACC00EE1688 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C3025C0627231ACD00EE1688 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C3025C1127231ACD00EE1688 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -91,6 +146,9 @@
 				C3025BC82723199700EE1688 /* macOS */,
 				C3025BD22723199700EE1688 /* Tests iOS */,
 				C3025BDD2723199700EE1688 /* Tests macOS */,
+				C3025BFA27231ACC00EE1688 /* NFTV */,
+				C3025C0C27231ACD00EE1688 /* NFTVTests */,
+				C3025C1727231ACD00EE1688 /* NFTVUITests */,
 				C3025BC02723199700EE1688 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -98,6 +156,7 @@
 		C3025BB72723199400EE1688 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				C3025C2427234FD300EE1688 /* Models */,
 				C3025BB82723199400EE1688 /* NFTVApp.swift */,
 				C3025BB92723199400EE1688 /* ContentView.swift */,
 				C3025BBA2723199700EE1688 /* Assets.xcassets */,
@@ -112,6 +171,9 @@
 				C3025BC72723199700EE1688 /* NFTV.app */,
 				C3025BCF2723199700EE1688 /* Tests iOS.xctest */,
 				C3025BDA2723199700EE1688 /* Tests macOS.xctest */,
+				C3025BF927231ACC00EE1688 /* NFTV.app */,
+				C3025C0927231ACD00EE1688 /* NFTVTests.xctest */,
+				C3025C1427231ACD00EE1688 /* NFTVUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -149,6 +211,52 @@
 				C3025BE02723199700EE1688 /* Info.plist */,
 			);
 			path = "Tests macOS";
+			sourceTree = "<group>";
+		};
+		C3025BFA27231ACC00EE1688 /* NFTV */ = {
+			isa = PBXGroup;
+			children = (
+				C3025BFB27231ACC00EE1688 /* NFTVApp.swift */,
+				C3025BFD27231ACC00EE1688 /* ContentView.swift */,
+				C3025BFF27231ACD00EE1688 /* Assets.xcassets */,
+				C3025C0427231ACD00EE1688 /* Info.plist */,
+				C3025C0127231ACD00EE1688 /* Preview Content */,
+			);
+			path = NFTV;
+			sourceTree = "<group>";
+		};
+		C3025C0127231ACD00EE1688 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				C3025C0227231ACD00EE1688 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		C3025C0C27231ACD00EE1688 /* NFTVTests */ = {
+			isa = PBXGroup;
+			children = (
+				C3025C0D27231ACD00EE1688 /* NFTVTests.swift */,
+				C3025C0F27231ACD00EE1688 /* Info.plist */,
+			);
+			path = NFTVTests;
+			sourceTree = "<group>";
+		};
+		C3025C1727231ACD00EE1688 /* NFTVUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C3025C1827231ACD00EE1688 /* NFTVUITests.swift */,
+				C3025C1A27231ACD00EE1688 /* Info.plist */,
+			);
+			path = NFTVUITests;
+			sourceTree = "<group>";
+		};
+		C3025C2427234FD300EE1688 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C3025C2527234FE800EE1688 /* OpenSeaAPI.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -224,6 +332,59 @@
 			productReference = C3025BDA2723199700EE1688 /* Tests macOS.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		C3025BF827231ACC00EE1688 /* NFTV */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C3025C1B27231ACD00EE1688 /* Build configuration list for PBXNativeTarget "NFTV" */;
+			buildPhases = (
+				C3025BF527231ACC00EE1688 /* Sources */,
+				C3025BF627231ACC00EE1688 /* Frameworks */,
+				C3025BF727231ACC00EE1688 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NFTV;
+			productName = NFTV;
+			productReference = C3025BF927231ACC00EE1688 /* NFTV.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C3025C0827231ACD00EE1688 /* NFTVTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C3025C1E27231ACD00EE1688 /* Build configuration list for PBXNativeTarget "NFTVTests" */;
+			buildPhases = (
+				C3025C0527231ACD00EE1688 /* Sources */,
+				C3025C0627231ACD00EE1688 /* Frameworks */,
+				C3025C0727231ACD00EE1688 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C3025C0B27231ACD00EE1688 /* PBXTargetDependency */,
+			);
+			name = NFTVTests;
+			productName = NFTVTests;
+			productReference = C3025C0927231ACD00EE1688 /* NFTVTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		C3025C1327231ACD00EE1688 /* NFTVUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C3025C2127231ACD00EE1688 /* Build configuration list for PBXNativeTarget "NFTVUITests" */;
+			buildPhases = (
+				C3025C1027231ACD00EE1688 /* Sources */,
+				C3025C1127231ACD00EE1688 /* Frameworks */,
+				C3025C1227231ACD00EE1688 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C3025C1627231ACD00EE1688 /* PBXTargetDependency */,
+			);
+			name = NFTVUITests;
+			productName = NFTVUITests;
+			productReference = C3025C1427231ACD00EE1688 /* NFTVUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -247,6 +408,17 @@
 						CreatedOnToolsVersion = 12.5.1;
 						TestTargetID = C3025BC62723199700EE1688;
 					};
+					C3025BF827231ACC00EE1688 = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
+					C3025C0827231ACD00EE1688 = {
+						CreatedOnToolsVersion = 12.5.1;
+						TestTargetID = C3025BF827231ACC00EE1688;
+					};
+					C3025C1327231ACD00EE1688 = {
+						CreatedOnToolsVersion = 12.5.1;
+						TestTargetID = C3025BF827231ACC00EE1688;
+					};
 				};
 			};
 			buildConfigurationList = C3025BB62723199300EE1688 /* Build configuration list for PBXProject "NFTV" */;
@@ -266,6 +438,9 @@
 				C3025BC62723199700EE1688 /* NFTV (macOS) */,
 				C3025BCE2723199700EE1688 /* Tests iOS */,
 				C3025BD92723199700EE1688 /* Tests macOS */,
+				C3025BF827231ACC00EE1688 /* NFTV */,
+				C3025C0827231ACD00EE1688 /* NFTVTests */,
+				C3025C1327231ACD00EE1688 /* NFTVUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -301,6 +476,29 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C3025BF727231ACC00EE1688 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3025C0327231ACD00EE1688 /* Preview Assets.xcassets in Resources */,
+				C3025C0027231ACD00EE1688 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C3025C0727231ACD00EE1688 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C3025C1227231ACD00EE1688 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -310,6 +508,7 @@
 			files = (
 				C3025BE32723199700EE1688 /* ContentView.swift in Sources */,
 				C3025BE12723199700EE1688 /* NFTVApp.swift in Sources */,
+				C3025C2627234FE800EE1688 /* OpenSeaAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,6 +537,31 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C3025BF527231ACC00EE1688 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3025BFE27231ACC00EE1688 /* ContentView.swift in Sources */,
+				C3025BFC27231ACC00EE1688 /* NFTVApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C3025C0527231ACD00EE1688 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3025C0E27231ACD00EE1688 /* NFTVTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C3025C1027231ACD00EE1688 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3025C1927231ACD00EE1688 /* NFTVUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -350,6 +574,16 @@
 			isa = PBXTargetDependency;
 			target = C3025BC62723199700EE1688 /* NFTV (macOS) */;
 			targetProxy = C3025BDB2723199700EE1688 /* PBXContainerItemProxy */;
+		};
+		C3025C0B27231ACD00EE1688 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C3025BF827231ACC00EE1688 /* NFTV */;
+			targetProxy = C3025C0A27231ACD00EE1688 /* PBXContainerItemProxy */;
+		};
+		C3025C1627231ACD00EE1688 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C3025BF827231ACC00EE1688 /* NFTV */;
+			targetProxy = C3025C1527231ACD00EE1688 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -647,6 +881,145 @@
 			};
 			name = Release;
 		};
+		C3025C1C27231ACD00EE1688 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"NFTV/Preview Content\"";
+				DEVELOPMENT_TEAM = 79TR88QV2P;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = NFTV/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.canopy.NFTV;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 14.5;
+			};
+			name = Debug;
+		};
+		C3025C1D27231ACD00EE1688 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"NFTV/Preview Content\"";
+				DEVELOPMENT_TEAM = 79TR88QV2P;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = NFTV/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.canopy.NFTV;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 14.5;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C3025C1F27231ACD00EE1688 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 79TR88QV2P;
+				INFOPLIST_FILE = NFTVTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.canopy.NFTVTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NFTV.app/NFTV";
+				TVOS_DEPLOYMENT_TARGET = 14.5;
+			};
+			name = Debug;
+		};
+		C3025C2027231ACD00EE1688 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 79TR88QV2P;
+				INFOPLIST_FILE = NFTVTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.canopy.NFTVTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NFTV.app/NFTV";
+				TVOS_DEPLOYMENT_TARGET = 14.5;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C3025C2227231ACD00EE1688 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 79TR88QV2P;
+				INFOPLIST_FILE = NFTVUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.canopy.NFTVUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TEST_TARGET_NAME = NFTV;
+				TVOS_DEPLOYMENT_TARGET = 14.5;
+			};
+			name = Debug;
+		};
+		C3025C2327231ACD00EE1688 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 79TR88QV2P;
+				INFOPLIST_FILE = NFTVUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.canopy.NFTVUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TEST_TARGET_NAME = NFTV;
+				TVOS_DEPLOYMENT_TARGET = 14.5;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -691,6 +1064,33 @@
 			buildConfigurations = (
 				C3025BF32723199700EE1688 /* Debug */,
 				C3025BF42723199700EE1688 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C3025C1B27231ACD00EE1688 /* Build configuration list for PBXNativeTarget "NFTV" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C3025C1C27231ACD00EE1688 /* Debug */,
+				C3025C1D27231ACD00EE1688 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C3025C1E27231ACD00EE1688 /* Build configuration list for PBXNativeTarget "NFTVTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C3025C1F27231ACD00EE1688 /* Debug */,
+				C3025C2027231ACD00EE1688 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C3025C2127231ACD00EE1688 /* Build configuration list for PBXNativeTarget "NFTVUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C3025C2227231ACD00EE1688 /* Debug */,
+				C3025C2327231ACD00EE1688 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  Shared
+//  NFTV
 //
 //  Created by Alexander Mason on 10/22/21.
 //
@@ -8,10 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
-    let api = OpenSeaAPI()
-    
     var body: some View {
-        Text("Hello, world!")
+        Text("We made it!")
             .padding()
     }
 }
