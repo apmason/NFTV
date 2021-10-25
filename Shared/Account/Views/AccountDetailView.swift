@@ -7,38 +7,44 @@
 
 import SwiftUI
 
+private extension AccountDetailView {
+    struct HeightPreferenceKey: PreferenceKey {
+        static let defaultValue: CGFloat = 0
+
+        static func reduce(value: inout CGFloat,
+                           nextValue: () -> CGFloat) {
+            value = max(value, nextValue())
+        }
+    }
+}
+
 struct AccountDetailView: View {
     
     let accountInfo: AccountInfo
     
-    //    AccountImageView(imageURL: accountInfo.accountURL)
-    //        .frame(width: geo.size.height)
-    //        .frame(maxHeight: .infinity)
-    var proxy: GeometryProxy? {
-        didSet {
-            guard let prox = proxy else {
-                return
-            }
-            
-            customHeight = prox.size.height
-        }
-    }
-    @State var customHeight: CGFloat = 0
+    @State private var customHeight: CGFloat?
     
     func setProx(_ prox: GeometryProxy) {
         print("proxy set")
     }
     
     var body: some View {
-        VStack(alignment: .leading) {
-            HStack(alignment: .center) {
-                Color.black
-                    .aspectRatio(1, contentMode: .fit)
+        HStack(alignment: .center) {
+            Color.black
+                .aspectRatio(1, contentMode: .fit)
+                .frame(width: customHeight, height: customHeight, alignment: .leading)
+            
+            AccountTextStack(username: accountInfo.username ?? "Unnamed",
+                             address: accountInfo.displayableAddress)
+                .background(
+                    GeometryReader { geo in
+                        Color.clear.preference(key: HeightPreferenceKey.self,
+                                               value: geo.size.height)
                 
-                AccountTextStack(username: accountInfo.username ?? "Unnamed",
-                                 address: accountInfo.displayableAddress)
-                    .frame(alignment: .leading)
-            }
+                })
+        }
+        .onPreferenceChange(HeightPreferenceKey.self) {
+            customHeight = $0
         }
     }
 }
