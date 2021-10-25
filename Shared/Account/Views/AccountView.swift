@@ -12,7 +12,7 @@ struct AccountView: View {
     let account: OpenSeaAccount
     
     var body: some View {
-        Text("Image go here")
+        AccountDetailView(accountInfo: account.accountInfo)
     }
 }
 

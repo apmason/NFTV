@@ -13,9 +13,13 @@ struct AccountTextStack: View {
     let address: String
     
     var body: some View {
-        VStack {
+        VStack(alignment: .leading, spacing: 4) {
             Text(username)
+                .font(.title)
+                .fontWeight(.bold)
             Text(address)
+                .font(.headline)
+                .fontWeight(.regular)
         }
     }
 }
