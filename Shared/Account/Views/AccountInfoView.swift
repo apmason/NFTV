@@ -1,5 +1,5 @@
 //
-//  AccountDetailView.swift
+//  AccountInfoView.swift
 //  NFTV
 //
 //  Created by Alex Mason on 10/25/21.
