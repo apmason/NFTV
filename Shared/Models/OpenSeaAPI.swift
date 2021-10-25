@@ -7,18 +7,14 @@
 
 import Foundation
 
-class OpenSeaModel: ObservableObject {
-    
-    static let shared = OpenSeaModel()
-    
-    @Published var activeProfile: OpenSeaProfile?
-    
-    private init() {}
+enum OpenSeaAPIError: Error {
+    case defaultError(Error)
+    case badData
 }
 
 class OpenSeaAPI {
     
-    static func fetchAssets(for userAddress: String, completion: @escaping ((Error?) -> Void)) {
+    static func fetchAssets(for userAddress: String, completion: @escaping ((OpenSeaAPIError?) -> Void)) {
         let url = URL(string: "https://api.opensea.io/api/v1/assets?owner=\(userAddress)")!
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
@@ -26,15 +22,27 @@ class OpenSeaAPI {
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard error == nil, let data = data else {
                 // need to handle bad errors
-                completion(error)
-                print("Error, or no data")
+                if let error = error {
+                    completion(.defaultError(error))
+                } else {
+                    completion(.badData)
+                }
+                
                 return
             }
             
             do {
                 guard let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] else {
-                    print("No json")
+                    completion(.badData)
                     return
+                }
+                
+                // We've made it to this step, the user is signed in but has no assets.
+                let profile = OpenSeaProfile(ethAddress: userAddress)
+                
+                // Regardless if this account has assets, assign it as the active profile at the end of this function.
+                defer {
+                    OpenSeaModel.shared.activeProfile = profile
                 }
                 
                 guard let assets = json["assets"] as? [[String: Any]] else {
@@ -42,15 +50,15 @@ class OpenSeaAPI {
                     return
                 }
                 
-                let profile = OpenSeaProfile(ethAddress: userAddress)
+                // TODO: Parse assets
                 for asset in assets {
                     let imageURL = asset["image_url"] as! String
                     let videoURL = asset["animation_url"] as? String
                     if videoURL != nil && videoURL != "" {
                         print("Video url is \(videoURL!)")
                     }
-                    print("Image url is \(imageURL)")
                 
+                    // TODO: - Clean this up
                     let asset = OpenSeaAsset(imageURL: URL(string: imageURL)!)
                     profile.assets.append(asset)
                 }
@@ -58,7 +66,7 @@ class OpenSeaAPI {
                 completion(nil)
                 
             } catch {
-                print("Deserializing error: \(error.localizedDescription)")
+                completion(.defaultError(error))
             }
         }
         task.resume()

@@ -46,7 +46,7 @@ struct SignInView: View {
                 if let error = errorTracker.error {
                     messageText = Text("\(error.localizedDescription)")
                 }
-                
+
                 return Alert(title: Text("Error"), message: messageText, dismissButton: nil)
             }
             

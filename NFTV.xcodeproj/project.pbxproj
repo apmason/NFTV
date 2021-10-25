@@ -31,6 +31,9 @@
 		C3025C3D2723A0E500EE1688 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3025C3C2723A0E500EE1688 /* SignInView.swift */; };
 		C3025C3E2723A0E500EE1688 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3025C3C2723A0E500EE1688 /* SignInView.swift */; };
 		C3025C3F2723A0E500EE1688 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3025C3C2723A0E500EE1688 /* SignInView.swift */; };
+		C38109242726F83D004EF6C1 /* OpenSeaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38109232726F83D004EF6C1 /* OpenSeaModel.swift */; };
+		C38109252726F83D004EF6C1 /* OpenSeaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38109232726F83D004EF6C1 /* OpenSeaModel.swift */; };
+		C38109262726F83D004EF6C1 /* OpenSeaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38109232726F83D004EF6C1 /* OpenSeaModel.swift */; };
 		C3AE50952726E26D0015DB81 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3025BB92723199400EE1688 /* ContentView.swift */; };
 		C3AE50A42726E2C50015DB81 /* OpenSeaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3025C2527234FE800EE1688 /* OpenSeaAPI.swift */; };
 		C3AE50AC2726E2C70015DB81 /* OpenSeaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3025C2527234FE800EE1688 /* OpenSeaAPI.swift */; };
@@ -99,6 +102,7 @@
 		C3025C3027239ECB00EE1688 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		C3025C3427239EF700EE1688 /* OpenSeaProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSeaProfile.swift; sourceTree = "<group>"; };
 		C3025C3C2723A0E500EE1688 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		C38109232726F83D004EF6C1 /* OpenSeaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSeaModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -273,6 +277,7 @@
 			children = (
 				C3025C2527234FE800EE1688 /* OpenSeaAPI.swift */,
 				C3025C3427239EF700EE1688 /* OpenSeaProfile.swift */,
+				C38109232726F83D004EF6C1 /* OpenSeaModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -565,6 +570,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3025BE32723199700EE1688 /* ContentView.swift in Sources */,
+				C38109242726F83D004EF6C1 /* OpenSeaModel.swift in Sources */,
 				C3025C3D2723A0E500EE1688 /* SignInView.swift in Sources */,
 				C3025C3527239EF700EE1688 /* OpenSeaProfile.swift in Sources */,
 				C3025C2827239B8700EE1688 /* ActivityView.swift in Sources */,
@@ -579,6 +585,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3025C3E2723A0E500EE1688 /* SignInView.swift in Sources */,
+				C38109252726F83D004EF6C1 /* OpenSeaModel.swift in Sources */,
 				C3025C3627239EF700EE1688 /* OpenSeaProfile.swift in Sources */,
 				C3025C3227239ECB00EE1688 /* ProfileView.swift in Sources */,
 				C3025BE42723199700EE1688 /* ContentView.swift in Sources */,
@@ -609,6 +616,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3025C3727239EF700EE1688 /* OpenSeaProfile.swift in Sources */,
+				C38109262726F83D004EF6C1 /* OpenSeaModel.swift in Sources */,
 				C3AE51122726E4400015DB81 /* NFTVApp.swift in Sources */,
 				C3AE50952726E26D0015DB81 /* ContentView.swift in Sources */,
 				C3AE50AC2726E2C70015DB81 /* OpenSeaAPI.swift in Sources */,
