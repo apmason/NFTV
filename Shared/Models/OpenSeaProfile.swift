@@ -9,11 +9,12 @@ import Foundation
 
 class OpenSeaProfile {
     
-    let ethAddress: String
+    let address: String
+    let username: String?
     var assets: [OpenSeaAsset] = []
     
-    init(ethAddress: String) {
-        self.ethAddress = ethAddress
-        
+    init(address: String, username: String? = nil) {
+        self.address = address
+        self.username = username
     }
 }

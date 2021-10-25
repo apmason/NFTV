@@ -14,8 +14,8 @@ enum OpenSeaAPIError: Error {
 
 class OpenSeaAPI {
     
-    static func fetchAssets(for userAddress: String, completion: @escaping ((OpenSeaAPIError?) -> Void)) {
-        let url = URL(string: "https://api.opensea.io/api/v1/assets?owner=\(userAddress)")!
+    static func fetchAssets(for address: String, completion: @escaping ((OpenSeaAPIError?) -> Void)) {
+        let url = URL(string: "https://api.opensea.io/api/v1/assets?owner=\(address)")!
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         
@@ -38,11 +38,13 @@ class OpenSeaAPI {
                 }
                 
                 // We've made it to this step, the user is signed in but has no assets.
-                let profile = OpenSeaProfile(ethAddress: userAddress)
+                let profile = OpenSeaProfile(address: address)
                 
                 // Regardless if this account has assets, assign it as the active profile at the end of this function.
                 defer {
-                    OpenSeaModel.shared.activeProfile = profile
+                    DispatchQueue.main.async {
+                        OpenSeaModel.shared.activeProfile = profile
+                    }
                 }
                 
                 guard let assets = json["assets"] as? [[String: Any]] else {
