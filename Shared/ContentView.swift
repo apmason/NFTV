@@ -13,7 +13,7 @@ struct ContentView: View {
     
     var body: some View {
         if model.activeProfile != nil {
-            ProfileView()
+            ProfileView(profile: model.activeProfile!)
         } else {
             SignInView()
         }

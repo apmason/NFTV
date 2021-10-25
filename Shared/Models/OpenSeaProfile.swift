@@ -7,28 +7,25 @@
 
 import Foundation
 
-struct UserData {
+struct AccountInfo {
     let address: String
     let username: String?
     let profileURL: URL?
+    
+    var displayableAddress: String {
+        let startSequence = address.prefix(6) // get first 6 characters (0x + the first four characters)
+        let endSequence = address.suffix(4) // get last 4 characters
+        return startSequence + "..." + endSequence
+    }
 }
 
 class OpenSeaProfile {
     
-    let address: String
-    let username: String?
+    let accountInfo: AccountInfo
     var assets: [OpenSeaAsset] = []
     
-    /// Returns an ETH address in the form of 0x1234...5678
-    var displayableAddress: String {
-        let startSequence = address.prefix(6) // get first 6 characters (0x + the first four characters)
-        let endSequence = address.suffix(4) // get last 4 characters
-
-        return startSequence + "..." + endSequence
-    }
-    
+    // we would persist and save this?
     init(address: String, username: String? = nil) {
-        self.address = address
-        self.username = username
+        self.accountInfo = AccountInfo(address: address, username: username, profileURL: nil)
     }
 }

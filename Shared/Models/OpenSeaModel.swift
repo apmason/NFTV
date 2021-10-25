@@ -14,8 +14,8 @@ class ProfilePersister {
     static private let usernameKey: String = "usernameKey"
     
     static func persist(profile: OpenSeaProfile) {
-        UserDefaults.standard.set(profile.address, forKey: addressKey)
-        UserDefaults.standard.set(profile.username, forKey: usernameKey)
+        UserDefaults.standard.set(profile.accountInfo.address, forKey: addressKey)
+        UserDefaults.standard.set(profile.accountInfo.username, forKey: usernameKey)
     }
     
     static func fetchProfile() -> OpenSeaProfile? {

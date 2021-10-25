@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct ProfileView: View {
+    
+    let profile: OpenSeaProfile
+    
     var body: some View {
         Text("Image go here")
     }
@@ -15,6 +18,6 @@ struct ProfileView: View {
 
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileView()
+        ProfileView(profile: OpenSeaProfile(address: "0x123456789123456789", username: nil))
     }
 }

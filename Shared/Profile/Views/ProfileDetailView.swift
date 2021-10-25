@@ -7,21 +7,23 @@
 
 import SwiftUI
 
-struct ProfileDetailView: View {
+struct ProfileInfoView: View {
     
-    let profile: OpenSeaProfile
+    let accountInfo: AccountInfo
     
     var body: some View {
         HStack {
             ProfileImageView()
-            ProfileTextStack(username: profile.username ?? "Unnamed", address: profile.address)
+            ProfileTextStack(username: accountInfo.username ?? "Unnamed",
+                             address: accountInfo.address)
         }
     }
 }
 
 struct ProfileDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileDetailView(profile: OpenSeaProfile(address: "0x51906b344eae66a8bc3db3efb2da3d79507aa06e",
-                                                  username: "zeent"))
+        ProfileInfoView(accountInfo: AccountInfo(address: "0x51906b344eae66a8bc3db3efb2da3d79507aa06e",
+                                             username: "zeent",
+                                             profileURL: nil))
     }
 }
