@@ -8,17 +8,17 @@
 import Foundation
 
 // TODO: Should we persist the address URL? I think so, but will come back to that
-class ProfilePersister {
+class AccountPersister {
     
     static private let addressKey: String = "addressKey"
     static private let usernameKey: String = "usernameKey"
     
-    static func persist(profile: OpenSeaProfile) {
-        UserDefaults.standard.set(profile.accountInfo.address, forKey: addressKey)
-        UserDefaults.standard.set(profile.accountInfo.username, forKey: usernameKey)
+    static func persist(account: OpenSeaAccount) {
+        UserDefaults.standard.set(account.accountInfo.address, forKey: addressKey)
+        UserDefaults.standard.set(account.accountInfo.username, forKey: usernameKey)
     }
     
-    static func fetchProfile() -> OpenSeaProfile? {
+    static func fetchAccount() -> OpenSeaAccount? {
         // We only want to continue if we have a address
         guard let address = UserDefaults.standard.string(forKey: addressKey) else {
             return nil
@@ -26,7 +26,7 @@ class ProfilePersister {
         
         let username = UserDefaults.standard.string(forKey: usernameKey)
         
-        return OpenSeaProfile(address: address, username: username)
+        return OpenSeaAccount(address: address, username: username)
     }
 }
 
@@ -34,15 +34,15 @@ class OpenSeaModel: ObservableObject {
     
     static let shared = OpenSeaModel()
     
-    @Published var activeProfile: OpenSeaProfile? {
+    @Published var activeAccount: OpenSeaAccount? {
         didSet {
-            if let profile = activeProfile {
-                ProfilePersister.persist(profile: profile)
+            if let account = activeAccount {
+                AccountPersister.persist(account: account)
             }
         }
     }
     
     private init() {
-        activeProfile = ProfilePersister.fetchProfile()
+        activeAccount = AccountPersister.fetchAccount()
     }
 }

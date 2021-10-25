@@ -1,5 +1,5 @@
 //
-//  ProfileTextStack.swift
+//  AccountTextStack.swift
 //  NFTV
 //
 //  Created by Alex Mason on 10/25/21.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ProfileTextStack: View {
+struct AccountTextStack: View {
     
     let username: String
     let address: String
@@ -20,8 +20,8 @@ struct ProfileTextStack: View {
     }
 }
 
-struct ProfileTextStack_Previews: PreviewProvider {
+struct AccountTextStack_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileTextStack(username: "zander", address: "0x1234...5678")
+        AccountTextStack(username: "zander", address: "0x1234...5678")
     }
 }

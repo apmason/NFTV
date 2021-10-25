@@ -1,5 +1,5 @@
 //
-//  OpenSeaProfile.swift
+//  OpenSeaAccount.swift
 //  NFTV
 //
 //  Created by Alexander Mason on 10/22/21.
@@ -10,7 +10,7 @@ import Foundation
 struct AccountInfo {
     let address: String
     let username: String?
-    let profileURL: URL?
+    let accountURL: URL?
     
     var displayableAddress: String {
         let startSequence = address.prefix(6) // get first 6 characters (0x + the first four characters)
@@ -19,13 +19,13 @@ struct AccountInfo {
     }
 }
 
-class OpenSeaProfile {
+class OpenSeaAccount {
     
     let accountInfo: AccountInfo
     var assets: [OpenSeaAsset] = []
     
     // we would persist and save this?
     init(address: String, username: String? = nil) {
-        self.accountInfo = AccountInfo(address: address, username: username, profileURL: nil)
+        self.accountInfo = AccountInfo(address: address, username: username, accountURL: nil)
     }
 }

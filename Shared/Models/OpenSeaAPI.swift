@@ -38,12 +38,12 @@ class OpenSeaAPI {
                 }
                 
                 // We've made it to this step, the user is signed in but has no assets.
-                let profile = OpenSeaProfile(address: address)
+                let account = OpenSeaAccount(address: address)
                 
-                // Regardless if this account has assets, assign it as the active profile at the end of this function.
+                // Regardless if this account has assets, assign it as the active account at the end of this function.
                 defer {
                     DispatchQueue.main.async {
-                        OpenSeaModel.shared.activeProfile = profile
+                        OpenSeaModel.shared.activeAccount = account
                     }
                 }
                 
@@ -62,7 +62,7 @@ class OpenSeaAPI {
                 
                     // TODO: - Clean this up
                     let asset = OpenSeaAsset(imageURL: URL(string: imageURL)!)
-                    profile.assets.append(asset)
+                    account.assets.append(asset)
                 }
                 
                 completion(nil)

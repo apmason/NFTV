@@ -1,5 +1,5 @@
 //
-//  ProfileImageView.swift
+//  AccountImageView.swift
 //  NFTV
 //
 //  Created by Alex Mason on 10/25/21.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ProfileImageView: View {
+struct AccountImageView: View {
     // add our URL here.
     
     
@@ -15,13 +15,13 @@ struct ProfileImageView: View {
         #if os(macOS)
         
         #else
-        AsyncImage(url: URL(string: "https://storage.googleapis.com/opensea-static/opensea-profile/27.png"))
+        AsyncImage(url: URL(string: "https://storage.googleapis.com/opensea-static/opensea-account/27.png"))
         #endif
     }
 }
 
-struct ProfileImageView_Previews: PreviewProvider {
+struct AccountImageView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileImageView()
+        AccountImageView()
     }
 }

@@ -1,5 +1,5 @@
 //
-//  ProfileView.swift
+//  AccountView.swift
 //  NFTV
 //
 //  Created by Alexander Mason on 10/22/21.
@@ -7,17 +7,17 @@
 
 import SwiftUI
 
-struct ProfileView: View {
+struct AccountView: View {
     
-    let profile: OpenSeaProfile
+    let account: OpenSeaAccount
     
     var body: some View {
         Text("Image go here")
     }
 }
 
-struct ProfileView_Previews: PreviewProvider {
+struct AccountView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileView(profile: OpenSeaProfile(address: "0x123456789123456789", username: nil))
+        AccountView(account: OpenSeaAccount(address: "0x123456789123456789", username: nil))
     }
 }

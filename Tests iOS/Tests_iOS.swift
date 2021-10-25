@@ -11,7 +11,7 @@ import NFTV
 class Tests_iOS: XCTestCase {
 
     func testDisplayableAddress() throws {
-        let profile = OpenSeaProfile(address: "0x51906b344eae66a8bc3db3efb2da3d79507aa06e")
-        XCTAssert(profile.displayableAddress == "0x5190...a06e")
+        let account = OpenSeaAccount(address: "0x51906b344eae66a8bc3db3efb2da3d79507aa06e")
+        XCTAssert(account.displayableAddress == "0x5190...a06e")
     }
 }
