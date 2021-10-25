@@ -29,13 +29,14 @@ struct AccountDetailView: View {
     }
     
     var body: some View {
-        HStack(alignment: .center) {
+        HStack(alignment: .top) {
             Color.black
                 .aspectRatio(1, contentMode: .fit)
                 .frame(width: customHeight, height: customHeight, alignment: .leading)
             
             AccountTextStack(username: accountInfo.username ?? "Unnamed",
                              address: accountInfo.displayableAddress)
+                .padding()
                 .background(
                     GeometryReader { geo in
                         Color.clear.preference(key: HeightPreferenceKey.self,

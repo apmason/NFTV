@@ -12,7 +12,11 @@ struct AccountView: View {
     let account: OpenSeaAccount
     
     var body: some View {
-        AccountDetailView(accountInfo: account.accountInfo)
+        VStack(alignment: .leading, spacing: 10) {
+            AccountDetailView(accountInfo: account.accountInfo)
+            Divider()
+            Spacer()
+        }
     }
 }
 
