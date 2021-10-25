@@ -11,17 +11,35 @@ struct AccountDetailView: View {
     
     let accountInfo: AccountInfo
     
-    var body: some View {
-        HStack {
-            AccountImageView(imageURL: accountInfo.accountURL)
-                .padding()
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-            AccountTextStack(username: accountInfo.username ?? "Unnamed",
-                             address: accountInfo.displayableAddress)
-                .padding()
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
+    //    AccountImageView(imageURL: accountInfo.accountURL)
+    //        .frame(width: geo.size.height)
+    //        .frame(maxHeight: .infinity)
+    var proxy: GeometryProxy? {
+        didSet {
+            guard let prox = proxy else {
+                return
+            }
+            
+            customHeight = prox.size.height
         }
-        .fixedSize(horizontal: true, vertical: true)
+    }
+    @State var customHeight: CGFloat = 0
+    
+    func setProx(_ prox: GeometryProxy) {
+        print("proxy set")
+    }
+    
+    var body: some View {
+        VStack(alignment: .leading) {
+            HStack(alignment: .center) {
+                Color.black
+                    .aspectRatio(1, contentMode: .fit)
+                
+                AccountTextStack(username: accountInfo.username ?? "Unnamed",
+                                 address: accountInfo.displayableAddress)
+                    .frame(alignment: .leading)
+            }
+        }
     }
 }
 
