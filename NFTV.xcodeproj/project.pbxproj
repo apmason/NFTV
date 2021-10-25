@@ -34,6 +34,9 @@
 		C38109242726F83D004EF6C1 /* OpenSeaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38109232726F83D004EF6C1 /* OpenSeaModel.swift */; };
 		C38109252726F83D004EF6C1 /* OpenSeaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38109232726F83D004EF6C1 /* OpenSeaModel.swift */; };
 		C38109262726F83D004EF6C1 /* OpenSeaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38109232726F83D004EF6C1 /* OpenSeaModel.swift */; };
+		C3810928272703C2004EF6C1 /* OpenSeaProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3025C3427239EF700EE1688 /* OpenSeaProfile.swift */; };
+		C3810929272703F8004EF6C1 /* OpenSeaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3025C2527234FE800EE1688 /* OpenSeaAPI.swift */; };
+		C381092A27270408004EF6C1 /* OpenSeaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38109232726F83D004EF6C1 /* OpenSeaModel.swift */; };
 		C3AE50952726E26D0015DB81 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3025BB92723199400EE1688 /* ContentView.swift */; };
 		C3AE50A42726E2C50015DB81 /* OpenSeaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3025C2527234FE800EE1688 /* OpenSeaAPI.swift */; };
 		C3AE50AC2726E2C70015DB81 /* OpenSeaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3025C2527234FE800EE1688 /* OpenSeaAPI.swift */; };
@@ -176,9 +179,9 @@
 		C3025BB72723199400EE1688 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				C38109272727000E004EF6C1 /* Profile */,
 				C3AE512A2726E5120015DB81 /* Misc */,
 				C3AE51212726E4A30015DB81 /* SignIn */,
-				C3025C2B27239E8000EE1688 /* Views */,
 				C3025C2427234FD300EE1688 /* Models */,
 				C3025BB82723199400EE1688 /* NFTVApp.swift */,
 				C3025BB92723199400EE1688 /* ContentView.swift */,
@@ -288,6 +291,14 @@
 				C3025C3027239ECB00EE1688 /* ProfileView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		C38109272727000E004EF6C1 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				C3025C2B27239E8000EE1688 /* Views */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		C3AE51212726E4A30015DB81 /* SignIn */ = {
@@ -600,6 +611,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3025BD42723199700EE1688 /* Tests_iOS.swift in Sources */,
+				C381092A27270408004EF6C1 /* OpenSeaModel.swift in Sources */,
+				C3810928272703C2004EF6C1 /* OpenSeaProfile.swift in Sources */,
+				C3810929272703F8004EF6C1 /* OpenSeaAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
