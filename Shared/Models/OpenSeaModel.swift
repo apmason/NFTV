@@ -7,6 +7,7 @@
 
 import Foundation
 
+// TODO: Should we persist the address URL? I think so, but will come back to that
 class ProfilePersister {
     
     static private let addressKey: String = "addressKey"

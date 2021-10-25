@@ -7,6 +7,12 @@
 
 import Foundation
 
+struct UserData {
+    let address: String
+    let username: String?
+    let profileURL: URL?
+}
+
 class OpenSeaProfile {
     
     let address: String
