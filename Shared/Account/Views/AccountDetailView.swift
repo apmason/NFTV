@@ -13,10 +13,15 @@ struct AccountDetailView: View {
     
     var body: some View {
         HStack {
-            AccountImageView()
+            AccountImageView(imageURL: accountInfo.accountURL)
+                .padding()
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
             AccountTextStack(username: accountInfo.username ?? "Unnamed",
                              address: accountInfo.displayableAddress)
+                .padding()
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
+        .fixedSize(horizontal: true, vertical: true)
     }
 }
 
