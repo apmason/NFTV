@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  OpenSeaProfile.swift
 //  NFTV
 //
 //  Created by Alexander Mason on 10/22/21.

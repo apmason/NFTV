@@ -25,9 +25,9 @@
 		C3025C3127239ECB00EE1688 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3025C3027239ECB00EE1688 /* ProfileView.swift */; };
 		C3025C3227239ECB00EE1688 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3025C3027239ECB00EE1688 /* ProfileView.swift */; };
 		C3025C3327239ECB00EE1688 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3025C3027239ECB00EE1688 /* ProfileView.swift */; };
-		C3025C3527239EF700EE1688 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3025C3427239EF700EE1688 /* File.swift */; };
-		C3025C3627239EF700EE1688 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3025C3427239EF700EE1688 /* File.swift */; };
-		C3025C3727239EF700EE1688 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3025C3427239EF700EE1688 /* File.swift */; };
+		C3025C3527239EF700EE1688 /* OpenSeaProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3025C3427239EF700EE1688 /* OpenSeaProfile.swift */; };
+		C3025C3627239EF700EE1688 /* OpenSeaProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3025C3427239EF700EE1688 /* OpenSeaProfile.swift */; };
+		C3025C3727239EF700EE1688 /* OpenSeaProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3025C3427239EF700EE1688 /* OpenSeaProfile.swift */; };
 		C3025C3D2723A0E500EE1688 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3025C3C2723A0E500EE1688 /* SignInView.swift */; };
 		C3025C3E2723A0E500EE1688 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3025C3C2723A0E500EE1688 /* SignInView.swift */; };
 		C3025C3F2723A0E500EE1688 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3025C3C2723A0E500EE1688 /* SignInView.swift */; };
@@ -97,7 +97,7 @@
 		C3025C2527234FE800EE1688 /* OpenSeaAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSeaAPI.swift; sourceTree = "<group>"; };
 		C3025C2727239B8700EE1688 /* ActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		C3025C3027239ECB00EE1688 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
-		C3025C3427239EF700EE1688 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		C3025C3427239EF700EE1688 /* OpenSeaProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSeaProfile.swift; sourceTree = "<group>"; };
 		C3025C3C2723A0E500EE1688 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -172,8 +172,9 @@
 		C3025BB72723199400EE1688 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				C3AE512A2726E5120015DB81 /* Misc */,
+				C3AE51212726E4A30015DB81 /* SignIn */,
 				C3025C2B27239E8000EE1688 /* Views */,
-				C3025C2727239B8700EE1688 /* ActivityView.swift */,
 				C3025C2427234FD300EE1688 /* Models */,
 				C3025BB82723199400EE1688 /* NFTVApp.swift */,
 				C3025BB92723199400EE1688 /* ContentView.swift */,
@@ -271,7 +272,7 @@
 			isa = PBXGroup;
 			children = (
 				C3025C2527234FE800EE1688 /* OpenSeaAPI.swift */,
-				C3025C3427239EF700EE1688 /* File.swift */,
+				C3025C3427239EF700EE1688 /* OpenSeaProfile.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -280,7 +281,38 @@
 			isa = PBXGroup;
 			children = (
 				C3025C3027239ECB00EE1688 /* ProfileView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C3AE51212726E4A30015DB81 /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				C3AE51222726E4AB0015DB81 /* Views */,
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
+		C3AE51222726E4AB0015DB81 /* Views */ = {
+			isa = PBXGroup;
+			children = (
 				C3025C3C2723A0E500EE1688 /* SignInView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C3AE512A2726E5120015DB81 /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				C3AE512B2726E5190015DB81 /* Views */,
+			);
+			path = Misc;
+			sourceTree = "<group>";
+		};
+		C3AE512B2726E5190015DB81 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C3025C2727239B8700EE1688 /* ActivityView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -534,7 +566,7 @@
 			files = (
 				C3025BE32723199700EE1688 /* ContentView.swift in Sources */,
 				C3025C3D2723A0E500EE1688 /* SignInView.swift in Sources */,
-				C3025C3527239EF700EE1688 /* File.swift in Sources */,
+				C3025C3527239EF700EE1688 /* OpenSeaProfile.swift in Sources */,
 				C3025C2827239B8700EE1688 /* ActivityView.swift in Sources */,
 				C3025C3127239ECB00EE1688 /* ProfileView.swift in Sources */,
 				C3025BE12723199700EE1688 /* NFTVApp.swift in Sources */,
@@ -547,7 +579,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3025C3E2723A0E500EE1688 /* SignInView.swift in Sources */,
-				C3025C3627239EF700EE1688 /* File.swift in Sources */,
+				C3025C3627239EF700EE1688 /* OpenSeaProfile.swift in Sources */,
 				C3025C3227239ECB00EE1688 /* ProfileView.swift in Sources */,
 				C3025BE42723199700EE1688 /* ContentView.swift in Sources */,
 				C3025BE22723199700EE1688 /* NFTVApp.swift in Sources */,
@@ -576,7 +608,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3025C3727239EF700EE1688 /* File.swift in Sources */,
+				C3025C3727239EF700EE1688 /* OpenSeaProfile.swift in Sources */,
 				C3AE51122726E4400015DB81 /* NFTVApp.swift in Sources */,
 				C3AE50952726E26D0015DB81 /* ContentView.swift in Sources */,
 				C3AE50AC2726E2C70015DB81 /* OpenSeaAPI.swift in Sources */,

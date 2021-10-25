@@ -7,9 +7,21 @@
 
 import SwiftUI
 
+struct LoginError {
+    var error: Error?
+    var shouldAlert: Bool
+    
+    init(error: Error? = nil) {
+        self.error = error
+        self.shouldAlert = error != nil
+    }
+}
+
 struct SignInView: View {    
     @State private var text: String = ""
     @State private var signingIn: Bool = false
+    
+    @State private var errorTracker: LoginError = LoginError()
     
     var body: some View {
         ZStack {
@@ -20,15 +32,23 @@ struct SignInView: View {
                 )
                 
                 Button("Start slideshow") {
-                    print("Button tapped")
-                    signingIn = true
+                    signingIn = true // Show activity indicator
                     OpenSeaAPI.fetchAssets(for: text) { error in
                         signingIn = false
-                        print("In the result")
+                        errorTracker = LoginError(error: error)
                     }
                 }
                 .disabled(self.text == "" || signingIn)
             })
+            .alert(isPresented: $errorTracker.shouldAlert) {
+                // we should clear out the text field
+                var messageText: Text? = nil
+                if let error = errorTracker.error {
+                    messageText = Text("\(error.localizedDescription)")
+                }
+                
+                return Alert(title: Text("Error"), message: messageText, dismissButton: nil)
+            }
             
             if signingIn {
                 ActivityView()
