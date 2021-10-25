@@ -16,7 +16,6 @@
 		C3025BE52723199700EE1688 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3025BBA2723199700EE1688 /* Assets.xcassets */; };
 		C3025BE62723199700EE1688 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3025BBA2723199700EE1688 /* Assets.xcassets */; };
 		C3025BFC27231ACC00EE1688 /* NFTVApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3025BFB27231ACC00EE1688 /* NFTVApp.swift */; };
-		C3025BFE27231ACC00EE1688 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3025BFD27231ACC00EE1688 /* ContentView.swift */; };
 		C3025C0027231ACD00EE1688 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3025BFF27231ACD00EE1688 /* Assets.xcassets */; };
 		C3025C0327231ACD00EE1688 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3025C0227231ACD00EE1688 /* Preview Assets.xcassets */; };
 		C3025C0E27231ACD00EE1688 /* NFTVTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3025C0D27231ACD00EE1688 /* NFTVTests.swift */; };
@@ -33,6 +32,10 @@
 		C3025C3D2723A0E500EE1688 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3025C3C2723A0E500EE1688 /* SignInView.swift */; };
 		C3025C3E2723A0E500EE1688 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3025C3C2723A0E500EE1688 /* SignInView.swift */; };
 		C3025C3F2723A0E500EE1688 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3025C3C2723A0E500EE1688 /* SignInView.swift */; };
+		C3AE50952726E26D0015DB81 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3025BB92723199400EE1688 /* ContentView.swift */; };
+		C3AE50A42726E2C50015DB81 /* OpenSeaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3025C2527234FE800EE1688 /* OpenSeaAPI.swift */; };
+		C3AE50AC2726E2C70015DB81 /* OpenSeaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3025C2527234FE800EE1688 /* OpenSeaAPI.swift */; };
+		C3AE50DE2726E3B40015DB81 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3025C2727239B8700EE1688 /* ActivityView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,7 +86,6 @@
 		C3025BE02723199700EE1688 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C3025BF927231ACC00EE1688 /* NFTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NFTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3025BFB27231ACC00EE1688 /* NFTVApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTVApp.swift; sourceTree = "<group>"; };
-		C3025BFD27231ACC00EE1688 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C3025BFF27231ACD00EE1688 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C3025C0227231ACD00EE1688 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C3025C0427231ACD00EE1688 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -159,9 +161,9 @@
 				C3025BB72723199400EE1688 /* Shared */,
 				C3025BC12723199700EE1688 /* iOS */,
 				C3025BC82723199700EE1688 /* macOS */,
+				C3025BFA27231ACC00EE1688 /* NFTV */,
 				C3025BD22723199700EE1688 /* Tests iOS */,
 				C3025BDD2723199700EE1688 /* Tests macOS */,
-				C3025BFA27231ACC00EE1688 /* NFTV */,
 				C3025C0C27231ACD00EE1688 /* NFTVTests */,
 				C3025C1727231ACD00EE1688 /* NFTVUITests */,
 				C3025BC02723199700EE1688 /* Products */,
@@ -234,7 +236,6 @@
 			isa = PBXGroup;
 			children = (
 				C3025BFB27231ACC00EE1688 /* NFTVApp.swift */,
-				C3025BFD27231ACC00EE1688 /* ContentView.swift */,
 				C3025BFF27231ACD00EE1688 /* Assets.xcassets */,
 				C3025C0427231ACD00EE1688 /* Info.plist */,
 				C3025C0127231ACD00EE1688 /* Preview Content */,
@@ -552,6 +553,7 @@
 				C3025C3227239ECB00EE1688 /* ProfileView.swift in Sources */,
 				C3025BE42723199700EE1688 /* ContentView.swift in Sources */,
 				C3025BE22723199700EE1688 /* NFTVApp.swift in Sources */,
+				C3AE50A42726E2C50015DB81 /* OpenSeaAPI.swift in Sources */,
 				C3025C2927239B8700EE1688 /* ActivityView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -576,9 +578,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3025BFE27231ACC00EE1688 /* ContentView.swift in Sources */,
 				C3025C3727239EF700EE1688 /* File.swift in Sources */,
+				C3AE50952726E26D0015DB81 /* ContentView.swift in Sources */,
+				C3AE50AC2726E2C70015DB81 /* OpenSeaAPI.swift in Sources */,
 				C3025C3327239ECB00EE1688 /* ProfileView.swift in Sources */,
+				C3AE50DE2726E3B40015DB81 /* ActivityView.swift in Sources */,
 				C3025BFC27231ACC00EE1688 /* NFTVApp.swift in Sources */,
 				C3025C3F2723A0E500EE1688 /* SignInView.swift in Sources */,
 			);
@@ -837,7 +841,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 79TR88QV2P;
 				INFOPLIST_FILE = "Tests iOS/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -859,7 +863,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 79TR88QV2P;
 				INFOPLIST_FILE = "Tests iOS/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -888,7 +892,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.2;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.canopy.Tests-macOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -910,7 +914,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.2;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.canopy.Tests-macOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -938,7 +942,7 @@
 				SDKROOT = appletvos;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 14.5;
+				TVOS_DEPLOYMENT_TARGET = 14.2;
 			};
 			name = Debug;
 		};
@@ -961,7 +965,7 @@
 				SDKROOT = appletvos;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 14.5;
+				TVOS_DEPLOYMENT_TARGET = 14.2;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -985,7 +989,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NFTV.app/NFTV";
-				TVOS_DEPLOYMENT_TARGET = 14.5;
+				TVOS_DEPLOYMENT_TARGET = 14.2;
 			};
 			name = Debug;
 		};
@@ -1008,7 +1012,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NFTV.app/NFTV";
-				TVOS_DEPLOYMENT_TARGET = 14.5;
+				TVOS_DEPLOYMENT_TARGET = 14.2;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1031,7 +1035,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TEST_TARGET_NAME = NFTV;
-				TVOS_DEPLOYMENT_TARGET = 14.5;
+				TVOS_DEPLOYMENT_TARGET = 14.2;
 			};
 			name = Debug;
 		};
@@ -1053,7 +1057,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TEST_TARGET_NAME = NFTV;
-				TVOS_DEPLOYMENT_TARGET = 14.5;
+				TVOS_DEPLOYMENT_TARGET = 14.2;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

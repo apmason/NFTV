@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ProfileView: View {
     var body: some View {
-        AsyncImage(url: OpenSeaModel.shared.activeProfile!.assets.first!.imageURL)
         Text("Image go here")
     }
 }
