@@ -25,8 +25,13 @@ class OpenSeaAsset: Identifiable, ObservableObject {
     }
     
     func retrieveURL() {
+        print("url is \(imageURL.absoluteString)")
+        
         ImageCache.publicCache.load(url: (imageURL as NSURL), item: self) { asset, wrapper in
-            self.imageWrapper = wrapper
+            print("have it here")
+            DispatchQueue.main.async {
+                self.imageWrapper = wrapper
+            }
         }
     }
 }

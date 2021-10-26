@@ -36,12 +36,7 @@ struct AssetOverviewView: View {
         GridItem(.adaptive(minimum: 100), spacing: 20)
     ]
     
-    let assets: [OpenSeaAsset] = [
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://googlerdsf.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://googlesdf.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://googsdfsdfle.com")!),
-    ]
+    let assets: [OpenSeaAsset]
     
     var body: some View {
         ScrollView {
@@ -56,6 +51,6 @@ struct AssetOverviewView: View {
 
 struct AssetOverviewView_Previews: PreviewProvider {
     static var previews: some View {
-        AssetOverviewView()
+        AssetOverviewView(assets: [])
     }
 }
