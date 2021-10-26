@@ -43,7 +43,10 @@ class OpenSeaModel: ObservableObject {
     }
     
     private init() {
-        activeAccount = AccountPersister.fetchAccount()
-        //activeAccount = OpenSeaAccount.init(address: "0x51906b344eae66a8bc3db3efb2da3d79507aa06e", username: "zeent")
+        //activeAccount = AccountPersister.fetchAccount()
+        
+        activeAccount = OpenSeaAccount(address: "0x51906b344eae66a8bc3db3efb2da3d79507aa06e",
+                                       username: "zeent",
+                                       profileImageURL: URL(string: "https://storage.googleapis.com/opensea-static/opensea-account/27.png")!)
     }
 }

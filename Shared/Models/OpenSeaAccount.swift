@@ -10,7 +10,7 @@ import Foundation
 struct AccountInfo {
     let address: String
     let username: String?
-    let accountURL: URL?
+    var profileImageURL: URL?
     
     var displayableAddress: String {
         let startSequence = address.prefix(6) // get first 6 characters (0x + the first four characters)
@@ -21,11 +21,11 @@ struct AccountInfo {
 
 class OpenSeaAccount {
     
-    let accountInfo: AccountInfo
+    var accountInfo: AccountInfo
     var assets: [OpenSeaAsset] = []
     
     // we would persist and save this?
-    init(address: String, username: String? = nil) {
-        self.accountInfo = AccountInfo(address: address, username: username, accountURL: nil)
+    init(address: String, username: String? = nil, profileImageURL: URL? = nil) {
+        self.accountInfo = AccountInfo(address: address, username: username, profileImageURL: profileImageURL)
     }
 }

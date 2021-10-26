@@ -13,7 +13,22 @@ class ImageDownloader: ObservableObject {
     #endif
     
     func fetchImage(at url: URL) {
+        print("Fetching the image here")
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
         
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            guard error != nil, let data = data else {
+                print("Error getting image, fail silently")
+                return
+            }
+            
+            print("data down here?")
+            #if os(macOS)
+            print("have image")
+            self.image = NSImage(data: data)
+            #endif
+        }.resume()
     }
 }
 
@@ -26,8 +41,19 @@ struct ImageContentView: View {
     
     let imageURL: URL
     
+    init(imageURL: URL) {
+        self.imageURL = imageURL
+        imageDownloader.fetchImage(at: self.imageURL)
+    }
+    
     var body: some View {
         //TODO: Update this when Monterrey drops, then do an @available check for macOS 12.0. Otherwise use the standard version.
+        if let image = imageDownloader.image {
+            
+        } else {
+            
+        }
+        
         #if os(macOS)
         if imageDownloader.image != nil {
             Image(nsImage: imageDownloader.image!)
@@ -37,10 +63,6 @@ struct ImageContentView: View {
             Color.gray
         }
         #endif
-        
-//        #else
-//        AsyncImage(url: imageURL)
-//        #endif
     }
 }
 
