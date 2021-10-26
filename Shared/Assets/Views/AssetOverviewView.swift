@@ -13,48 +13,41 @@ struct AssetView: View {
     
     init(asset: OpenSeaAsset) {
         self.asset = asset
-        //self.asset.retrieveURL()
+        self.asset.retrieveURL()
     }
     
     var body: some View {
-        Color.black
+        if let wrapper = asset.imageWrapper {
+            #if os(macOS)
+            Image(nsImage: wrapper.image)
+            #else
+            Image(uiImage: wrapper.image)
+            #endif
+        } else {
+            Image(systemName: "wifi.slash")
+        }
         
-//        if asset.imageWrapper != nil {
-//            Color.black
-////            #if os(macOS)
-////            //Image(nsImage: wrapper.image)
-////            Color.gray
-////            #else
-////            //Image(uiImage: wrapper.image)
-////            #endif
-//        } else {
-//            Color.gray
-//        }
     }
 }
 
 struct AssetOverviewView: View {
     
     var columns = [
-        GridItem(spacing: 0),
-        GridItem(spacing: 0),
-        GridItem(spacing: 0)
+        GridItem(.adaptive(minimum: 100), spacing: 20)
     ]
     
     let assets: [OpenSeaAsset] = [
         OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://googlerdsf.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://googlesdf.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://googsdfsdfle.com")!),
     ]
     
     var body: some View {
         ScrollView {
-            LazyVGrid(columns: columns, spacing: 20) {
+            LazyVGrid(columns: columns, spacing: 0) {
                 ForEach(assets) { asset in
-                    NavigationLink(destination: AssetView(asset: asset)) {
-                        AssetView(asset: asset)
-                    }
+                    AssetView(asset: asset)
                 }
             }
         }

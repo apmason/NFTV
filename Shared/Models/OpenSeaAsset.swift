@@ -5,6 +5,7 @@
 //  Created by Alex Mason on 10/26/21.
 //
 
+import SwiftUI
 import Foundation
 
 enum OpenSeaAssetType {
@@ -18,7 +19,7 @@ class OpenSeaAsset: Identifiable, ObservableObject {
     let imageURL: URL
     
     @Published var imageWrapper: ImageWrapper?
-
+    
     init(imageURL: URL) {
         self.imageURL = imageURL
     }
