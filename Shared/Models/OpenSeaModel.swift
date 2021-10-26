@@ -18,7 +18,7 @@ class AccountPersister {
         UserDefaults.standard.set(account.accountInfo.username, forKey: usernameKey)
     }
     
-    static func fetchAccount() -> OpenSeaAccount? {
+    static func fetchPersistedAccount() -> OpenSeaAccount? {
         // We only want to continue if we have a address
         guard let address = UserDefaults.standard.string(forKey: addressKey) else {
             return nil
@@ -47,6 +47,6 @@ class OpenSeaModel: ObservableObject {
         
         activeAccount = OpenSeaAccount(address: "0x51906b344eae66a8bc3db3efb2da3d79507aa06e",
                                        username: "zeent",
-                                       profileImageURL: URL(string: "https://storage.googleapis.com/opensea-static/opensea-account/27.png")!)
+                                       profileImageURL: URL(string: "https://storage.googleapis.com/opensea-static/opensea-profile/32.png")!)
     }
 }

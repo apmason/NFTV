@@ -51,6 +51,10 @@
 		C3AE50AC2726E2C70015DB81 /* OpenSeaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3025C2527234FE800EE1688 /* OpenSeaAPI.swift */; };
 		C3AE50DE2726E3B40015DB81 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3025C2727239B8700EE1688 /* ActivityView.swift */; };
 		C3AE51122726E4400015DB81 /* NFTVApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3025BB82723199400EE1688 /* NFTVApp.swift */; };
+		C3BEF7092728461300C65A2D /* AccountInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BEF7082728461300C65A2D /* AccountInfo.swift */; };
+		C3BEF70A2728461300C65A2D /* AccountInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BEF7082728461300C65A2D /* AccountInfo.swift */; };
+		C3BEF70B2728461300C65A2D /* AccountInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BEF7082728461300C65A2D /* AccountInfo.swift */; };
+		C3BEF70C2728461300C65A2D /* AccountInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BEF7082728461300C65A2D /* AccountInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,6 +122,7 @@
 		C381092B272704AC004EF6C1 /* AccountDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailView.swift; sourceTree = "<group>"; };
 		C381092F272704FF004EF6C1 /* AccountImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountImageView.swift; sourceTree = "<group>"; };
 		C381093327270603004EF6C1 /* AccountTextStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTextStack.swift; sourceTree = "<group>"; };
+		C3BEF7082728461300C65A2D /* AccountInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -293,6 +298,7 @@
 				C3025C2527234FE800EE1688 /* OpenSeaAPI.swift */,
 				C3025C3427239EF700EE1688 /* OpenSeaAccount.swift */,
 				C38109232726F83D004EF6C1 /* OpenSeaModel.swift */,
+				C3BEF7082728461300C65A2D /* AccountInfo.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -597,6 +603,7 @@
 			files = (
 				C3025BE32723199700EE1688 /* ContentView.swift in Sources */,
 				C38109242726F83D004EF6C1 /* OpenSeaModel.swift in Sources */,
+				C3BEF7092728461300C65A2D /* AccountInfo.swift in Sources */,
 				C3810930272704FF004EF6C1 /* AccountImageView.swift in Sources */,
 				C3025C3D2723A0E500EE1688 /* SignInView.swift in Sources */,
 				C3025C3527239EF700EE1688 /* OpenSeaAccount.swift in Sources */,
@@ -615,6 +622,7 @@
 			files = (
 				C3025C3E2723A0E500EE1688 /* SignInView.swift in Sources */,
 				C38109252726F83D004EF6C1 /* OpenSeaModel.swift in Sources */,
+				C3BEF70A2728461300C65A2D /* AccountInfo.swift in Sources */,
 				C3810931272704FF004EF6C1 /* AccountImageView.swift in Sources */,
 				C3025C3627239EF700EE1688 /* OpenSeaAccount.swift in Sources */,
 				C3025C3227239ECB00EE1688 /* AccountView.swift in Sources */,
@@ -634,6 +642,7 @@
 				C3025BD42723199700EE1688 /* Tests_iOS.swift in Sources */,
 				C381092A27270408004EF6C1 /* OpenSeaModel.swift in Sources */,
 				C3810928272703C2004EF6C1 /* OpenSeaAccount.swift in Sources */,
+				C3BEF70B2728461300C65A2D /* AccountInfo.swift in Sources */,
 				C3810929272703F8004EF6C1 /* OpenSeaAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -652,6 +661,7 @@
 			files = (
 				C3025C3727239EF700EE1688 /* OpenSeaAccount.swift in Sources */,
 				C38109262726F83D004EF6C1 /* OpenSeaModel.swift in Sources */,
+				C3BEF70C2728461300C65A2D /* AccountInfo.swift in Sources */,
 				C3810932272704FF004EF6C1 /* AccountImageView.swift in Sources */,
 				C3AE51122726E4400015DB81 /* NFTVApp.swift in Sources */,
 				C3AE50952726E26D0015DB81 /* ContentView.swift in Sources */,

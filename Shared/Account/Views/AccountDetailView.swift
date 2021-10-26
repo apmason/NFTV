@@ -20,15 +20,17 @@ private extension AccountDetailView {
 
 struct AccountDetailView: View {
     
-    let accountInfo: AccountInfo
+    @ObservedObject var accountInfo: AccountInfo
     
     @State private var customHeight: CGFloat?
     
     var body: some View {
         HStack(alignment: .top) {
-            AccountImageView(imageURL: accountInfo.profileImageURL)
-                .aspectRatio(1, contentMode: .fit)
+            AccountImageView(imageWrapper: $accountInfo.imageWrapper)
                 .frame(width: customHeight, height: customHeight, alignment: .leading)
+                .clipShape(
+                    Circle()
+                )
             
             AccountTextStack(username: accountInfo.username ?? "Unnamed",
                              address: accountInfo.displayableAddress)

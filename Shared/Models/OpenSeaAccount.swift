@@ -7,18 +7,6 @@
 
 import Foundation
 
-struct AccountInfo {
-    let address: String
-    let username: String?
-    var profileImageURL: URL?
-    
-    var displayableAddress: String {
-        let startSequence = address.prefix(6) // get first 6 characters (0x + the first four characters)
-        let endSequence = address.suffix(4) // get last 4 characters
-        return startSequence + "..." + endSequence
-    }
-}
-
 class OpenSeaAccount {
     
     var accountInfo: AccountInfo
