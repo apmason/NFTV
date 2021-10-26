@@ -9,13 +9,23 @@ import SwiftUI
 
 struct AssetView: View {
     
+    @ObservedObject var asset: OpenSeaAsset
+    
     init(asset: OpenSeaAsset) {
-        //print("get that wrap. \(asset.image == nil)")
-        print("in here though")
+        self.asset = asset
+        self.asset.retrieveURL()
     }
     
     var body: some View {
-        Color.gray
+        if let wrapper = asset.imageWrapper {
+            #if os(macOS)
+            Image(nsImage: wrapper.image)
+            #else
+            Image(uiImage: wrapper.image)
+            #endif
+        } else {
+            Color.gray
+        }
     }
 }
 
@@ -26,6 +36,76 @@ struct AssetOverviewView: View {
     ]
     
     let assets: [OpenSeaAsset] = [
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
+        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
         OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
         OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
         OpenSeaAsset(imageURL: URL(string: "https://google.com")!),

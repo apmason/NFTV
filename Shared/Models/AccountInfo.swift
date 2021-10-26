@@ -14,12 +14,22 @@ import UIKit
 #endif
 
 // Utility to wrap images for cross platform use
-struct ImageWrapper {
+public class ImageWrapper {
 #if os(macOS)
     let image: NSImage
+    
+    init(image: NSImage) {
+        self.image = image
+    }
 #else
     let image: UIImage
+    
+    init(image: UIImage) {
+        self.image = image
+    }
 #endif
+    
+    
 }
 
 class AccountInfo: ObservableObject {

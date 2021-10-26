@@ -13,7 +13,7 @@ enum OpenSeaAPIError: Error {
 }
 
 class OpenSeaAPI {
-    
+    // Return an array of assets here
     static func fetchAssets(for address: String, completion: @escaping ((OpenSeaAPIError?) -> Void)) {
         let url = URL(string: "https://api.opensea.io/api/v1/assets?owner=\(address)")!
         var request = URLRequest(url: url)
@@ -86,21 +86,15 @@ class OpenSeaAsset: Identifiable, ObservableObject {
     
     let imageURL: URL
     
-    var image: ImageWrapper? {
-        get {
-            print("get image")
-            return self.image
-        } set {
-            print("set image")
-            self.image = newValue
-        }
-    }
+    @Published var imageWrapper: ImageWrapper?
 
     init(imageURL: URL) {
         self.imageURL = imageURL
     }
     
     func retrieveURL() {
-        // see if we have in our cache
+        ImageCache.publicCache.load(url: (imageURL as NSURL), item: self) { asset, wrapper in
+            self.imageWrapper = wrapper
+        }
     }
 }
