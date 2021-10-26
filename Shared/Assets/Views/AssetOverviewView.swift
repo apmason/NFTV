@@ -13,26 +13,32 @@ struct AssetView: View {
     
     init(asset: OpenSeaAsset) {
         self.asset = asset
-        self.asset.retrieveURL()
+        //self.asset.retrieveURL()
     }
     
     var body: some View {
-        if let wrapper = asset.imageWrapper {
-            #if os(macOS)
-            Image(nsImage: wrapper.image)
-            #else
-            Image(uiImage: wrapper.image)
-            #endif
-        } else {
-            Color.gray
-        }
+        Color.black
+        
+//        if asset.imageWrapper != nil {
+//            Color.black
+////            #if os(macOS)
+////            //Image(nsImage: wrapper.image)
+////            Color.gray
+////            #else
+////            //Image(uiImage: wrapper.image)
+////            #endif
+//        } else {
+//            Color.gray
+//        }
     }
 }
 
 struct AssetOverviewView: View {
     
     var columns = [
-        GridItem(GridItem.Size.fixed(300), spacing: 50)
+        GridItem(spacing: 0),
+        GridItem(spacing: 0),
+        GridItem(spacing: 0)
     ]
     
     let assets: [OpenSeaAsset] = [
@@ -40,101 +46,18 @@ struct AssetOverviewView: View {
         OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
         OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
         OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!),
-        OpenSeaAsset(imageURL: URL(string: "https://google.com")!)
     ]
     
     var body: some View {
-        NavigationView {
-            ScrollView {
-                LazyVGrid(columns: columns, spacing: 20) {
-                    ForEach(assets) { asset in
-                        NavigationLink(destination: AssetView(asset: asset)) {
-                            AssetView(asset: asset)
-                        }
+        ScrollView {
+            LazyVGrid(columns: columns, spacing: 20) {
+                ForEach(assets) { asset in
+                    NavigationLink(destination: AssetView(asset: asset)) {
+                        AssetView(asset: asset)
                     }
                 }
             }
         }
-        .navigationBarHidden(true)
     }
 }
 

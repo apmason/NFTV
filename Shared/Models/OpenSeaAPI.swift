@@ -14,7 +14,7 @@ enum OpenSeaAPIError: Error {
 
 class OpenSeaAPI {
     // Return an array of assets here
-    static func fetchAssets(for address: String, completion: @escaping ((OpenSeaAPIError?) -> Void)) {
+    static func fetchAssets(for address: String, completion: @escaping ((Result<[OpenSeaAsset], OpenSeaAPIError>) -> Void)) {
         let url = URL(string: "https://api.opensea.io/api/v1/assets?owner=\(address)")!
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
@@ -23,9 +23,9 @@ class OpenSeaAPI {
             guard error == nil, let data = data else {
                 // need to handle bad errors
                 if let error = error {
-                    completion(.defaultError(error))
+                    completion(.failure(.defaultError(error)))
                 } else {
-                    completion(.badData)
+                    completion(.failure(.badData))
                 }
                 
                 return
@@ -33,18 +33,8 @@ class OpenSeaAPI {
             
             do {
                 guard let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] else {
-                    completion(.badData)
+                    completion(.failure(.badData))
                     return
-                }
-                
-                // We've made it to this step, the user is signed in but has no assets.
-                let account = OpenSeaAccount(address: address)
-                
-                // Regardless if this account has assets, assign it as the active account at the end of this function.
-                defer {
-                    DispatchQueue.main.async {
-                        OpenSeaModel.shared.activeAccount = account
-                    }
                 }
                 
                 guard let assets = json["assets"] as? [[String: Any]] else {
@@ -52,7 +42,8 @@ class OpenSeaAPI {
                     return
                 }
                 
-                // TODO: Parse assets
+                var osAssets: [OpenSeaAsset] = []
+                
                 for asset in assets {
                     let imageURL = asset["image_url"] as! String
                     let videoURL = asset["animation_url"] as? String
@@ -62,39 +53,15 @@ class OpenSeaAPI {
                 
                     // TODO: - Clean this up
                     let asset = OpenSeaAsset(imageURL: URL(string: imageURL)!)
-                    account.assets.append(asset)
+                    osAssets.append(asset)
                 }
                 
-                completion(nil)
+                completion(.success(osAssets))
                 
             } catch {
-                completion(.defaultError(error))
+                completion(.failure(.defaultError(error)))
             }
         }
         task.resume()
-    }
-
-}
-
-enum OpenSeaAssetType {
-    case photo
-    case video
-    case animation
-}
-
-class OpenSeaAsset: Identifiable, ObservableObject {
-    
-    let imageURL: URL
-    
-    @Published var imageWrapper: ImageWrapper?
-
-    init(imageURL: URL) {
-        self.imageURL = imageURL
-    }
-    
-    func retrieveURL() {
-        ImageCache.publicCache.load(url: (imageURL as NSURL), item: self) { asset, wrapper in
-            self.imageWrapper = wrapper
-        }
     }
 }

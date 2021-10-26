@@ -4,8 +4,15 @@ See LICENSE folder for this sample’s licensing information.
 Abstract:
 The Image cache.
 */
-import UIKit
+
 import Foundation
+
+#if os(macOS)
+import AppKit
+#else
+import UIKit
+#endif
+
 public class ImageCache {
     
     public static let publicCache = ImageCache()

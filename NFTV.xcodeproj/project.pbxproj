@@ -67,6 +67,10 @@
 		C3BEF71C27288EF700C65A2D /* ImageURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BEF71627288EF700C65A2D /* ImageURLProtocol.swift */; };
 		C3BEF71D27288EF700C65A2D /* ImageURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BEF71627288EF700C65A2D /* ImageURLProtocol.swift */; };
 		C3BEF71E27288EF700C65A2D /* ImageURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BEF71627288EF700C65A2D /* ImageURLProtocol.swift */; };
+		C3BEF7202728A19800C65A2D /* OpenSeaAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BEF71F2728A19800C65A2D /* OpenSeaAsset.swift */; };
+		C3BEF7212728A19800C65A2D /* OpenSeaAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BEF71F2728A19800C65A2D /* OpenSeaAsset.swift */; };
+		C3BEF7222728A19800C65A2D /* OpenSeaAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BEF71F2728A19800C65A2D /* OpenSeaAsset.swift */; };
+		C3BEF7232728A19800C65A2D /* OpenSeaAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BEF71F2728A19800C65A2D /* OpenSeaAsset.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,6 +142,7 @@
 		C3BEF70F27286E3600C65A2D /* AssetOverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetOverviewView.swift; sourceTree = "<group>"; };
 		C3BEF71527288EF700C65A2D /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		C3BEF71627288EF700C65A2D /* ImageURLProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageURLProtocol.swift; sourceTree = "<group>"; };
+		C3BEF71F2728A19800C65A2D /* OpenSeaAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSeaAsset.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -311,6 +316,7 @@
 		C3025C2427234FD300EE1688 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C3BEF71F2728A19800C65A2D /* OpenSeaAsset.swift */,
 				C3025C2527234FE800EE1688 /* OpenSeaAPI.swift */,
 				C3025C3427239EF700EE1688 /* OpenSeaAccount.swift */,
 				C38109232726F83D004EF6C1 /* OpenSeaModel.swift */,
@@ -651,6 +657,7 @@
 				C3025C3D2723A0E500EE1688 /* SignInView.swift in Sources */,
 				C3025C3527239EF700EE1688 /* OpenSeaAccount.swift in Sources */,
 				C3025C2827239B8700EE1688 /* ActivityView.swift in Sources */,
+				C3BEF7202728A19800C65A2D /* OpenSeaAsset.swift in Sources */,
 				C3BEF71B27288EF700C65A2D /* ImageURLProtocol.swift in Sources */,
 				C381092C272704AC004EF6C1 /* AccountDetailView.swift in Sources */,
 				C3025C3127239ECB00EE1688 /* AccountView.swift in Sources */,
@@ -673,6 +680,7 @@
 				C3025C3627239EF700EE1688 /* OpenSeaAccount.swift in Sources */,
 				C3025C3227239ECB00EE1688 /* AccountView.swift in Sources */,
 				C3025BE42723199700EE1688 /* ContentView.swift in Sources */,
+				C3BEF7212728A19800C65A2D /* OpenSeaAsset.swift in Sources */,
 				C3BEF71C27288EF700C65A2D /* ImageURLProtocol.swift in Sources */,
 				C381092D272704AC004EF6C1 /* AccountDetailView.swift in Sources */,
 				C3025BE22723199700EE1688 /* NFTVApp.swift in Sources */,
@@ -691,6 +699,7 @@
 				C3BEF71D27288EF700C65A2D /* ImageURLProtocol.swift in Sources */,
 				C381092A27270408004EF6C1 /* OpenSeaModel.swift in Sources */,
 				C3BEF71227286E3600C65A2D /* AssetOverviewView.swift in Sources */,
+				C3BEF7222728A19800C65A2D /* OpenSeaAsset.swift in Sources */,
 				C3810928272703C2004EF6C1 /* OpenSeaAccount.swift in Sources */,
 				C3BEF70B2728461300C65A2D /* AccountInfo.swift in Sources */,
 				C3BEF71927288EF700C65A2D /* ImageCache.swift in Sources */,
@@ -718,6 +727,7 @@
 				C3AE51122726E4400015DB81 /* NFTVApp.swift in Sources */,
 				C3AE50952726E26D0015DB81 /* ContentView.swift in Sources */,
 				C3AE50AC2726E2C70015DB81 /* OpenSeaAPI.swift in Sources */,
+				C3BEF7232728A19800C65A2D /* OpenSeaAsset.swift in Sources */,
 				C3BEF71E27288EF700C65A2D /* ImageURLProtocol.swift in Sources */,
 				C381092E272704AC004EF6C1 /* AccountDetailView.swift in Sources */,
 				C3025C3327239ECB00EE1688 /* AccountView.swift in Sources */,

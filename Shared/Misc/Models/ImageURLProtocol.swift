@@ -4,7 +4,8 @@ See LICENSE folder for this sample’s licensing information.
 Abstract:
 The ImageURLProtocol of the sample.
 */
-import UIKit
+
+import Foundation
 
 class ImageURLProtocol: URLProtocol {
 

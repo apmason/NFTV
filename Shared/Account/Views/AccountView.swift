@@ -19,7 +19,6 @@ struct AccountView: View {
             Spacer()
             AssetOverviewView()
         }
-        .transition(.opacity)
     }
 }
 

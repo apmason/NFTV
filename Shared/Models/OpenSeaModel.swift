@@ -28,6 +28,11 @@ class AccountPersister {
         
         return OpenSeaAccount(address: address, username: username)
     }
+    
+    static func clearPersistedData() {
+        UserDefaults.standard.set(nil, forKey: addressKey)
+        UserDefaults.standard.set(nil, forKey: usernameKey)
+    }
 }
 
 class OpenSeaModel: ObservableObject {
@@ -46,9 +51,10 @@ class OpenSeaModel: ObservableObject {
         
     private init() {
         //activeAccount = AccountPersister.fetchAccount()
-        activeAccount = OpenSeaAccount(address: "0x51906b344eae66a8bc3db3efb2da3d79507aa06e",
-                                       username: "zeent",
-                                       profileImageURL: URL(string: "https://storage.googleapis.com/opensea-static/opensea-profile/32.png")!)
+        AccountPersister.clearPersistedData()
+//        activeAccount = OpenSeaAccount(address: "0x51906b344eae66a8bc3db3efb2da3d79507aa06e",
+//                                       username: "zeent",
+//                                       profileImageURL: URL(string: "https://storage.googleapis.com/opensea-static/opensea-profile/32.png")!)
         
     }
 }
