@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AccountView: View {
     
+    @ObservedObject var model = OpenSeaModel.shared
     let account: OpenSeaAccount
     
     var body: some View {
@@ -16,7 +17,9 @@ struct AccountView: View {
             AccountDetailView(accountInfo: account.accountInfo)
             Divider()
             Spacer()
+            AssetOverviewView()
         }
+        .transition(.opacity)
     }
 }
 

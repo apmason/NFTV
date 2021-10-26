@@ -12,8 +12,8 @@ struct ContentView: View {
     @ObservedObject var model: OpenSeaModel = OpenSeaModel.shared
     
     var body: some View {
-        if model.activeAccount != nil {
-            AccountView(account: model.activeAccount!)
+        if let account = model.activeAccount {
+            AccountView(account: account)
         } else {
             SignInView()
         }

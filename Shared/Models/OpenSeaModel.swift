@@ -42,11 +42,13 @@ class OpenSeaModel: ObservableObject {
         }
     }
     
+    @Published var activeAsset: OpenSeaAsset?
+        
     private init() {
         //activeAccount = AccountPersister.fetchAccount()
-        
         activeAccount = OpenSeaAccount(address: "0x51906b344eae66a8bc3db3efb2da3d79507aa06e",
                                        username: "zeent",
                                        profileImageURL: URL(string: "https://storage.googleapis.com/opensea-static/opensea-profile/32.png")!)
+        
     }
 }

@@ -82,8 +82,25 @@ enum OpenSeaAssetType {
     case animation
 }
 
-struct OpenSeaAsset {
+class OpenSeaAsset: Identifiable, ObservableObject {
     
     let imageURL: URL
+    
+    var image: ImageWrapper? {
+        get {
+            print("get image")
+            return self.image
+        } set {
+            print("set image")
+            self.image = newValue
+        }
+    }
 
+    init(imageURL: URL) {
+        self.imageURL = imageURL
+    }
+    
+    func retrieveURL() {
+        // see if we have in our cache
+    }
 }
