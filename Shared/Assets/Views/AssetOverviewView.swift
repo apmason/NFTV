@@ -20,8 +20,14 @@ struct AssetView: View {
         if let wrapper = asset.imageWrapper {
             #if os(macOS)
             Image(nsImage: wrapper.image)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+            
             #else
             Image(uiImage: wrapper.image)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+            
             #endif
         } else {
             Image(systemName: "wifi.slash")

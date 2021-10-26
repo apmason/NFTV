@@ -41,7 +41,6 @@ struct SignInView: View {
                             switch result {
                             case .success(let assets):
                                 print("in success, count: \(assets.count)")
-                                // We found an account and data
                                 let account = OpenSeaAccount(address: cryptoAddress)
                                 account.assets = assets
 
