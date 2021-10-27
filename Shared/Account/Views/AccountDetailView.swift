@@ -32,7 +32,7 @@ struct AccountDetailView: View {
                     Circle()
                 )
             
-            AccountTextStack(username: accountInfo.username ?? "Unnamed",
+            AccountTextStack(username: accountInfo.username ?? "-",
                              address: accountInfo.displayableAddress)
                 .background(
                     GeometryReader { geo in

@@ -60,7 +60,7 @@ class OpenSeaModel: ObservableObject {
         
         OpenSeaAPI.fetchAssets(for: account.accountInfo.address) { result in
             switch result {
-            case .success(let account):
+            case .success(let account):                
                 DispatchQueue.main.async {
                     self.activeAccount?.accountInfo = account.0
                     self.activeAccount?.assets = account.1

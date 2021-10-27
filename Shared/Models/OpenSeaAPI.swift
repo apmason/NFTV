@@ -44,7 +44,7 @@ class OpenSeaAPI {
                 
                 var osAssets: [OpenSeaAsset] = []
                 
-                var accountInfo: AccountInfo = AccountInfo(address: address)
+                let accountInfo: AccountInfo = AccountInfo(address: address)
                 // Have we parsed an owner?
                 var haveParsedOwner = false
                 
@@ -66,6 +66,9 @@ class OpenSeaAPI {
                         }
                         
                         // TODO: - get username
+                        if let user = owner["user"] as? [String: String], let username = user["username"] {
+                            accountInfo.username = username
+                        }
                     }
                     
                     // TODO: - Clean this up

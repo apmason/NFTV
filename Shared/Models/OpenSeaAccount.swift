@@ -16,7 +16,5 @@ class OpenSeaAccount: ObservableObject {
     init(address: String, username: String? = nil, profileImageURL: URL? = nil) {
         self.accountInfo = AccountInfo(address: address, username: username, profileImageURL: profileImageURL)
     }
-    
-    // fetch assets
-    // fetch profile
+
 }

@@ -34,8 +34,7 @@ public class ImageWrapper {
 
 class AccountInfo: ObservableObject {
     let address: String
-    let username: String?
-    
+    var username: String?
     var profileImageURL: URL?
     
     @Published var imageWrapper: ImageWrapper?
