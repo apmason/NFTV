@@ -33,25 +33,13 @@ struct SignInView: View {
                 
                 Button("Start slideshow") {
                     signingIn = true // Show activity indicator
-                    
-                    // TODO: - There should only be one place we call this
-                    OpenSeaAPI.fetchAssets(for: cryptoAddress) { result in // NOTE: in theory we could move more of this logic into a model, but we'll save that for a rainy day.
-                        DispatchQueue.main.async {
-                            signingIn = false
-                            
-                            switch result {
-                            case .success(let assets):
-                                let account = OpenSeaAccount(address: cryptoAddress)
-                                account.assets = assets.1
-
-                                OpenSeaModel.shared.activeAccount = account
-                                
-                                                        
-                            case .failure(let error):
-                                print("in fail")
-                                errorTracker = LoginError(error: error)
-                            }
+                    OpenSeaModel.shared.attemptSignIn(for: cryptoAddress) { error in
+                        signingIn = false
+                        guard let error = error else {
+                            return
                         }
+                        
+                        errorTracker = LoginError(error: error)
                     }
                 }
                 .disabled(self.cryptoAddress == "" || signingIn)

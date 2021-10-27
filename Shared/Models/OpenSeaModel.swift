@@ -39,6 +39,7 @@ class OpenSeaModel: ObservableObject {
     
     static let shared = OpenSeaModel()
     
+    // The account that has been "signed in"
     @Published var activeAccount: OpenSeaAccount? {
         didSet {
             if let account = activeAccount {
@@ -47,6 +48,7 @@ class OpenSeaModel: ObservableObject {
         }
     }
     
+    // The asset to show in a full screen view
     @Published var activeAsset: OpenSeaAsset?
         
     private init() {
@@ -60,12 +62,9 @@ class OpenSeaModel: ObservableObject {
         
         OpenSeaAPI.fetchAssets(for: account.accountInfo.address) { result in
             switch result {
-            case .success(let account):                
+            case .success(let accountData):
                 DispatchQueue.main.async {
-                    self.activeAccount?.accountInfo = account.0
-                    self.activeAccount?.assets = account.1
-                    
-                    self.activeAccount?.accountInfo.fetchProfile()
+                    self.setAccountData(for: account, data: accountData)
                 }
                 
             case .failure(let error):
@@ -74,9 +73,33 @@ class OpenSeaModel: ObservableObject {
             }
         }
         
-        //AccountPersister.clearPersistedData()
-//        activeAccount = OpenSeaAccount(address: "0x51906b344eae66a8bc3db3efb2da3d79507aa06e",
-//                                       username: "zeent",
-//                                       profileImageURL: URL(string: "https://storage.googleapis.com/opensea-static/opensea-profile/32.png")!)
+//        activeAccount = OpenSeaAccount(address "0x51906b344eae66a8bc3db3efb2da3d79507aa06e")
+    }
+    
+    func attemptSignIn(for address: String, completion: @escaping  ((Error?) -> Void)) {
+        OpenSeaAPI.fetchAssets(for: address) { result in
+            switch result {
+            case .success(let data):
+                DispatchQueue.main.async {
+                    let account = OpenSeaAccount(address: address)
+                    self.activeAccount = account
+                    
+                    self.setAccountData(for: account, data: data)
+                    
+                    completion(nil)
+                }
+                
+            case .failure(let error):
+                print("OpenSeaModel.swift: Error getting assets - \(error.localizedDescription)")
+                completion(error)
+            }
+        }
+    }
+    
+    private func setAccountData(for account: OpenSeaAccount, data: (AccountInfo, [OpenSeaAsset])) {
+        account.accountInfo = data.0
+        account.assets = data.1
+        
+        account.accountInfo.fetchProfile()
     }
 }
