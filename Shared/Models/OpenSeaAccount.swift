@@ -7,13 +7,16 @@
 
 import Foundation
 
-class OpenSeaAccount {
+class OpenSeaAccount: ObservableObject {
     
     var accountInfo: AccountInfo
-    var assets: [OpenSeaAsset] = []
+    @Published var assets: [OpenSeaAsset] = []
     
     // we would persist and save this?
     init(address: String, username: String? = nil, profileImageURL: URL? = nil) {
         self.accountInfo = AccountInfo(address: address, username: username, profileImageURL: profileImageURL)
     }
+    
+    // fetch assets
+    // fetch profile
 }

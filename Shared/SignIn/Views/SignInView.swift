@@ -37,10 +37,8 @@ struct SignInView: View {
                         DispatchQueue.main.async {
                             signingIn = false
                             
-                            print("in results")
                             switch result {
                             case .success(let assets):
-                                print("in success, count: \(assets.count)")
                                 let account = OpenSeaAccount(address: cryptoAddress)
                                 account.assets = assets
 

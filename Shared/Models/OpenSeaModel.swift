@@ -7,12 +7,12 @@
 
 import Foundation
 
-// TODO: Should we persist the address URL? I think so, but will come back to that
 class AccountPersister {
     
     static private let addressKey: String = "addressKey"
     static private let usernameKey: String = "usernameKey"
     
+    // TODO: - Maybe we just need to save the address and we'll pull the username from the API?
     static func persist(account: OpenSeaAccount) {
         UserDefaults.standard.set(account.accountInfo.address, forKey: addressKey)
         UserDefaults.standard.set(account.accountInfo.username, forKey: usernameKey)
@@ -50,11 +50,33 @@ class OpenSeaModel: ObservableObject {
     @Published var activeAsset: OpenSeaAsset?
         
     private init() {
-        //activeAccount = AccountPersister.fetchAccount()
-        AccountPersister.clearPersistedData()
+        // Check if we have an account already signed in. We'll take the user directly to the account screen, but we'll need
+        // to fetch the assets.
+        guard let account = AccountPersister.fetchPersistedAccount() else {
+            return
+        }
+        
+        self.activeAccount = account
+        
+        
+        OpenSeaAPI.fetchAssets(for: account.accountInfo.address) { result in
+            switch result {
+            case .success(let assets):
+                // Delay results
+                DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+                    print("FETCHED")
+                    self.activeAccount?.assets = assets
+                }
+                
+            case .failure(let error):
+                print("OpenSeaModel.swift: Error getting assets - \(error.localizedDescription)")
+                
+            }
+        }
+        
+        //AccountPersister.clearPersistedData()
 //        activeAccount = OpenSeaAccount(address: "0x51906b344eae66a8bc3db3efb2da3d79507aa06e",
 //                                       username: "zeent",
 //                                       profileImageURL: URL(string: "https://storage.googleapis.com/opensea-static/opensea-profile/32.png")!)
-        
     }
 }
