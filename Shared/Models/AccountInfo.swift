@@ -46,16 +46,19 @@ class AccountInfo: ObservableObject {
         return startSequence + "..." + endSequence
     }
     
-    init(address: String, username: String?, profileImageURL: URL?) {
+    init(address: String, username: String? = nil, profileImageURL: URL? = nil) {
         self.address = address
         self.username = username
         self.profileImageURL = profileImageURL
-        guard let profileURL = self.profileImageURL else {
+    }
+    
+    // Fetch the user's profile. The result will be stored internally as the `imageWrapper`, and Published for listeners.
+    func fetchProfile() {
+        guard let imageURL = self.profileImageURL else {
             return
         }
         
-        // pull image
-        fetchProfileImage(at: profileURL, completion: { imageWrapper in
+        fetchProfileImage(at: imageURL, completion: { imageWrapper in
             DispatchQueue.main.async {
                 self.imageWrapper = imageWrapper
             }

@@ -41,10 +41,8 @@ public class ImageCache {
         } else {
             loadingResponses[url] = [completion]
         }
-        print("ENTRANCE")
         // Go fetch the image.
         URLSession.shared.dataTask(with: url as URL) { (data, response, error) in
-            print("RESPONSE")
             // Check for the error, then data and try to create the image.
             guard let responseData = data else {
                 return

@@ -58,14 +58,14 @@ class OpenSeaModel: ObservableObject {
         
         self.activeAccount = account
         
-        
         OpenSeaAPI.fetchAssets(for: account.accountInfo.address) { result in
             switch result {
-            case .success(let assets):
-                // Delay results
-                DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
-                    print("FETCHED")
-                    self.activeAccount?.assets = assets
+            case .success(let account):
+                DispatchQueue.main.async {
+                    self.activeAccount?.accountInfo = account.0
+                    self.activeAccount?.assets = account.1
+                    
+                    self.activeAccount?.accountInfo.fetchProfile()
                 }
                 
             case .failure(let error):

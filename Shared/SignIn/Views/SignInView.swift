@@ -33,6 +33,8 @@ struct SignInView: View {
                 
                 Button("Start slideshow") {
                     signingIn = true // Show activity indicator
+                    
+                    // TODO: - There should only be one place we call this
                     OpenSeaAPI.fetchAssets(for: cryptoAddress) { result in // NOTE: in theory we could move more of this logic into a model, but we'll save that for a rainy day.
                         DispatchQueue.main.async {
                             signingIn = false
@@ -40,7 +42,7 @@ struct SignInView: View {
                             switch result {
                             case .success(let assets):
                                 let account = OpenSeaAccount(address: cryptoAddress)
-                                account.assets = assets
+                                account.assets = assets.1
 
                                 OpenSeaModel.shared.activeAccount = account
                                 
