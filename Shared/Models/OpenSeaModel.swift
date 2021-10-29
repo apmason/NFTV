@@ -54,6 +54,9 @@ class OpenSeaModel: ObservableObject {
     private init() {
         // Check if we have an account already signed in. We'll take the user directly to the account screen, but we'll need
         // to fetch the assets.
+//        self.activeAccount = OpenSeaAccount(address: "0x51906b344eae66a8bc3db3efb2da3d79507aa06e")
+//        return
+    
         guard let account = AccountPersister.fetchPersistedAccount() else {
             return
         }

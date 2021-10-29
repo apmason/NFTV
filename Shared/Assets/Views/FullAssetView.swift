@@ -14,6 +14,7 @@ struct FullAssetView: View {
         if let wrapper = asset.imageWrapper {
             ZStack {
                 Color.black
+                
                 #if os(macOS)
                 Image(nsImage: wrapper.image)
                     .resizable()
@@ -25,8 +26,22 @@ struct FullAssetView: View {
                     .interpolation(.high)
                     .aspectRatio(contentMode: .fit)
                 #endif
+                
+                // Push to bottom of screen
+                VStack(alignment: .leading, spacing: 10) {
+                    Spacer()
+                    
+                    // Push to left side
+                    HStack(alignment: .bottom) {
+                        VStack(alignment: .leading) {
+                            Text(asset.assetName)
+                            Text(asset.collectionName)
+                        }
+                        .padding()
+                        Spacer()
+                    }
+                }
             }
-            
         } else {
             Color.gray
         }
