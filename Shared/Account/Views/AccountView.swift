@@ -13,17 +13,15 @@ struct AccountView: View {
     @ObservedObject var account: OpenSeaAccount
     
     var body: some View {
-        ZStack {
+        if let asset = model.activeAsset {
+            FullAssetView(asset: asset)
+                .transition(.opacity)
+        } else {
             VStack(alignment: .leading, spacing: 10) {
                 AccountDetailView(accountInfo: account.accountInfo)
                 Divider()
                 Spacer()
                 AssetOverviewView(assets: account.assets)
-            }
-            
-            if let asset = model.activeAsset {
-                FullAssetView(asset: asset)
-                    .transition(.opacity)
             }
         }
     }
