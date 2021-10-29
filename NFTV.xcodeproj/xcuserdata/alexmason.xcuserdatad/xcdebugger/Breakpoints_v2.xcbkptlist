@@ -71,16 +71,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "278F06A6-6E8E-4406-96FC-3FEB5B835C46"
+            uuid = "27FCBBA8-CB27-41BD-8631-69F878A038A6"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Shared/Models/OpenSeaAPI.swift"
+            filePath = "Shared/Assets/Views/FullAssetView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
-            landmarkName = "fetchAssets(for:completion:)"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "init(asset:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

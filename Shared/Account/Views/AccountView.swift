@@ -14,8 +14,10 @@ struct AccountView: View {
     
     var body: some View {
         if let asset = model.activeAsset {
-            FullAssetView(asset: asset)
-                .transition(.opacity)
+            withAnimation {
+                FullAssetView(asset: asset)
+                    .transition(.opacity)
+            }
         } else {
             VStack(alignment: .leading, spacing: 10) {
                 AccountDetailView(accountInfo: account.accountInfo)

@@ -8,54 +8,85 @@
 import SwiftUI
 
 struct FullAssetView: View {
+    
     @ObservedObject var asset: OpenSeaAsset
     
+    @State var assetName: String = ""
+    @State var collectionName: String = ""
+    @State var imageWrapper: ImageWrapper?
+    @State var fadeOut: Bool = false
+    
+    init(asset: OpenSeaAsset) {
+        self.asset = asset
+        print("wrapper is nil: \(asset.imageWrapper == nil)")
+        self.imageWrapper = asset.imageWrapper
+    }
+    
     var body: some View {
-        if let wrapper = asset.imageWrapper {
+        if let wrapper = self.imageWrapper {
             ZStack {
                 /* Background */
                 Color.black
                     .ignoresSafeArea()
                 
-                /* Image */
-                #if os(macOS)
-                Image(nsImage: wrapper.image)
-                    .resizable()
-                    .interpolation(.high)
-                    .aspectRatio(contentMode: .fit)
-                    .ignoresSafeArea()
-                #else
-                Image(uiImage: wrapper.image)
-                    .resizable()
-                    .interpolation(.high)
-                    .aspectRatio(contentMode: .fit)
-                    .ignoresSafeArea()
-                #endif
-                
-                VStack(alignment: .leading) {
-                    /* Close button on left side */
-                    HStack(alignment: .top) {
-                        Button {
-                            // Clear out active asset
-                            OpenSeaModel.shared.activeAsset = nil
-                        } label: {
-                            Image(systemName: "xmark")
+                Group {
+                    /* Image */
+#if os(macOS)
+                    Image(nsImage: wrapper.image)
+                        .resizable()
+                        .interpolation(.high)
+                        .aspectRatio(contentMode: .fit)
+                        .ignoresSafeArea()
+                        .opacity(fadeOut ? 0 : 1)
+#else
+                    Image(uiImage: wrapper.image)
+                        .resizable()
+                        .interpolation(.high)
+                        .aspectRatio(contentMode: .fit)
+                        .ignoresSafeArea()
+                        .opacity(fadeOut ? 0 : 1)
+#endif
+                    
+                    VStack(alignment: .leading) {
+                        /* Close button on left side */
+                        HStack(alignment: .top) {
+                            Button {
+                                OpenSeaModel.shared.slideshowModel  = nil
+                                OpenSeaModel.shared.activeAsset = nil
+                            } label: {
+                                Image(systemName: "xmark")
+                            }
+                            
+                            Spacer()
                         }
+                        .focusSection()
                         
                         Spacer()
-                    }
-                    .focusSection()
-                    
-                    Spacer()
-                    
-                    /* Asset info on bottom left */
-                    HStack(alignment: .bottom) {
-                        VStack(alignment: .leading) {
-                            Text(asset.assetName)
-                            Text(asset.collectionName)
+                        
+                        /* Asset info on bottom left */
+                        HStack(alignment: .bottom) {
+                            VStack(alignment: .leading) {
+                                Text(assetName)
+                                Text(collectionName)
+                            }.opacity(fadeOut ? 0 : 1)
+                            .padding()
+                            Spacer()
                         }
-                        .padding()
-                        Spacer()
+                    }
+                }
+                .onReceive(asset.$imageWrapper) { newWrapper in
+                    withAnimation(.easeOut(duration: 1)) {
+                        self.fadeOut = true
+                        
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                            self.imageWrapper = newWrapper // set new image without animation
+                            self.assetName = asset.assetName
+                            self.collectionName = asset.collectionName
+                            
+                            withAnimation(.easeInOut(duration: 1)) {
+                                self.fadeOut = false // fade image in
+                            }
+                        }
                     }
                 }
             }

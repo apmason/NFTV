@@ -59,12 +59,9 @@ class SlideshowModel {
         
         OpenSeaModel.shared.activeAsset = assets[assetIndex]
         
-        // start timer
-        timer = Timer.scheduledTimer(timeInterval: timePerSlide,
-                                         target: self,
-                                         selector: #selector(nextSlide),
-                                         userInfo: nil,
-                                         repeats: true)
+        Timer.scheduledTimer(withTimeInterval: timePerSlide, repeats: true) { [weak self] timer in
+            self?.nextSlide()
+        }
     }
     
     @objc private func nextSlide() {
