@@ -23,8 +23,6 @@ struct AccountView: View {
             
             if let asset = model.activeAsset {
                 FullAssetView(asset: asset)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .ignoresSafeArea()
                     .transition(.opacity)
             }
         }

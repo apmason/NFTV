@@ -13,25 +13,42 @@ struct FullAssetView: View {
     var body: some View {
         if let wrapper = asset.imageWrapper {
             ZStack {
+                /* Background */
                 Color.black
+                    .ignoresSafeArea()
                 
+                /* Image */
                 #if os(macOS)
                 Image(nsImage: wrapper.image)
                     .resizable()
                     .interpolation(.high)
                     .aspectRatio(contentMode: .fit)
+                    .ignoresSafeArea()
                 #else
                 Image(uiImage: wrapper.image)
                     .resizable()
                     .interpolation(.high)
                     .aspectRatio(contentMode: .fit)
+                    .ignoresSafeArea()
                 #endif
                 
-                // Push to bottom of screen
-                VStack(alignment: .leading, spacing: 10) {
+                /* Image */
+                VStack(alignment: .leading) {
+                    // Button on left side
+                    HStack(alignment: .top) {
+                        // Close button
+                        Button {
+                            print("close")
+                        } label: {
+                            Image(systemName: "xmark")
+                        }
+                        
+                        Spacer()
+                    }
+                    
                     Spacer()
                     
-                    // Push to left side
+                    /* Push to left side*/
                     HStack(alignment: .bottom) {
                         VStack(alignment: .leading) {
                             Text(asset.assetName)
@@ -41,6 +58,7 @@ struct FullAssetView: View {
                         Spacer()
                     }
                 }
+                .focusSection()
             }
         } else {
             Color.gray
