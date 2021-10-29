@@ -24,38 +24,42 @@ struct SignInView: View {
     @State private var errorTracker: LoginError = LoginError()
     
     var body: some View {
-        ZStack {
-            VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: /*@START_MENU_TOKEN@*/nil/*@END_MENU_TOKEN@*/, content: {
-                TextField(
-                    "Enter OpenSea ETH address",
-                    text: $cryptoAddress
-                )
-                
-                Button("Start slideshow") {
-                    signingIn = true // Show activity indicator
-                    OpenSeaModel.shared.attemptSignIn(for: cryptoAddress) { error in
-                        signingIn = false
-                        guard let error = error else {
-                            return
+        HStack(alignment: .center, spacing: 20) {
+            Text("NFTV")
+                .foregroundColor(.white)
+            ZStack {
+                VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: /*@START_MENU_TOKEN@*/nil/*@END_MENU_TOKEN@*/, content: {
+                    TextField(
+                        "Enter OpenSea ETH address",
+                        text: $cryptoAddress
+                    )
+                    
+                    Button("Start slideshow") {
+                        signingIn = true // Show activity indicator
+                        OpenSeaModel.shared.attemptSignIn(for: cryptoAddress) { error in
+                            signingIn = false
+                            guard let error = error else {
+                                return
+                            }
+                            
+                            errorTracker = LoginError(error: error)
                         }
-                        
-                        errorTracker = LoginError(error: error)
                     }
-                }
-                .disabled(self.cryptoAddress == "" || signingIn)
-            })
-                .alert(isPresented: $errorTracker.shouldAlert) {
-                    // we should clear out the text field
-                var messageText: Text? = nil
-                if let error = errorTracker.error {
-                    messageText = Text("\(error.localizedDescription)")
-                }
+                    .disabled(self.cryptoAddress == "" || signingIn)
+                })
+                    .alert(isPresented: $errorTracker.shouldAlert) {
+                        // we should clear out the text field
+                    var messageText: Text? = nil
+                    if let error = errorTracker.error {
+                        messageText = Text("\(error.localizedDescription)")
+                    }
 
-                return Alert(title: Text("Error"), message: messageText, dismissButton: nil)
-            }
-            
-            if signingIn {
-                ActivityView()
+                    return Alert(title: Text("Error"), message: messageText, dismissButton: nil)
+                }
+                
+                if signingIn {
+                    ActivityView()
+                }
             }
         }
     }

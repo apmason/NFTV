@@ -9,14 +9,22 @@ import SwiftUI
 
 struct AccountView: View {
     
+    @ObservedObject var model = OpenSeaModel.shared
     @ObservedObject var account: OpenSeaAccount
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            AccountDetailView(accountInfo: account.accountInfo)
-            Divider()
-            Spacer()
-            AssetOverviewView(assets: account.assets)
+        ZStack {
+            VStack(alignment: .leading, spacing: 10) {
+                AccountDetailView(accountInfo: account.accountInfo)
+                Divider()
+                Spacer()
+                AssetOverviewView(assets: account.assets)
+            }
+            
+            if let asset = model.activeAsset {
+                FullAssetView(asset: asset)
+                    .transition(.opacity)
+            }
         }
     }
 }

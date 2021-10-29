@@ -49,30 +49,42 @@ class OpenSeaAPI {
                 var haveParsedOwner = false
                 
                 for asset in assets {
-                    let imageURL = asset["image_url"] as! String // TODO: - avoid force unwrap
-                    let videoURL = asset["animation_url"] as? String // TODO: - handle videos
-                    if videoURL != nil && videoURL != "" {
-                        print("Video url is \(videoURL!)")
+                    let imagePath = asset["image_url"] as? String
+                    var imageURL: URL?
+                    if let imagePath = imagePath {
+                        imageURL = URL(string: imagePath)
+                    }
+                    
+                    let animationPath = asset["animation_url"] as? String
+                    var animationURL: URL?
+                    if let videoPath = animationPath, videoPath != "" {
+                        animationURL = URL(string: videoPath)
                     }
                     
                     // Because we're getting assets for a specific owner, the owner key for all assets will be the same.
                     // We'll grab the first one and pass that back.
-                    
-                    // See if there is an owner object
                     if !haveParsedOwner, let owner = asset["owner"] as? [String: Any] {
                         haveParsedOwner = true
                         if let imagePath = owner["profile_img_url"] as? String, let imageURL = URL(string: imagePath)  {
                             accountInfo.profileImageURL = imageURL
                         }
                         
-                        // TODO: - get username
                         if let user = owner["user"] as? [String: String], let username = user["username"] {
                             accountInfo.username = username
                         }
                     }
                     
-                    // TODO: - Clean this up
-                    let asset = OpenSeaAsset(imageURL: URL(string: imageURL)!)
+                    let assetName = asset["name"] as? String ?? "-"
+                    
+                    var collectionName = "-"
+                    if let collection = asset["collection"] as? [String: Any], let name = collection["name"] as? String {
+                        collectionName = name
+                    }
+                    
+                    let asset = OpenSeaAsset(assetName: assetName,
+                                             collectionName: collectionName,
+                                             imageURL: imageURL,
+                                             animationURL: animationURL)
                     osAssets.append(asset)
                 }
                 

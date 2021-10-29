@@ -31,6 +31,14 @@
 		C3025C3D2723A0E500EE1688 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3025C3C2723A0E500EE1688 /* SignInView.swift */; };
 		C3025C3E2723A0E500EE1688 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3025C3C2723A0E500EE1688 /* SignInView.swift */; };
 		C3025C3F2723A0E500EE1688 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3025C3C2723A0E500EE1688 /* SignInView.swift */; };
+		C3424C53272B0F1B0098737D /* FullAssetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3424C52272B0F1B0098737D /* FullAssetView.swift */; };
+		C3424C54272B0F1B0098737D /* FullAssetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3424C52272B0F1B0098737D /* FullAssetView.swift */; };
+		C3424C55272B0F1B0098737D /* FullAssetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3424C52272B0F1B0098737D /* FullAssetView.swift */; };
+		C3424C56272B0F1B0098737D /* FullAssetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3424C52272B0F1B0098737D /* FullAssetView.swift */; };
+		C3424C58272B0FA70098737D /* example.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = C3424C57272B0FA70098737D /* example.jpeg */; };
+		C3424C59272B0FA70098737D /* example.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = C3424C57272B0FA70098737D /* example.jpeg */; };
+		C3424C5A272B0FA70098737D /* example.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = C3424C57272B0FA70098737D /* example.jpeg */; };
+		C3424C5B272B0FA70098737D /* example.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = C3424C57272B0FA70098737D /* example.jpeg */; };
 		C38109242726F83D004EF6C1 /* OpenSeaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38109232726F83D004EF6C1 /* OpenSeaModel.swift */; };
 		C38109252726F83D004EF6C1 /* OpenSeaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38109232726F83D004EF6C1 /* OpenSeaModel.swift */; };
 		C38109262726F83D004EF6C1 /* OpenSeaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38109232726F83D004EF6C1 /* OpenSeaModel.swift */; };
@@ -134,6 +142,8 @@
 		C3025C3027239ECB00EE1688 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		C3025C3427239EF700EE1688 /* OpenSeaAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSeaAccount.swift; sourceTree = "<group>"; };
 		C3025C3C2723A0E500EE1688 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		C3424C52272B0F1B0098737D /* FullAssetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullAssetView.swift; sourceTree = "<group>"; };
+		C3424C57272B0FA70098737D /* example.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = example.jpeg; sourceTree = "<group>"; };
 		C38109232726F83D004EF6C1 /* OpenSeaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSeaModel.swift; sourceTree = "<group>"; };
 		C381092B272704AC004EF6C1 /* AccountDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailView.swift; sourceTree = "<group>"; };
 		C381092F272704FF004EF6C1 /* AccountImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountImageView.swift; sourceTree = "<group>"; };
@@ -201,6 +211,7 @@
 		C3025BB22723199300EE1688 = {
 			isa = PBXGroup;
 			children = (
+				C3424C57272B0FA70098737D /* example.jpeg */,
 				C3025BB72723199400EE1688 /* Shared */,
 				C3025BC12723199700EE1688 /* iOS */,
 				C3025BC82723199700EE1688 /* macOS */,
@@ -389,6 +400,7 @@
 			isa = PBXGroup;
 			children = (
 				C3BEF70F27286E3600C65A2D /* AssetOverviewView.swift */,
+				C3424C52272B0F1B0098737D /* FullAssetView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -535,7 +547,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1250;
-				LastUpgradeCheck = 1250;
+				LastUpgradeCheck = 1310;
 				TargetAttributes = {
 					C3025BBE2723199700EE1688 = {
 						CreatedOnToolsVersion = 12.5.1;
@@ -593,6 +605,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3424C58272B0FA70098737D /* example.jpeg in Resources */,
 				C3025BE52723199700EE1688 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -601,6 +614,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3424C59272B0FA70098737D /* example.jpeg in Resources */,
 				C3025BE62723199700EE1688 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -609,6 +623,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3424C5A272B0FA70098737D /* example.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -625,6 +640,7 @@
 			files = (
 				C3025C0327231ACD00EE1688 /* Preview Assets.xcassets in Resources */,
 				C3025C0027231ACD00EE1688 /* Assets.xcassets in Resources */,
+				C3424C5B272B0FA70098737D /* example.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -665,6 +681,7 @@
 				C3025C2627234FE800EE1688 /* OpenSeaAPI.swift in Sources */,
 				C3BEF71727288EF700C65A2D /* ImageCache.swift in Sources */,
 				C381093427270603004EF6C1 /* AccountTextStack.swift in Sources */,
+				C3424C53272B0F1B0098737D /* FullAssetView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -688,6 +705,7 @@
 				C3025C2927239B8700EE1688 /* ActivityView.swift in Sources */,
 				C3BEF71827288EF700C65A2D /* ImageCache.swift in Sources */,
 				C381093527270603004EF6C1 /* AccountTextStack.swift in Sources */,
+				C3424C54272B0F1B0098737D /* FullAssetView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -704,6 +722,7 @@
 				C3BEF70B2728461300C65A2D /* AccountInfo.swift in Sources */,
 				C3BEF71927288EF700C65A2D /* ImageCache.swift in Sources */,
 				C3810929272703F8004EF6C1 /* OpenSeaAPI.swift in Sources */,
+				C3424C55272B0F1B0098737D /* FullAssetView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -735,6 +754,7 @@
 				C3025C3F2723A0E500EE1688 /* SignInView.swift in Sources */,
 				C3BEF71A27288EF700C65A2D /* ImageCache.swift in Sources */,
 				C381093627270603004EF6C1 /* AccountTextStack.swift in Sources */,
+				C3424C56272B0F1B0098737D /* FullAssetView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -942,6 +962,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 79TR88QV2P;
@@ -966,6 +987,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 79TR88QV2P;
@@ -1139,7 +1161,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NFTV.app/NFTV";
-				TVOS_DEPLOYMENT_TARGET = 14.2;
+				TVOS_DEPLOYMENT_TARGET = 15.0;
 			};
 			name = Debug;
 		};
@@ -1162,7 +1184,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NFTV.app/NFTV";
-				TVOS_DEPLOYMENT_TARGET = 14.2;
+				TVOS_DEPLOYMENT_TARGET = 15.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

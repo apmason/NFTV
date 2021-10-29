@@ -16,19 +16,26 @@ enum OpenSeaAssetType {
 
 class OpenSeaAsset: Identifiable, ObservableObject {
     
-    let imageURL: URL
+    let assetName: String
+    let collectionName: String
+    let imageURL: URL?
+    let animationURL: URL?
     
     @Published var imageWrapper: ImageWrapper?
     
-    init(imageURL: URL) {
+    init(assetName: String, collectionName: String, imageURL: URL?, animationURL: URL?) {
+        self.assetName = assetName
+        self.collectionName = collectionName
         self.imageURL = imageURL
+        self.animationURL = animationURL
     }
     
     func retrieveURL() {
-        print("url is \(imageURL.absoluteString)")
+        guard let imageURL = imageURL else {
+            return
+        }
         
         ImageCache.publicCache.load(url: (imageURL as NSURL), item: self) { asset, wrapper in
-            print("have it here")
             DispatchQueue.main.async {
                 self.imageWrapper = wrapper
             }

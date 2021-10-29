@@ -31,20 +31,12 @@ struct AssetView: View {
     
     var body: some View {
         Button.init {
-            print("hey")
+            OpenSeaModel.shared.activeAsset = asset
         } label: {
+            #if os(macOS)
+            Text("Mac")
+            #else
             if let wrapper = asset.imageWrapper {
-                //                Image(uiImage: wrapper.image)
-                //                        .resizable()
-                //                        .scaledToFit()
-                //                Color.clear
-                //                    .aspectRatio(1, contentMode: .fill)
-                //                    .background(
-                //                        Image(uiImage: wrapper.image)
-                //                                .resizable()
-                //                                .scaledToFill()
-                //                    )
-                //ZStack {
                 Image(uiImage: wrapper.image)
                     .resizable()
                     .scaledToFit()
@@ -52,46 +44,13 @@ struct AssetView: View {
                 
             } else {
                 //ZStack {
-                Image(systemName: "wifi.slash")
-                    .resizable()
-                    .scaledToFit()
+                Color.gray
+                    .scaledToFill()
                     .cornerRadius(5)
-                //}
             }
+            #endif
         }
         .buttonStyle(DefaultButtonStyle())
-        //.frame(width: 400, height: 400)
-        
-
-       // if let wrapper = asset.imageWrapper {
-//            Color.clear
-//                .background(
-//                    Image(uiImage: wrapper.image)
-//                        .resizable()
-//                        .scaledToFit()
-//                )
-//                Button {
-//                    print("button tapped")
-//
-//                } label: {
-//                    #if os(macOS)
-//                    Image(nsImage: wrapper.image)
-//                        .resizable()
-//                        .aspectRatio(contentMode: .fit)
-//                    #else
-//                    Color.clear
-//                        .background(
-//                            Image(uiImage: wrapper.image)
-//                                .resizable()
-//                                .scaledToFill()
-//                        )
-//
-//                    #endif
-//                }
-//                .buttonStyle(CardButtonStyle())
-//        } else {
-//            Color.gray
-//        }
     }
 }
 
@@ -116,7 +75,9 @@ struct AssetOverviewView: View {
             }
             .padding(20)
         }
+        #if os(tvOS)
         .focusSection()
+        #endif
     }
 }
 
