@@ -32,23 +32,23 @@ struct FullAssetView: View {
                     .ignoresSafeArea()
                 #endif
                 
-                /* Image */
                 VStack(alignment: .leading) {
-                    // Button on left side
+                    /* Close button on left side */
                     HStack(alignment: .top) {
-                        // Close button
                         Button {
-                            print("close")
+                            // Clear out active asset
+                            OpenSeaModel.shared.activeAsset = nil
                         } label: {
                             Image(systemName: "xmark")
                         }
                         
                         Spacer()
                     }
+                    .focusSection()
                     
                     Spacer()
                     
-                    /* Push to left side*/
+                    /* Asset info on bottom left */
                     HStack(alignment: .bottom) {
                         VStack(alignment: .leading) {
                             Text(asset.assetName)
