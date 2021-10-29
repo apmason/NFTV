@@ -20,9 +20,16 @@ struct AccountView: View {
             VStack(alignment: .leading, spacing: 10) {
                 AccountDetailView(accountInfo: account.accountInfo)
                 Divider()
-                Spacer()
+                Button("Start Slideshow") {
+                    print("Start")
+                    model.beginSlideshow()
+                }
+                .disabled(account.assets.count == 0)
+                .padding()
                 AssetOverviewView(assets: account.assets)
+                    .padding()
             }
+            .focusSection()
         }
     }
 }

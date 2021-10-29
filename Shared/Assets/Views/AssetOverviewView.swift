@@ -34,7 +34,7 @@ struct AssetView: View {
             OpenSeaModel.shared.activeAsset = asset
         } label: {
             #if os(macOS)
-            Text("Mac")
+            Text("Mac") // TODO: - fix for Mac
             #else
             if let wrapper = asset.imageWrapper {
                 Image(uiImage: wrapper.image)
@@ -43,7 +43,6 @@ struct AssetView: View {
                     .cornerRadius(5)
                 
             } else {
-                //ZStack {
                 Color.gray
                     .scaledToFill()
                     .cornerRadius(5)

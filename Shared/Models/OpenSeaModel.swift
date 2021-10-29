@@ -35,6 +35,51 @@ class AccountPersister {
     }
 }
 
+class SlideshowModel {
+    
+    let assets: [OpenSeaAsset]
+    
+    // What asset in the array to show
+    private var assetIndex: Int = 0
+    
+    // Grab from EnvironmentObject?
+    // Time per slide in seconds
+    let timePerSlide: TimeInterval = 5
+    
+    var timer: Timer?
+    
+    init(assets: [OpenSeaAsset]) {
+        self.assets = assets
+    }
+    
+    func begin() {
+        guard assets.count > 0 else {
+            return
+        }
+        
+        OpenSeaModel.shared.activeAsset = assets[assetIndex]
+        
+        // start timer
+        timer = Timer.scheduledTimer(timeInterval: timePerSlide,
+                                         target: self,
+                                         selector: #selector(nextSlide),
+                                         userInfo: nil,
+                                         repeats: true)
+    }
+    
+    @objc private func nextSlide() {
+        assetIndex += 1
+        
+        // don't overflow, reset
+        if assetIndex == assets.count {
+            assetIndex = 0
+        }
+        
+        // set new asset
+        OpenSeaModel.shared.activeAsset = assets[assetIndex]
+    }
+}
+
 class OpenSeaModel: ObservableObject {
     
     static let shared = OpenSeaModel()
@@ -50,6 +95,10 @@ class OpenSeaModel: ObservableObject {
     
     // The asset to show in a full screen view
     @Published var activeAsset: OpenSeaAsset?
+    
+    @Published var showSlideshow: Bool = false
+    
+    var slideshowModel: SlideshowModel?
         
     private init() {
         // Check if we have an account already signed in. We'll take the user directly to the account screen, but we'll need
@@ -97,6 +146,15 @@ class OpenSeaModel: ObservableObject {
                 completion(error)
             }
         }
+    }
+    
+    func beginSlideshow() {
+        guard let activeAccount = activeAccount else {
+            return
+        }
+        
+        slideshowModel = SlideshowModel(assets: activeAccount.assets)
+        slideshowModel?.begin()
     }
     
     private func setAccountData(for account: OpenSeaAccount, data: (AccountInfo, [OpenSeaAsset])) {

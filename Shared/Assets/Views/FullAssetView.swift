@@ -58,7 +58,6 @@ struct FullAssetView: View {
                         Spacer()
                     }
                 }
-                .focusSection()
             }
         } else {
             Color.gray
