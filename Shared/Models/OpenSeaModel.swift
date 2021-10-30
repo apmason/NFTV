@@ -95,8 +95,12 @@ class OpenSeaModel: ObservableObject {
     
     @Published var showSlideshow: Bool = false
     
-    var slideshowModel: SlideshowModel?
+    private var slideshowModel: SlideshowModel?
         
+    var slideshowActive: Bool {
+        return slideshowModel != nil
+    }
+    
     private init() {
         // Check if we have an account already signed in. We'll take the user directly to the account screen, but we'll need
         // to fetch the assets.
@@ -152,6 +156,11 @@ class OpenSeaModel: ObservableObject {
         
         slideshowModel = SlideshowModel(assets: activeAccount.assets)
         slideshowModel?.begin()
+    }
+    
+    func endSlideshow() {
+        slideshowModel  = nil
+        activeAsset = nil
     }
     
     private func setAccountData(for account: OpenSeaAccount, data: (AccountInfo, [OpenSeaAsset])) {

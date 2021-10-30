@@ -15,7 +15,7 @@ struct AccountView: View {
     var body: some View {
         if let asset = model.activeAsset {
             withAnimation {
-                FullAssetView(asset: asset)
+                FullAssetView(asset: asset, useSlideshow: model.slideshowActive)
                     .transition(.opacity)
             }
         } else {

@@ -28,8 +28,6 @@ public class ImageWrapper {
         self.image = image
     }
 #endif
-    
-    
 }
 
 class AccountInfo: ObservableObject {

@@ -15,83 +15,97 @@ struct FullAssetView: View {
     @State var collectionName: String = ""
     @State var imageWrapper: ImageWrapper?
     @State var fadeOut: Bool = false
+    private var useSlideshow: Bool = false
     
-    init(asset: OpenSeaAsset) {
+    init(asset: OpenSeaAsset, useSlideshow: Bool) {
         self.asset = asset
-        print("wrapper is nil: \(asset.imageWrapper == nil)")
+        self.useSlideshow = useSlideshow
+        
+        if self.useSlideshow {
+            // Start faded out and then fade back in.
+            self.fadeOut = true
+            withAnimation {
+                self.fadeOut = false
+            }
+        }
+        
         self.imageWrapper = asset.imageWrapper
     }
     
     var body: some View {
-        if let wrapper = self.imageWrapper {
-            ZStack {
-                /* Background */
-                Color.black
-                    .ignoresSafeArea()
-                
-                Group {
-                    /* Image */
+        ZStack {
+            /* Background (extends to sides of screen) */
+            Color.black
+                .ignoresSafeArea()
+            
+            /* Image */
 #if os(macOS)
-                    Image(nsImage: wrapper.image)
-                        .resizable()
-                        .interpolation(.high)
-                        .aspectRatio(contentMode: .fit)
-                        .ignoresSafeArea()
-                        .opacity(fadeOut ? 0 : 1)
+            Image(nsImage: wrapper.image)
+                .resizable()
+                .interpolation(.high)
+                .aspectRatio(contentMode: .fit)
+                .ignoresSafeArea() // extend to edge
+                .opacity(fadeOut ? 0 : 1)
 #else
-                    Image(uiImage: wrapper.image)
-                        .resizable()
-                        .interpolation(.high)
-                        .aspectRatio(contentMode: .fit)
-                        .ignoresSafeArea()
-                        .opacity(fadeOut ? 0 : 1)
+            Image(uiImage: imageWrapper?.image ?? UIImage())
+                .resizable()
+                .interpolation(.high)
+                .aspectRatio(contentMode: .fit)
+                .ignoresSafeArea() // extend to edge
+                .opacity(fadeOut ? 0 : 1)
 #endif
-                    
-                    VStack(alignment: .leading) {
-                        /* Close button on left side */
-                        HStack(alignment: .top) {
-                            Button {
-                                OpenSeaModel.shared.slideshowModel  = nil
-                                OpenSeaModel.shared.activeAsset = nil
-                            } label: {
-                                Image(systemName: "xmark")
-                            }
-                            
-                            Spacer()
-                        }
-                        .focusSection()
-                        
-                        Spacer()
-                        
-                        /* Asset info on bottom left */
-                        HStack(alignment: .bottom) {
-                            VStack(alignment: .leading) {
-                                Text(assetName)
-                                Text(collectionName)
-                            }.opacity(fadeOut ? 0 : 1)
-                            .padding()
-                            Spacer()
-                        }
+            
+            VStack(alignment: .leading) {
+                /* Close button on left side */
+                HStack(alignment: .top) {
+                    Button {
+                        OpenSeaModel.shared.endSlideshow()
+                    } label: {
+                        Image(systemName: "xmark")
                     }
+                    
+                    Spacer()
                 }
-                .onReceive(asset.$imageWrapper) { newWrapper in
-                    withAnimation(.easeOut(duration: 1)) {
-                        self.fadeOut = true
-                        
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                            self.imageWrapper = newWrapper // set new image without animation
-                            self.assetName = asset.assetName
-                            self.collectionName = asset.collectionName
-                            
-                            withAnimation(.easeInOut(duration: 1)) {
-                                self.fadeOut = false // fade image in
-                            }
-                        }
+                .focusSection()
+                
+                Spacer()
+                
+                /* Asset info on bottom left */
+                HStack(alignment: .bottom) {
+                    VStack(alignment: .leading) {
+                        Text(assetName)
+                        Text(collectionName)
+                    }.opacity(fadeOut ? 0 : 1)
+                        .padding()
+                    Spacer()
+                }
+            }
+        }
+        .onReceive(asset.$imageWrapper) { newWrapper in
+            guard self.useSlideshow else {
+                // This is the case for a single asset being selected
+                self.imageWrapper = newWrapper
+                self.assetName = asset.assetName
+                self.collectionName = asset.collectionName
+                return
+            }
+            
+            // Fade the current asset out
+            withAnimation(.easeOut(duration: 1)) {
+                self.fadeOut = true
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    // Update to the next asset (opacity is still 0 here)
+                    self.imageWrapper = newWrapper
+                    self.assetName = asset.assetName
+                    self.collectionName = asset.collectionName
+                    
+                    // Fade new asset in
+                    withAnimation(.easeInOut(duration: 1)) {
+                        self.fadeOut = false // fade image in
                     }
                 }
             }
-        } else {
-            Color.gray
         }
     }
 }
@@ -110,6 +124,6 @@ struct FullAssetView_Previews: PreviewProvider {
     }
     
     static var previews: some View {
-        FullAssetView(asset: asset)
+        FullAssetView(asset: asset, useSlideshow: false)
     }
 }
