@@ -117,11 +117,11 @@ struct AssetOverviewView: View {
                     AssetView(asset: asset)
                 }
             }
-            .padding(20)
+            .padding(32)
         }
-        #if os(tvOS)
+    #if os(tvOS)
         .focusSection()
-        #endif
+    #endif
     }
 }
 

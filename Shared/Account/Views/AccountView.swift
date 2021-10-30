@@ -36,7 +36,6 @@ struct AccountView: View {
                 .disabled(account.assets.count == 0)
                 .padding()
                 AssetOverviewView(assets: account.assets)
-                    .padding()
             }
             #if os(tvOS)
             .focusScope(AccountViewSpace)
