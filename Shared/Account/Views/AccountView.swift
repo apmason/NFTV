@@ -11,6 +11,7 @@ struct AccountView: View {
     
     @ObservedObject var model = OpenSeaModel.shared
     @ObservedObject var account: OpenSeaAccount
+    @Namespace var AccountViewSpace
     
     var body: some View {
         if model.showSettings {
@@ -25,19 +26,20 @@ struct AccountView: View {
         }
         else {
             VStack(alignment: .leading, spacing: 10) {
-                AccountDetailView(accountInfo: account.accountInfo)
+                AccountDetailView(accountInfo: account.accountInfo, namespace: AccountViewSpace)
+                    .focusScope(AccountViewSpace)
                 Divider()
                 Button("Start Slideshow") {
-                    print("Start")
                     model.beginSlideshow()
                 }
+                .prefersDefaultFocus(in: AccountViewSpace)
                 .disabled(account.assets.count == 0)
                 .padding()
                 AssetOverviewView(assets: account.assets)
                     .padding()
             }
             #if os(tvOS)
-            .focusSection()
+            .focusScope(AccountViewSpace)
             #endif
         }
     }

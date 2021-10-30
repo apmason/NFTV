@@ -21,7 +21,7 @@ private extension AccountDetailView {
 struct AccountDetailView: View {
     
     @ObservedObject var accountInfo: AccountInfo
-    
+    let namespace: Namespace.ID
     @State private var customHeight: CGFloat?
     
     var body: some View {
@@ -45,9 +45,11 @@ struct AccountDetailView: View {
             Button("Settings") {
                 OpenSeaModel.shared.showSettings = true
             }
+            .prefersDefaultFocus(false, in: namespace)
             .frame(height: customHeight, alignment: .trailing)
         }
         .padding()
+        .focusScope(namespace)
         .onPreferenceChange(HeightPreferenceKey.self) {
             customHeight = $0
         }
@@ -55,9 +57,12 @@ struct AccountDetailView: View {
 }
 
 struct AccountDetailView_Previews: PreviewProvider {
+    
+    @Namespace static var namespace
+    
     static var previews: some View {
         AccountDetailView(accountInfo: AccountInfo(address: "0x51906b344eae66a8bc3db3efb2da3d79507aa06e",
                                                    username: "zeent",
-                                                   profileImageURL: nil))
+                                                   profileImageURL: nil), namespace: namespace)
     }
 }
