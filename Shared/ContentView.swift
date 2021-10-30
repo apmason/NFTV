@@ -16,6 +16,7 @@ struct ContentView: View {
             AccountView(account: account)
         } else {
             SignInView()
+                .preferredColorScheme(.light)
         }
     }
 }
