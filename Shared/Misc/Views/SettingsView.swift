@@ -11,7 +11,7 @@ struct SettingsView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 50) {
             Button {
-                OpenSeaModel.shared.endSlideshow()
+                OpenSeaModel.shared.exitSettings()
             } label: {
                 Image(systemName: "xmark")
             }

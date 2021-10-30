@@ -8,7 +8,7 @@
 import SwiftUI
 
 private extension AssetView {
-    struct HeightPreferenceKey: PreferenceKey {
+    struct WidthPreferenceKey: PreferenceKey {
         static let defaultValue: CGFloat = 0
 
         static func reduce(value: inout CGFloat,
@@ -18,11 +18,57 @@ private extension AssetView {
     }
 }
 
+struct CustomCardStyle: ButtonStyle {
+    @Environment(\.isFocused) var focused: Bool
+    
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .scaleEffect(focused ? 1.1 : 1)
+            .animation(.easeInOut, value: focused)
+    }
+}
+
+struct InnerImage: View {
+    
+    @ObservedObject var asset: OpenSeaAsset
+    @Binding var viewWidth: CGFloat?
+    
+    var body: some View {
+        ZStack {
+            Image(uiImage: asset.imageWrapper?.image ?? UIImage())
+                .resizable()
+                .scaledToFit()
+                .frame(height: viewWidth)
+                .cornerRadius(5)
+                .background(
+                    Color.white
+                )
+            
+            VStack(alignment: .leading) {
+                Spacer()
+                HStack {
+                    VStack(alignment: .leading) {
+                        Text("Top field")
+                            .foregroundColor(.white)
+                        Text("Bottom field")
+                            .foregroundColor(.white)
+                    }
+                    .padding()
+                    Spacer()
+                }
+                .background(
+                    Color.black.opacity(0.4)
+                )
+            }
+        }
+    }
+}
+
 struct AssetView: View {
     
     @ObservedObject var asset: OpenSeaAsset
     
-    @State private var customHeight: CGFloat?
+    @State private var viewWidth: CGFloat?
         
     init(asset: OpenSeaAsset) {
         self.asset = asset
@@ -36,20 +82,18 @@ struct AssetView: View {
             #if os(macOS)
             Text("Mac") // TODO: - fix for Mac
             #else
-            if let wrapper = asset.imageWrapper {
-                Image(uiImage: wrapper.image)
-                    .resizable()
-                    .scaledToFit()
-                    .cornerRadius(5)
-                
-            } else {
-                Color.gray
-                    .scaledToFill()
-                    .cornerRadius(5)
-            }
+            InnerImage(asset: asset, viewWidth: $viewWidth)
             #endif
         }
-        .buttonStyle(DefaultButtonStyle())
+        .buttonStyle(PlainButtonStyle())
+        .background(
+            GeometryReader { geo in
+                Color.clear.preference(key: WidthPreferenceKey.self,
+                                       value: geo.size.width)
+        })
+        .onPreferenceChange(WidthPreferenceKey.self) {
+            viewWidth = $0
+        }
     }
 }
 
@@ -67,9 +111,7 @@ struct AssetOverviewView: View {
         ScrollView {
             LazyVGrid(columns: columns, spacing: 50) {
                 ForEach(assets) { asset in
-                    ZStack {
-                        AssetView(asset: asset)
-                    }
+                    AssetView(asset: asset)
                 }
             }
             .padding(20)

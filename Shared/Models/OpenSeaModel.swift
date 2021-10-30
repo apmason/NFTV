@@ -102,6 +102,10 @@ class OpenSeaModel: ObservableObject {
         AccountPersister.clearPersistedData()
     }
     
+    func exitSettings() {
+        showSettings = false
+    }
+    
     private func setAccountData(for account: OpenSeaAccount, data: (AccountInfo, [OpenSeaAsset])) {
         account.accountInfo = data.0
         account.assets = data.1
