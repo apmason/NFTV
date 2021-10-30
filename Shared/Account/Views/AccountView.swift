@@ -36,7 +36,9 @@ struct AccountView: View {
                 AssetOverviewView(assets: account.assets)
                     .padding()
             }
+            #if os(tvOS)
             .focusSection()
+            #endif
         }
     }
 }

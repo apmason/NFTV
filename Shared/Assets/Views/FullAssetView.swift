@@ -40,7 +40,7 @@ struct FullAssetView: View {
             
             /* Image */
 #if os(macOS)
-            Image(nsImage: wrapper.image)
+            Image(nsImage: imageWrapper?.image ?? NSImage())
                 .resizable()
                 .interpolation(.high)
                 .aspectRatio(contentMode: .fit)
@@ -66,7 +66,9 @@ struct FullAssetView: View {
                     
                     Spacer()
                 }
+                #if os(tvOS)
                 .focusSection()
+                #endif
                 
                 Spacer()
                 
@@ -113,13 +115,10 @@ struct FullAssetView: View {
 struct FullAssetView_Previews: PreviewProvider {
     
     static var asset: OpenSeaAsset {
-        let url = Bundle.main.url(forResource: "example", withExtension: "jpeg")!
         let asset = OpenSeaAsset(assetName: "Pyramid Man",
                                  collectionName: "100 Pyramids",
-                                 imageURL: url,
-                                 animationURL: nil)
-        
-        asset.retrieveURL()
+                                 imageURL: nil,
+                                 animationURL: nil)        
         return asset
     }
     
