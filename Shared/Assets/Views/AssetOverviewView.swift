@@ -48,10 +48,12 @@ struct InnerImage: View {
                 Spacer()
                 HStack {
                     VStack(alignment: .leading) {
-                        Text("Top field")
+                        Text(asset.assetName)
                             .foregroundColor(.white)
-                        Text("Bottom field")
+                            .font(.body)
+                        Text(asset.collectionName)
                             .foregroundColor(.white)
+                            .font(.footnote)
                     }
                     .padding()
                     Spacer()
@@ -83,6 +85,7 @@ struct AssetView: View {
             Text("Mac") // TODO: - fix for Mac
             #else
             InnerImage(asset: asset, viewWidth: $viewWidth)
+                .clipped()
             #endif
         }
         .buttonStyle(PlainButtonStyle())

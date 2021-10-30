@@ -76,7 +76,9 @@ struct FullAssetView: View {
                 HStack(alignment: .bottom) {
                     VStack(alignment: .leading) {
                         Text(assetName)
+                            .font(.body)
                         Text(collectionName)
+                            .font(.footnote)
                     }.opacity(fadeOut ? 0 : 1)
                         .padding()
                     Spacer()
@@ -93,17 +95,17 @@ struct FullAssetView: View {
             }
             
             // Fade the current asset out
-            withAnimation(.easeOut(duration: 1)) {
+            withAnimation(.easeOut(duration: 0.5)) {
                 self.fadeOut = true
                 
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     // Update to the next asset (opacity is still 0 here)
                     self.imageWrapper = newWrapper
                     self.assetName = asset.assetName
                     self.collectionName = asset.collectionName
                     
                     // Fade new asset in
-                    withAnimation(.easeInOut(duration: 1)) {
+                    withAnimation(.easeIn(duration: 0.5)) {
                         self.fadeOut = false // fade image in
                     }
                 }
