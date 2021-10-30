@@ -54,6 +54,18 @@
 		C381093427270603004EF6C1 /* AccountTextStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C381093327270603004EF6C1 /* AccountTextStack.swift */; };
 		C381093527270603004EF6C1 /* AccountTextStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C381093327270603004EF6C1 /* AccountTextStack.swift */; };
 		C381093627270603004EF6C1 /* AccountTextStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C381093327270603004EF6C1 /* AccountTextStack.swift */; };
+		C3AC6B18272D7B19008A7636 /* AccountPersister.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AC6B17272D7B19008A7636 /* AccountPersister.swift */; };
+		C3AC6B19272D7B19008A7636 /* AccountPersister.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AC6B17272D7B19008A7636 /* AccountPersister.swift */; };
+		C3AC6B1A272D7B19008A7636 /* AccountPersister.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AC6B17272D7B19008A7636 /* AccountPersister.swift */; };
+		C3AC6B1B272D7B19008A7636 /* AccountPersister.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AC6B17272D7B19008A7636 /* AccountPersister.swift */; };
+		C3AC6B1D272D7B37008A7636 /* SlideshowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AC6B1C272D7B37008A7636 /* SlideshowModel.swift */; };
+		C3AC6B1E272D7B37008A7636 /* SlideshowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AC6B1C272D7B37008A7636 /* SlideshowModel.swift */; };
+		C3AC6B1F272D7B37008A7636 /* SlideshowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AC6B1C272D7B37008A7636 /* SlideshowModel.swift */; };
+		C3AC6B20272D7B37008A7636 /* SlideshowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AC6B1C272D7B37008A7636 /* SlideshowModel.swift */; };
+		C3AC6B23272D7BB5008A7636 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AC6B22272D7BB5008A7636 /* SettingsView.swift */; };
+		C3AC6B24272D7BB5008A7636 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AC6B22272D7BB5008A7636 /* SettingsView.swift */; };
+		C3AC6B25272D7BB5008A7636 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AC6B22272D7BB5008A7636 /* SettingsView.swift */; };
+		C3AC6B26272D7BB5008A7636 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AC6B22272D7BB5008A7636 /* SettingsView.swift */; };
 		C3AE50952726E26D0015DB81 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3025BB92723199400EE1688 /* ContentView.swift */; };
 		C3AE50A42726E2C50015DB81 /* OpenSeaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3025C2527234FE800EE1688 /* OpenSeaAPI.swift */; };
 		C3AE50AC2726E2C70015DB81 /* OpenSeaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3025C2527234FE800EE1688 /* OpenSeaAPI.swift */; };
@@ -148,6 +160,9 @@
 		C381092B272704AC004EF6C1 /* AccountDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailView.swift; sourceTree = "<group>"; };
 		C381092F272704FF004EF6C1 /* AccountImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountImageView.swift; sourceTree = "<group>"; };
 		C381093327270603004EF6C1 /* AccountTextStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTextStack.swift; sourceTree = "<group>"; };
+		C3AC6B17272D7B19008A7636 /* AccountPersister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountPersister.swift; sourceTree = "<group>"; };
+		C3AC6B1C272D7B37008A7636 /* SlideshowModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideshowModel.swift; sourceTree = "<group>"; };
+		C3AC6B22272D7BB5008A7636 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		C3BEF7082728461300C65A2D /* AccountInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountInfo.swift; sourceTree = "<group>"; };
 		C3BEF70F27286E3600C65A2D /* AssetOverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetOverviewView.swift; sourceTree = "<group>"; };
 		C3BEF71527288EF700C65A2D /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
@@ -327,11 +342,13 @@
 		C3025C2427234FD300EE1688 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C3BEF7082728461300C65A2D /* AccountInfo.swift */,
+				C3AC6B17272D7B19008A7636 /* AccountPersister.swift */,
 				C3BEF71F2728A19800C65A2D /* OpenSeaAsset.swift */,
 				C3025C2527234FE800EE1688 /* OpenSeaAPI.swift */,
 				C3025C3427239EF700EE1688 /* OpenSeaAccount.swift */,
 				C38109232726F83D004EF6C1 /* OpenSeaModel.swift */,
-				C3BEF7082728461300C65A2D /* AccountInfo.swift */,
+				C3AC6B1C272D7B37008A7636 /* SlideshowModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -355,6 +372,13 @@
 			path = Account;
 			sourceTree = "<group>";
 		};
+		C3AC6B21272D7BA2008A7636 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		C3AE51212726E4A30015DB81 /* SignIn */ = {
 			isa = PBXGroup;
 			children = (
@@ -374,6 +398,7 @@
 		C3AE512A2726E5120015DB81 /* Misc */ = {
 			isa = PBXGroup;
 			children = (
+				C3AC6B21272D7BA2008A7636 /* New Group */,
 				C3BEF71427288EE800C65A2D /* Models */,
 				C3AE512B2726E5190015DB81 /* Views */,
 			);
@@ -384,6 +409,7 @@
 			isa = PBXGroup;
 			children = (
 				C3025C2727239B8700EE1688 /* ActivityView.swift */,
+				C3AC6B22272D7BB5008A7636 /* SettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -670,6 +696,7 @@
 				C38109242726F83D004EF6C1 /* OpenSeaModel.swift in Sources */,
 				C3BEF7092728461300C65A2D /* AccountInfo.swift in Sources */,
 				C3810930272704FF004EF6C1 /* AccountImageView.swift in Sources */,
+				C3AC6B23272D7BB5008A7636 /* SettingsView.swift in Sources */,
 				C3025C3D2723A0E500EE1688 /* SignInView.swift in Sources */,
 				C3025C3527239EF700EE1688 /* OpenSeaAccount.swift in Sources */,
 				C3025C2827239B8700EE1688 /* ActivityView.swift in Sources */,
@@ -680,7 +707,9 @@
 				C3025BE12723199700EE1688 /* NFTVApp.swift in Sources */,
 				C3025C2627234FE800EE1688 /* OpenSeaAPI.swift in Sources */,
 				C3BEF71727288EF700C65A2D /* ImageCache.swift in Sources */,
+				C3AC6B18272D7B19008A7636 /* AccountPersister.swift in Sources */,
 				C381093427270603004EF6C1 /* AccountTextStack.swift in Sources */,
+				C3AC6B1D272D7B37008A7636 /* SlideshowModel.swift in Sources */,
 				C3424C53272B0F1B0098737D /* FullAssetView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -694,6 +723,7 @@
 				C38109252726F83D004EF6C1 /* OpenSeaModel.swift in Sources */,
 				C3BEF70A2728461300C65A2D /* AccountInfo.swift in Sources */,
 				C3810931272704FF004EF6C1 /* AccountImageView.swift in Sources */,
+				C3AC6B24272D7BB5008A7636 /* SettingsView.swift in Sources */,
 				C3025C3627239EF700EE1688 /* OpenSeaAccount.swift in Sources */,
 				C3025C3227239ECB00EE1688 /* AccountView.swift in Sources */,
 				C3025BE42723199700EE1688 /* ContentView.swift in Sources */,
@@ -704,7 +734,9 @@
 				C3AE50A42726E2C50015DB81 /* OpenSeaAPI.swift in Sources */,
 				C3025C2927239B8700EE1688 /* ActivityView.swift in Sources */,
 				C3BEF71827288EF700C65A2D /* ImageCache.swift in Sources */,
+				C3AC6B19272D7B19008A7636 /* AccountPersister.swift in Sources */,
 				C381093527270603004EF6C1 /* AccountTextStack.swift in Sources */,
+				C3AC6B1E272D7B37008A7636 /* SlideshowModel.swift in Sources */,
 				C3424C54272B0F1B0098737D /* FullAssetView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -719,10 +751,13 @@
 				C3BEF71227286E3600C65A2D /* AssetOverviewView.swift in Sources */,
 				C3BEF7222728A19800C65A2D /* OpenSeaAsset.swift in Sources */,
 				C3810928272703C2004EF6C1 /* OpenSeaAccount.swift in Sources */,
+				C3AC6B1F272D7B37008A7636 /* SlideshowModel.swift in Sources */,
 				C3BEF70B2728461300C65A2D /* AccountInfo.swift in Sources */,
+				C3AC6B1A272D7B19008A7636 /* AccountPersister.swift in Sources */,
 				C3BEF71927288EF700C65A2D /* ImageCache.swift in Sources */,
 				C3810929272703F8004EF6C1 /* OpenSeaAPI.swift in Sources */,
 				C3424C55272B0F1B0098737D /* FullAssetView.swift in Sources */,
+				C3AC6B25272D7BB5008A7636 /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -743,6 +778,7 @@
 				C38109262726F83D004EF6C1 /* OpenSeaModel.swift in Sources */,
 				C3BEF70C2728461300C65A2D /* AccountInfo.swift in Sources */,
 				C3810932272704FF004EF6C1 /* AccountImageView.swift in Sources */,
+				C3AC6B26272D7BB5008A7636 /* SettingsView.swift in Sources */,
 				C3AE51122726E4400015DB81 /* NFTVApp.swift in Sources */,
 				C3AE50952726E26D0015DB81 /* ContentView.swift in Sources */,
 				C3AE50AC2726E2C70015DB81 /* OpenSeaAPI.swift in Sources */,
@@ -753,7 +789,9 @@
 				C3AE50DE2726E3B40015DB81 /* ActivityView.swift in Sources */,
 				C3025C3F2723A0E500EE1688 /* SignInView.swift in Sources */,
 				C3BEF71A27288EF700C65A2D /* ImageCache.swift in Sources */,
+				C3AC6B1B272D7B19008A7636 /* AccountPersister.swift in Sources */,
 				C381093627270603004EF6C1 /* AccountTextStack.swift in Sources */,
+				C3AC6B20272D7B37008A7636 /* SlideshowModel.swift in Sources */,
 				C3424C56272B0F1B0098737D /* FullAssetView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

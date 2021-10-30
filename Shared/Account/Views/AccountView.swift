@@ -13,12 +13,17 @@ struct AccountView: View {
     @ObservedObject var account: OpenSeaAccount
     
     var body: some View {
-        if let asset = model.activeAsset {
+        if model.showSettings {
+            SettingsView()
+                .transition(.opacity)
+        }
+        else if let asset = model.activeAsset {
             withAnimation {
                 FullAssetView(asset: asset, useSlideshow: model.slideshowActive)
                     .transition(.opacity)
             }
-        } else {
+        }
+        else {
             VStack(alignment: .leading, spacing: 10) {
                 AccountDetailView(accountInfo: account.accountInfo)
                 Divider()

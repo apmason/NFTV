@@ -7,76 +7,6 @@
 
 import Foundation
 
-class AccountPersister {
-    
-    static private let addressKey: String = "addressKey"
-    static private let usernameKey: String = "usernameKey"
-    
-    // TODO: - Maybe we just need to save the address and we'll pull the username from the API?
-    static func persist(account: OpenSeaAccount) {
-        UserDefaults.standard.set(account.accountInfo.address, forKey: addressKey)
-        UserDefaults.standard.set(account.accountInfo.username, forKey: usernameKey)
-    }
-    
-    static func fetchPersistedAccount() -> OpenSeaAccount? {
-        // We only want to continue if we have a address
-        guard let address = UserDefaults.standard.string(forKey: addressKey) else {
-            return nil
-        }
-        
-        let username = UserDefaults.standard.string(forKey: usernameKey)
-        
-        return OpenSeaAccount(address: address, username: username)
-    }
-    
-    static func clearPersistedData() {
-        UserDefaults.standard.set(nil, forKey: addressKey)
-        UserDefaults.standard.set(nil, forKey: usernameKey)
-    }
-}
-
-class SlideshowModel {
-    
-    let assets: [OpenSeaAsset]
-    
-    // What asset in the array to show
-    private var assetIndex: Int = 0
-    
-    // Grab from EnvironmentObject?
-    // Time per slide in seconds
-    let timePerSlide: TimeInterval = 5
-    
-    var timer: Timer?
-    
-    init(assets: [OpenSeaAsset]) {
-        self.assets = assets
-    }
-    
-    func begin() {
-        guard assets.count > 0 else {
-            return
-        }
-        
-        OpenSeaModel.shared.activeAsset = assets[assetIndex]
-        
-        Timer.scheduledTimer(withTimeInterval: timePerSlide, repeats: true) { [weak self] timer in
-            self?.nextSlide()
-        }
-    }
-    
-    @objc private func nextSlide() {
-        assetIndex += 1
-        
-        // don't overflow, reset
-        if assetIndex == assets.count {
-            assetIndex = 0
-        }
-        
-        // set new asset
-        OpenSeaModel.shared.activeAsset = assets[assetIndex]
-    }
-}
-
 class OpenSeaModel: ObservableObject {
     
     static let shared = OpenSeaModel()
@@ -94,6 +24,8 @@ class OpenSeaModel: ObservableObject {
     @Published var activeAsset: OpenSeaAsset?
     
     @Published var showSlideshow: Bool = false
+    
+    @Published var showSettings: Bool = false
     
     private var slideshowModel: SlideshowModel?
         

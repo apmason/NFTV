@@ -39,6 +39,13 @@ struct AccountDetailView: View {
                         Color.clear.preference(key: HeightPreferenceKey.self,
                                                value: geo.size.height)
                 })
+            
+            Spacer()
+            
+            Button("Settings") {
+                OpenSeaModel.shared.showSettings = true
+            }
+            .frame(height: customHeight, alignment: .trailing)
         }
         .padding()
         .onPreferenceChange(HeightPreferenceKey.self) {
