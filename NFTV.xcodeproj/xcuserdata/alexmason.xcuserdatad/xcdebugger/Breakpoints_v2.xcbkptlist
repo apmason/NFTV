@@ -71,16 +71,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "CCF40B02-2050-416A-99EB-7625CBA26009"
+            uuid = "14105A9B-63E6-4DEC-9595-FF2480530E8E"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Shared/Assets/Views/FullAssetView.swift"
+            filePath = "Shared/Models/SlideshowModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
-            landmarkName = "init(asset:useSlideshow:)"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "observe(player:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9BB00B18-B723-4B6A-B0D0-3092842154F7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Shared/Models/SlideshowModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "removeNotif()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

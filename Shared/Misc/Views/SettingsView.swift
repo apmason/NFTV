@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SettingsView: View {
     var body: some View {
-        VStack(alignment: .leading, spacing: 50) {
+        VStack(alignment: .leading, spacing: 20) {
             Button {
                 OpenSeaModel.shared.exitSettings()
             } label: {

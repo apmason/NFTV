@@ -17,17 +17,6 @@ private extension AssetView {
         }
     }
 }
-
-struct CustomCardStyle: ButtonStyle {
-    @Environment(\.isFocused) var focused: Bool
-    
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .scaleEffect(focused ? 1.1 : 1)
-            .animation(.easeInOut, value: focused)
-    }
-}
-
 struct InnerImage: View {
     
     @ObservedObject var asset: OpenSeaAsset
@@ -43,6 +32,12 @@ struct InnerImage: View {
                 .background(
                     Color.white
                 )
+            
+            if asset.animationURL != nil {
+                Image(systemName: "play.circle.fill")
+                    .resizable()
+                    .scaleEffect(0.5)
+            }
             
             VStack(alignment: .leading) {
                 Spacer()

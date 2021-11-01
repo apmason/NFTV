@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import AVFoundation
 
 class SlideshowModel {
     
@@ -24,19 +25,59 @@ class SlideshowModel {
         self.assets = assets
     }
     
-    func begin() {
+    func beginSlideshow() {
         guard assets.count > 0 else {
             return
         }
         
-        OpenSeaModel.shared.activeAsset = assets[assetIndex]
+        setNewAsset()
         
-        Timer.scheduledTimer(withTimeInterval: timePerSlide, repeats: true) { [weak self] timer in
+        createAndStartTimer()
+    }
+    
+    private var videoPlaying = false
+    
+    private func createAndStartTimer() {
+        timer = Timer.scheduledTimer(withTimeInterval: timePerSlide, repeats: true) { [weak self] timer in
             self?.nextSlide()
         }
     }
     
+    var observedPlayer: AVPlayer?
+    
+    // A video has been started
+    func videoStarted() {
+        self.videoPlaying = true
+        
+        // clear out the timer
+        timer?.invalidate()
+        timer = nil
+    }
+    
+    func observe(player: AVPlayer) {
+        self.observedPlayer = player
+        NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: player.currentItem, queue: .main) { [weak self] _ in
+            // can continue
+            self?.removeNotif()
+            self?.observedPlayer = nil
+            self?.videoPlaying = false
+            
+            self?.createAndStartTimer()
+            self?.nextSlide()
+        }
+    }
+    
+    private func removeNotif() {
+        guard let player = self.observedPlayer else { return }
+        NotificationCenter.default.removeObserver(self, name: .AVPlayerItemDidPlayToEndTime, object: player)
+    }
+    
     @objc private func nextSlide() {
+        // We want to go to the next slide but a video is playing. We'll wait for the callback to tell us when the video is over, then proceed
+        guard !videoPlaying else {
+            return
+        }
+                
         assetIndex += 1
         
         // don't overflow, reset
@@ -44,7 +85,10 @@ class SlideshowModel {
             assetIndex = 0
         }
         
-        // set new asset
+        setNewAsset()
+    }
+    
+    private func setNewAsset() {
         OpenSeaModel.shared.activeAsset = assets[assetIndex]
     }
 }

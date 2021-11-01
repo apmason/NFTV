@@ -28,7 +28,7 @@ class OpenSeaModel: ObservableObject {
     
     @Published var showSettings: Bool = false
     
-    private var slideshowModel: SlideshowModel?
+    var slideshowModel: SlideshowModel?
         
     var slideshowActive: Bool {
         return slideshowModel != nil
@@ -37,7 +37,7 @@ class OpenSeaModel: ObservableObject {
     private init() {
         // Check if we have an account already signed in. We'll take the user directly to the account screen, but we'll need
         // to fetch the assets.
-//        self.activeAccount = OpenSeaAccount(address: "0x51906b344eae66a8bc3db3efb2da3d79507aa06e")
+//        self.activeAccount = OpenSeaAccount(address: "0xc3a8b0ee40098e32c1d749ebcdc6c144ada911cd")
 //        return
     
         guard let account = AccountPersister.fetchPersistedAccount() else {
@@ -88,7 +88,7 @@ class OpenSeaModel: ObservableObject {
         }
         
         slideshowModel = SlideshowModel(assets: activeAccount.assets)
-        slideshowModel?.begin()
+        slideshowModel?.beginSlideshow()
     }
     
     func endSlideshow() {

@@ -5,6 +5,7 @@
 //  Created by Alex Mason on 10/28/21.
 //
 
+import AVKit
 import SwiftUI
 
 struct FullAssetView: View {
@@ -17,9 +18,24 @@ struct FullAssetView: View {
     @State var fadeOut: Bool = false
     private var useSlideshow: Bool = false
     
+    private var player: AVPlayer?
+    var playerLooper: AVPlayerLooper?
+    
     init(asset: OpenSeaAsset, useSlideshow: Bool) {
         self.asset = asset
         self.useSlideshow = useSlideshow
+        
+        if let animationURL = asset.animationURL {
+            if useSlideshow {
+                self.player = AVPlayer(url: animationURL)
+            } else {
+                let playerItem = AVPlayerItem(url: animationURL)
+                let queuePlayer = AVQueuePlayer(playerItem: playerItem)
+
+                self.player = queuePlayer
+                self.playerLooper = AVPlayerLooper(player: queuePlayer, templateItem: playerItem)
+            }
+        }
         
         if self.useSlideshow {
             // Start faded out and then fade back in.
@@ -47,12 +63,24 @@ struct FullAssetView: View {
                 .ignoresSafeArea() // extend to edge
                 .opacity(fadeOut ? 0 : 1)
 #else
-            Image(uiImage: imageWrapper?.image ?? UIImage())
-                .resizable()
-                .interpolation(.high)
-                .aspectRatio(contentMode: .fit)
-                .ignoresSafeArea() // extend to edge
-                .opacity(fadeOut ? 0 : 1)
+            if let player = player {
+                VideoPlayer(player: player)
+                    .onAppear {
+                        player.play()
+                        
+                        if useSlideshow {
+                            OpenSeaModel.shared.slideshowModel?.observe(player: player)
+                            OpenSeaModel.shared.slideshowModel?.videoStarted()
+                        }
+                    }
+            } else {
+                Image(uiImage: imageWrapper?.image ?? UIImage())
+                    .resizable()
+                    .interpolation(.high)
+                    .aspectRatio(contentMode: .fit)
+                    .ignoresSafeArea() // extend to edge
+                    .opacity(fadeOut ? 0 : 1)
+            }
 #endif
             
             VStack(alignment: .leading) {
