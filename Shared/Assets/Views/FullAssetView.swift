@@ -49,39 +49,12 @@ struct FullAssetView: View {
         
         self.imageWrapper = asset.imageWrapper
     }
-    
+        
     var body: some View {
         ZStack {
             /* Background (extends to sides of screen) */
             Color.black
                 .ignoresSafeArea()
-            
-            VStack(alignment: .leading) {
-                /* Close button on left side */
-                HStack(alignment: .top) {
-                    Button {
-                        OpenSeaModel.shared.endSlideshow()
-                    } label: {
-                        Image(systemName: "xmark")
-                    }
-
-                    Spacer()
-                }
-
-                Spacer()
-
-                /* Asset info on bottom left */
-                HStack(alignment: .bottom) {
-                    VStack(alignment: .leading) {
-                        Text(assetName)
-                            .font(.body)
-                        Text(collectionName)
-                            .font(.footnote)
-                    }.opacity(fadeOut ? 0 : 1)
-                        .padding()
-                    Spacer()
-                }
-            }
             
             /* Image */
             if let player = player {
@@ -110,6 +83,34 @@ struct FullAssetView: View {
                     .opacity(fadeOut ? 0 : 1)
 #endif
             }
+            
+            VStack(alignment: .leading) {
+                /* Close button on left side */
+                HStack(alignment: .top) {
+                    Button {
+                        OpenSeaModel.shared.endSlideshow()
+                    } label: {
+                        Image(systemName: "xmark")
+                    }
+
+                    Spacer()
+                }
+
+                Spacer()
+
+                /* Asset info on bottom left */
+                HStack(alignment: .bottom) {
+                    VStack(alignment: .leading) {
+                        Text(assetName)
+                            .font(.body)
+                        Text(collectionName)
+                            .font(.footnote)
+                    }.opacity(fadeOut ? 0 : 1)
+                        .padding()
+                    Spacer()
+                }
+            }
+            .focusSection()
         }
         .onReceive(asset.$imageWrapper) { newWrapper in
             guard self.useSlideshow else {
