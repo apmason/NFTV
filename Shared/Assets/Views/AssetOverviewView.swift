@@ -24,6 +24,16 @@ struct InnerImage: View {
     
     var body: some View {
         ZStack {
+            #if os(macOS)
+            Image(nsImage: asset.imageWrapper?.image ?? NSImage())
+                .resizable()
+                .scaledToFit()
+                .frame(height: viewWidth)
+                .cornerRadius(5)
+                .background(
+                    Color.white
+                )
+            #else
             Image(uiImage: asset.imageWrapper?.image ?? UIImage())
                 .resizable()
                 .scaledToFit()
@@ -32,6 +42,7 @@ struct InnerImage: View {
                 .background(
                     Color.white
                 )
+            #endif
             
             if asset.animationURL != nil {
                 Image(systemName: "play.circle.fill")
@@ -77,7 +88,8 @@ struct AssetView: View {
             OpenSeaModel.shared.activeAsset = asset
         } label: {
             #if os(macOS)
-            Text("Mac") // TODO: - fix for Mac
+            InnerImage(asset: asset, viewWidth: $viewWidth)
+                .clipped()
             #else
             InnerImage(asset: asset, viewWidth: $viewWidth)
                 .clipped()

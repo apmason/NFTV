@@ -45,11 +45,15 @@ struct AccountDetailView: View {
             Button("Settings") {
                 OpenSeaModel.shared.showSettings = true
             }
+            #if os(tvOS)
             .prefersDefaultFocus(false, in: namespace)
+            #endif
             .frame(height: customHeight, alignment: .trailing)
         }
         .padding()
+        #if os(tvOS)
         .focusScope(namespace)
+        #endif
         .onPreferenceChange(HeightPreferenceKey.self) {
             customHeight = $0
         }

@@ -21,6 +21,8 @@ struct FullAssetView: View {
     private var player: AVPlayer?
     var playerLooper: AVPlayerLooper?
     
+    @Namespace var fullViewSpace
+    
     init(asset: OpenSeaAsset, useSlideshow: Bool) {
         self.asset = asset
         self.useSlideshow = useSlideshow
@@ -29,11 +31,11 @@ struct FullAssetView: View {
             if useSlideshow {
                 self.player = AVPlayer(url: animationURL)
             } else {
-                let playerItem = AVPlayerItem(url: animationURL)
-                let queuePlayer = AVQueuePlayer(playerItem: playerItem)
-
-                self.player = queuePlayer
-                self.playerLooper = AVPlayerLooper(player: queuePlayer, templateItem: playerItem)
+                self.player = AVPlayer(url: animationURL)
+//                let playerItem = AVPlayerItem(url: animationURL)
+//                let queuePlayer = AVQueuePlayer(playerItem: playerItem)
+//                self.player = queuePlayer
+//                self.playerLooper = AVPlayerLooper(player: queuePlayer, templateItem: playerItem)
             }
         }
         
@@ -54,35 +56,6 @@ struct FullAssetView: View {
             Color.black
                 .ignoresSafeArea()
             
-            /* Image */
-#if os(macOS)
-            Image(nsImage: imageWrapper?.image ?? NSImage())
-                .resizable()
-                .interpolation(.high)
-                .aspectRatio(contentMode: .fit)
-                .ignoresSafeArea() // extend to edge
-                .opacity(fadeOut ? 0 : 1)
-#else
-            if let player = player {
-                VideoPlayer(player: player)
-                    .onAppear {
-                        player.play()
-                        
-                        if useSlideshow {
-                            OpenSeaModel.shared.slideshowModel?.observe(player: player)
-                            OpenSeaModel.shared.slideshowModel?.videoStarted()
-                        }
-                    }
-            } else {
-                Image(uiImage: imageWrapper?.image ?? UIImage())
-                    .resizable()
-                    .interpolation(.high)
-                    .aspectRatio(contentMode: .fit)
-                    .ignoresSafeArea() // extend to edge
-                    .opacity(fadeOut ? 0 : 1)
-            }
-#endif
-            
             VStack(alignment: .leading) {
                 /* Close button on left side */
                 HStack(alignment: .top) {
@@ -91,15 +64,12 @@ struct FullAssetView: View {
                     } label: {
                         Image(systemName: "xmark")
                     }
-                    
+
                     Spacer()
                 }
-                #if os(tvOS)
-                .focusSection()
-                #endif
-                
+
                 Spacer()
-                
+
                 /* Asset info on bottom left */
                 HStack(alignment: .bottom) {
                     VStack(alignment: .leading) {
@@ -111,6 +81,34 @@ struct FullAssetView: View {
                         .padding()
                     Spacer()
                 }
+            }
+            
+            /* Image */
+            if let player = player {
+                VideoPlayer(player: player)
+                .onAppear {
+                    player.play()
+                    if useSlideshow {
+                        OpenSeaModel.shared.slideshowModel?.observe(player: player)
+                        OpenSeaModel.shared.slideshowModel?.videoStarted()
+                    }
+                }
+            } else {
+#if os(macOS)
+                Image(nsImage: imageWrapper?.image ?? NSImage())
+                    .resizable()
+                    .interpolation(.high)
+                    .aspectRatio(contentMode: .fit)
+                    .ignoresSafeArea() // extend to edge
+                    .opacity(fadeOut ? 0 : 1)
+#else
+                Image(uiImage: imageWrapper?.image ?? UIImage())
+                    .resizable()
+                    .interpolation(.high)
+                    .aspectRatio(contentMode: .fit)
+                    .ignoresSafeArea() // extend to edge
+                    .opacity(fadeOut ? 0 : 1)
+#endif
             }
         }
         .onReceive(asset.$imageWrapper) { newWrapper in

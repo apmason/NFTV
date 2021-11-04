@@ -27,16 +27,22 @@ struct AccountView: View {
         else {
             VStack(alignment: .leading, spacing: 10) {
                 AccountDetailView(accountInfo: account.accountInfo, namespace: AccountViewSpace)
+                #if os(tvOS)
                     .focusScope(AccountViewSpace)
+                #endif
                 Divider()
                 Button("Start Slideshow") {
                     model.beginSlideshow()
                 }
+                #if os(tvOS)
                 .prefersDefaultFocus(in: AccountViewSpace)
+                #endif
                 .disabled(account.assets.count == 0)
                 .padding()
                 AssetOverviewView(assets: account.assets)
+                #if os(tvOS)
                     .focusSection()
+                #endif
             }
             #if os(tvOS)
             .focusScope(AccountViewSpace)
