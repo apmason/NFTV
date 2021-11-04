@@ -39,6 +39,9 @@
 		C3424C59272B0FA70098737D /* example.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = C3424C57272B0FA70098737D /* example.jpeg */; };
 		C3424C5A272B0FA70098737D /* example.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = C3424C57272B0FA70098737D /* example.jpeg */; };
 		C3424C5B272B0FA70098737D /* example.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = C3424C57272B0FA70098737D /* example.jpeg */; };
+		C36A079127341CE700D37DE2 /* VideoPlayerLayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36A079027341CE700D37DE2 /* VideoPlayerLayerView.swift */; };
+		C36A079227341CE700D37DE2 /* VideoPlayerLayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36A079027341CE700D37DE2 /* VideoPlayerLayerView.swift */; };
+		C36A079327341CE700D37DE2 /* VideoPlayerLayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36A079027341CE700D37DE2 /* VideoPlayerLayerView.swift */; };
 		C38109242726F83D004EF6C1 /* OpenSeaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38109232726F83D004EF6C1 /* OpenSeaModel.swift */; };
 		C38109252726F83D004EF6C1 /* OpenSeaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38109232726F83D004EF6C1 /* OpenSeaModel.swift */; };
 		C38109262726F83D004EF6C1 /* OpenSeaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38109232726F83D004EF6C1 /* OpenSeaModel.swift */; };
@@ -156,6 +159,7 @@
 		C3025C3C2723A0E500EE1688 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		C3424C52272B0F1B0098737D /* FullAssetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullAssetView.swift; sourceTree = "<group>"; };
 		C3424C57272B0FA70098737D /* example.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = example.jpeg; sourceTree = "<group>"; };
+		C36A079027341CE700D37DE2 /* VideoPlayerLayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayerLayerView.swift; sourceTree = "<group>"; };
 		C38109232726F83D004EF6C1 /* OpenSeaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSeaModel.swift; sourceTree = "<group>"; };
 		C381092B272704AC004EF6C1 /* AccountDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailView.swift; sourceTree = "<group>"; };
 		C381092F272704FF004EF6C1 /* AccountImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountImageView.swift; sourceTree = "<group>"; };
@@ -356,6 +360,7 @@
 		C3025C2B27239E8000EE1688 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C36A079027341CE700D37DE2 /* VideoPlayerLayerView.swift */,
 				C3025C3027239ECB00EE1688 /* AccountView.swift */,
 				C381092B272704AC004EF6C1 /* AccountDetailView.swift */,
 				C381092F272704FF004EF6C1 /* AccountImageView.swift */,
@@ -692,6 +697,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3025BE32723199700EE1688 /* ContentView.swift in Sources */,
+				C36A079127341CE700D37DE2 /* VideoPlayerLayerView.swift in Sources */,
 				C3BEF71027286E3600C65A2D /* AssetOverviewView.swift in Sources */,
 				C38109242726F83D004EF6C1 /* OpenSeaModel.swift in Sources */,
 				C3BEF7092728461300C65A2D /* AccountInfo.swift in Sources */,
@@ -719,6 +725,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3025C3E2723A0E500EE1688 /* SignInView.swift in Sources */,
+				C36A079227341CE700D37DE2 /* VideoPlayerLayerView.swift in Sources */,
 				C3BEF71127286E3600C65A2D /* AssetOverviewView.swift in Sources */,
 				C38109252726F83D004EF6C1 /* OpenSeaModel.swift in Sources */,
 				C3BEF70A2728461300C65A2D /* AccountInfo.swift in Sources */,
@@ -774,6 +781,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3025C3727239EF700EE1688 /* OpenSeaAccount.swift in Sources */,
+				C36A079327341CE700D37DE2 /* VideoPlayerLayerView.swift in Sources */,
 				C3BEF71327286E3600C65A2D /* AssetOverviewView.swift in Sources */,
 				C38109262726F83D004EF6C1 /* OpenSeaModel.swift in Sources */,
 				C3BEF70C2728461300C65A2D /* AccountInfo.swift in Sources */,

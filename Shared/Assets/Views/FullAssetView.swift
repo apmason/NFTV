@@ -31,11 +31,11 @@ struct FullAssetView: View {
             if useSlideshow {
                 self.player = AVPlayer(url: animationURL)
             } else {
-                self.player = AVPlayer(url: animationURL)
-//                let playerItem = AVPlayerItem(url: animationURL)
-//                let queuePlayer = AVQueuePlayer(playerItem: playerItem)
-//                self.player = queuePlayer
-//                self.playerLooper = AVPlayerLooper(player: queuePlayer, templateItem: playerItem)
+                // Loop the video
+                let playerItem = AVPlayerItem(url: animationURL)
+                let queuePlayer = AVQueuePlayer(playerItem: playerItem)
+                self.player = queuePlayer
+                self.playerLooper = AVPlayerLooper(player: queuePlayer, templateItem: playerItem)
             }
         }
         
@@ -58,14 +58,15 @@ struct FullAssetView: View {
             
             /* Image */
             if let player = player {
-                VideoPlayer(player: player)
-                .onAppear {
-                    player.play()
-                    if useSlideshow {
-                        OpenSeaModel.shared.slideshowModel?.observe(player: player)
-                        OpenSeaModel.shared.slideshowModel?.videoStarted()
+                VideoPlayerLayerView(player: player)
+                    .onAppear {
+                        player.play()
+                        if useSlideshow {
+                            OpenSeaModel.shared.slideshowModel?.observe(player: player)
+                            OpenSeaModel.shared.slideshowModel?.videoStarted()
+                        }
                     }
-                }
+                    .ignoresSafeArea()
             } else {
 #if os(macOS)
                 Image(nsImage: imageWrapper?.image ?? NSImage())
