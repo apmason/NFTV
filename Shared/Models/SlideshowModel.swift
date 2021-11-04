@@ -17,12 +17,13 @@ class SlideshowModel {
     
     // Grab from EnvironmentObject?
     // Time per slide in seconds
-    let timePerSlide: TimeInterval = 5
+    let timePerSlide: TimeInterval
     
     var timer: Timer?
     
-    init(assets: [OpenSeaAsset]) {
+    init(assets: [OpenSeaAsset], secondsPerSlide: Int) {
         self.assets = assets
+        self.timePerSlide = TimeInterval(secondsPerSlide)
     }
     
     func beginSlideshow() {

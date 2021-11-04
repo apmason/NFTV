@@ -29,6 +29,9 @@ class OpenSeaModel: ObservableObject {
     @Published var showSettings: Bool = false
     
     var slideshowModel: SlideshowModel?
+    
+    // How long to show each slide, in seconds
+    var secondsPerSlide: Int = 5
         
     var slideshowActive: Bool {
         return slideshowModel != nil
@@ -87,7 +90,7 @@ class OpenSeaModel: ObservableObject {
             return
         }
         
-        slideshowModel = SlideshowModel(assets: activeAccount.assets)
+        slideshowModel = SlideshowModel(assets: activeAccount.assets, secondsPerSlide: secondsPerSlide)
         slideshowModel?.beginSlideshow()
     }
     
