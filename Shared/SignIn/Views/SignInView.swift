@@ -35,11 +35,11 @@ struct SignInView: View {
                     
                     VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: /*@START_MENU_TOKEN@*/nil/*@END_MENU_TOKEN@*/, content: {
                         TextField(
-                            "Enter OpenSea ETH address",
+                            "Enter OpenSea ETH address (e.g., 0x6b4b60cd239b5b7947c98bb2b9bbd01db5bdf44c)",
                             text: $cryptoAddress
                         )
                         
-                        Button("Start slideshow") {
+                        Button("View NFTs") {
                             signingIn = true // Show activity indicator
                             OpenSeaModel.shared.attemptSignIn(for: cryptoAddress) { error in
                                 signingIn = false

@@ -31,7 +31,11 @@ class OpenSeaModel: ObservableObject {
     var slideshowModel: SlideshowModel?
     
     // How long to show each slide, in seconds
-    var secondsPerSlide: Int = 5
+    var secondsPerSlide: Int = AccountPersister.fetchPersistedSecondsPerSlide() ?? 5 {
+        didSet {
+            AccountPersister.persist(secondsPerSlide: secondsPerSlide)
+        }
+    }
         
     var slideshowActive: Bool {
         return slideshowModel != nil
@@ -61,8 +65,6 @@ class OpenSeaModel: ObservableObject {
                 
             }
         }
-        
-//        activeAccount = OpenSeaAccount(address "0x51906b344eae66a8bc3db3efb2da3d79507aa06e")
     }
     
     func attemptSignIn(for address: String, completion: @escaping  ((Error?) -> Void)) {
