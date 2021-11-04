@@ -58,7 +58,7 @@ struct FullAssetView: View {
             
             /* Image */
             if let player = player {
-                VideoPlayerLayerView(player: player)
+                UIVideoPlayerLayerView(player: player)
                     .onAppear {
                         player.play()
                         if useSlideshow {

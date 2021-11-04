@@ -32,14 +32,30 @@ struct AccountView: View {
                     .focusScope(AccountViewSpace)
                 #endif
                 Divider()
-                Button("Start Slideshow") {
-                    model.beginSlideshow()
+                
+                HStack {
+                    Button("Start Slideshow") {
+                        guard account.assets.count > 0 else {
+                            return
+                        }
+
+                        model.beginSlideshow()
+                    }
+                    #if os(tvOS)
+                    .prefersDefaultFocus(in: AccountViewSpace)
+                    #endif
+                    
+                    Spacer()
+                    
+                    Button("Settings") {
+                        model.showSettings = true
+                    }
+                    #if os(tvOS)
+                    .prefersDefaultFocus(false, in: AccountViewSpace)
+                    #endif
                 }
-                #if os(tvOS)
-                .prefersDefaultFocus(in: AccountViewSpace)
-                #endif
-                .disabled(account.assets.count == 0)
                 .padding()
+                
                 AssetOverviewView(assets: account.assets)
                 #if os(tvOS)
                     .focusSection()

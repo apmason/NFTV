@@ -31,7 +31,7 @@ class UIPlayerLayerView: UIView {
 }
 
 // A view that plays a video using an AVPlayerLayer
-struct VideoPlayerLayerView: UIViewRepresentable {
+struct UIVideoPlayerLayerView: UIViewRepresentable {
 
     let player: AVPlayer
     
