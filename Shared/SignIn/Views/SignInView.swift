@@ -28,7 +28,7 @@ struct SignInView: View {
             HStack(alignment: .center) {
                 GeometryReader { geo in
                     Text("NFTV")
-                        .font(.largeTitle)
+                        .font(.system(size: 220))
                         .fontWeight(.black)
                         .position(x: geo.size.width / 4, y: geo.size.height / 2)
                         .frame(width: geo.size.width / 2, height: geo.size.height)

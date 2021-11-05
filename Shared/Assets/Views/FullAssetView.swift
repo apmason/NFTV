@@ -104,14 +104,17 @@ struct FullAssetView: View {
                     VStack(alignment: .leading) {
                         Text(assetName)
                             .font(.body)
+                            .foregroundColor(.white)
                         Text(collectionName)
                             .font(.footnote)
+                            .foregroundColor(.white)
                     }.opacity(fadeOut ? 0 : 1)
                         .padding()
                     Spacer()
                 }
             }
             .focusSection()
+            .zIndex(1)
         }
         .onReceive(asset.$imageWrapper) { newWrapper in
             guard self.useSlideshow else {
