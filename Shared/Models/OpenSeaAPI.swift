@@ -55,6 +55,11 @@ class OpenSeaAPI {
                         imageURL = URL(string: imagePath)
                     }
                     
+                    // Only show assets with images
+                    guard imageURL != nil else {
+                        continue
+                    }
+                    
                     let animationPath = asset["animation_url"] as? String
                     var animationURL: URL?
                     if let videoPath = animationPath, videoPath != "" {

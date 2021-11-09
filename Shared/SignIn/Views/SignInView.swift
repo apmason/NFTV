@@ -35,7 +35,7 @@ struct SignInView: View {
                     
                     VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: /*@START_MENU_TOKEN@*/nil/*@END_MENU_TOKEN@*/, content: {
                         TextField(
-                            "Enter OpenSea address (e.g., 0x6bff....44cd)",
+                            "Enter OpenSea address (e.g., 0x6bff...44cd)",
                             text: $cryptoAddress
                         )
                         
