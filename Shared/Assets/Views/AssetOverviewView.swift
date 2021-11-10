@@ -84,25 +84,37 @@ struct AssetView: View {
     }
     
     var body: some View {
-        Button.init {
-            OpenSeaModel.shared.activeAsset = asset
-        } label: {
-            #if os(macOS)
-            InnerImage(asset: asset, viewWidth: $viewWidth)
-                .clipped()
-            #else
-            InnerImage(asset: asset, viewWidth: $viewWidth)
-                .clipped()
-            #endif
-        }
-        .buttonStyle(PlainButtonStyle())
-        .background(
-            GeometryReader { geo in
-                Color.clear.preference(key: WidthPreferenceKey.self,
-                                       value: geo.size.width)
-        })
-        .onPreferenceChange(WidthPreferenceKey.self) {
-            viewWidth = $0
+        ZStack {
+            Image(uiImage: asset.imageWrapper?.image ?? UIImage())
+                .resizable()
+                .scaledToFit()
+                .background(Color.white)
+            
+            if asset.animationURL != nil {
+                Image(systemName: "play.circle.fill")
+                    .resizable()
+                    .scaleEffect(0.5)
+            }
+            
+            /* Description section */
+            VStack(alignment: .leading) {
+                Spacer()
+                HStack {
+                    VStack(alignment: .leading) {
+                        Text(asset.assetName)
+                            .foregroundColor(.white)
+                            .font(.body)
+                        Text(asset.collectionName)
+                            .foregroundColor(.white)
+                            .font(.footnote)
+                    }
+                    .padding()
+                    Spacer()
+                }
+                .background(
+                    Color.black.opacity(0.4)
+                )
+            }
         }
     }
 }
@@ -110,9 +122,9 @@ struct AssetView: View {
 struct AssetOverviewView: View {
     
     var columns = [
-        GridItem(spacing: 50),
-        GridItem(spacing: 50),
-        GridItem(spacing: 50)
+        GridItem(spacing: 100),
+        GridItem(spacing: 100),
+        GridItem(spacing: 100)
     ]
     
     let assets: [OpenSeaAsset]
@@ -121,14 +133,24 @@ struct AssetOverviewView: View {
         ScrollView {
             LazyVGrid(columns: columns, spacing: 50) {
                 ForEach(assets) { asset in
-                    AssetView(asset: asset)
+                    NavigationLink {
+                        FullAssetView(asset: asset, useSlideshow: false)
+                    } label: {
+                        AssetView(asset: asset)
+                            .background(Color.white)
+                    }
+                    .aspectRatio(1, contentMode: .fit)
+                    .buttonStyle(.plain)
                 }
             }
             .padding(32)
         }
-    #if os(tvOS)
+        .navigationBarHidden(false)
+        .navigationViewStyle(.automatic)
+        .navigationBarBackButtonHidden(false)
+#if os(tvOS)
         .focusSection()
-    #endif
+#endif
     }
 }
 

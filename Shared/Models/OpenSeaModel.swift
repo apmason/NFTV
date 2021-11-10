@@ -21,24 +21,24 @@ class OpenSeaModel: ObservableObject {
         }
     }
     
-    // The asset to show in a full screen view
-    @Published var activeAsset: OpenSeaAsset?
-    
     @Published var showSlideshow: Bool = false
     
     @Published var showSettings: Bool = false
-    
-    var slideshowModel: SlideshowModel?
-    
+        
     // How long to show each slide, in seconds
     var secondsPerSlide: Int = AccountPersister.fetchPersistedSecondsPerSlide() ?? 5 {
         didSet {
             AccountPersister.persist(secondsPerSlide: secondsPerSlide)
         }
     }
-        
-    var slideshowActive: Bool {
-        return slideshowModel != nil
+    
+    var assets: [OpenSeaAsset] {
+        print("fetch assets")
+        guard let activeAccount = activeAccount else {
+            return []
+        }
+
+        return activeAccount.assets
     }
     
     private init() {
@@ -85,20 +85,6 @@ class OpenSeaModel: ObservableObject {
                 completion(error)
             }
         }
-    }
-    
-    func beginSlideshow() {
-        guard let activeAccount = activeAccount else {
-            return
-        }
-        
-        slideshowModel = SlideshowModel(assets: activeAccount.assets, secondsPerSlide: secondsPerSlide)
-        slideshowModel?.beginSlideshow()
-    }
-    
-    func endSlideshow() {
-        slideshowModel  = nil
-        activeAsset = nil
     }
     
     func signOutAccount() {

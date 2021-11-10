@@ -18,13 +18,6 @@ struct AccountView: View {
             SettingsView()
                 .transition(.opacity)
         }
-        else if let asset = model.activeAsset {
-            withAnimation {
-                FullAssetView(asset: asset, useSlideshow: model.slideshowActive)
-                    .focusSection()
-                    .transition(.opacity)
-            }
-        }
         else {
             VStack(alignment: .leading, spacing: 10) {
                 AccountDetailView(accountInfo: account.accountInfo, namespace: AccountViewSpace)
@@ -34,13 +27,12 @@ struct AccountView: View {
                 Divider()
                 
                 HStack {
-                    Button("Start Slideshow") {
-                        guard account.assets.count > 0 else {
-                            return
-                        }
-
-                        model.beginSlideshow()
+                    NavigationLink {
+                        SlideshowView(assets: model.assets, secondsPerSlide: model.secondsPerSlide)
+                    } label: {
+                        Text("Start Slideshow")
                     }
+
                     #if os(tvOS)
                     .prefersDefaultFocus(in: AccountViewSpace)
                     #endif
