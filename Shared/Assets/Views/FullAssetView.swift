@@ -18,26 +18,16 @@ struct FullAssetView: View {
     @State var fadeOut: Bool = false
     private var useSlideshow: Bool = false
     
-    private var player: AVPlayer?
-    var playerLooper: AVPlayerLooper?
-    
     @Namespace var fullViewSpace
     
-    init(asset: OpenSeaAsset, useSlideshow: Bool) {
+    weak var slideshowModel: SlideshowModel?
+    
+    init(asset: OpenSeaAsset, useSlideshow: Bool, slideshowModel: SlideshowModel? = nil) {
         self.asset = asset
         self.useSlideshow = useSlideshow
+        self.slideshowModel = slideshowModel
         
-        if let animationURL = asset.animationURL {
-            if useSlideshow {
-                self.player = AVPlayer(url: animationURL)
-            } else {
-                // Loop the video
-                let playerItem = AVPlayerItem(url: animationURL)
-                let queuePlayer = AVQueuePlayer(playerItem: playerItem)
-                self.player = queuePlayer
-                self.playerLooper = AVPlayerLooper(player: queuePlayer, templateItem: playerItem)
-            }
-        }
+        asset.retrieveURL()
         
         if self.useSlideshow {
             // Start faded out and then fade back in.
@@ -57,17 +47,22 @@ struct FullAssetView: View {
                 .ignoresSafeArea()
             
             /* Image */
-            if let player = player {
-                UIVideoPlayerLayerView(player: player)
+            if asset.animationURL != nil, let player = asset.attemptToCreatePlayer(forSlideshow: useSlideshow) {
+                VideoPlayer(player: player)
                     .onAppear {
+                        player.seek(to: .zero)
                         player.play()
                         if useSlideshow {
-                            OpenSeaModel.shared.slideshowModel?.observe(player: player)
-                            OpenSeaModel.shared.slideshowModel?.videoStarted()
+                            slideshowModel?.observe(player: player)
+                            slideshowModel?.videoStarted()
                         }
                     }
+                    .onDisappear(perform: {
+                        asset.clearPlayer()
+                    })
                     .ignoresSafeArea()
-            } else {
+            }
+            else {
 #if os(macOS)
                 Image(nsImage: imageWrapper?.image ?? NSImage())
                     .resizable()
@@ -86,16 +81,6 @@ struct FullAssetView: View {
             }
             
             VStack(alignment: .leading) {
-                /* Close button on left side */
-                HStack(alignment: .top) {
-                    Button {
-                        OpenSeaModel.shared.endSlideshow()
-                    } label: {
-                        Image(systemName: "xmark")
-                    }
-
-                    Spacer()
-                }
 
                 Spacer()
 

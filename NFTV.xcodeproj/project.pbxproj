@@ -31,6 +31,10 @@
 		C3025C3D2723A0E500EE1688 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3025C3C2723A0E500EE1688 /* SignInView.swift */; };
 		C3025C3E2723A0E500EE1688 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3025C3C2723A0E500EE1688 /* SignInView.swift */; };
 		C3025C3F2723A0E500EE1688 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3025C3C2723A0E500EE1688 /* SignInView.swift */; };
+		C303E8D9273B480500AA8160 /* SlideshowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C303E8D8273B480500AA8160 /* SlideshowView.swift */; };
+		C303E8DA273B480500AA8160 /* SlideshowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C303E8D8273B480500AA8160 /* SlideshowView.swift */; };
+		C303E8DB273B480500AA8160 /* SlideshowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C303E8D8273B480500AA8160 /* SlideshowView.swift */; };
+		C303E8DC273B480500AA8160 /* SlideshowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C303E8D8273B480500AA8160 /* SlideshowView.swift */; };
 		C3424C53272B0F1B0098737D /* FullAssetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3424C52272B0F1B0098737D /* FullAssetView.swift */; };
 		C3424C54272B0F1B0098737D /* FullAssetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3424C52272B0F1B0098737D /* FullAssetView.swift */; };
 		C3424C55272B0F1B0098737D /* FullAssetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3424C52272B0F1B0098737D /* FullAssetView.swift */; };
@@ -157,6 +161,7 @@
 		C3025C3027239ECB00EE1688 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		C3025C3427239EF700EE1688 /* OpenSeaAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSeaAccount.swift; sourceTree = "<group>"; };
 		C3025C3C2723A0E500EE1688 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		C303E8D8273B480500AA8160 /* SlideshowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideshowView.swift; sourceTree = "<group>"; };
 		C3424C52272B0F1B0098737D /* FullAssetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullAssetView.swift; sourceTree = "<group>"; };
 		C3424C57272B0FA70098737D /* example.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = example.jpeg; sourceTree = "<group>"; };
 		C36A079027341CE700D37DE2 /* VideoPlayerLayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayerLayerView.swift; sourceTree = "<group>"; };
@@ -432,6 +437,7 @@
 			children = (
 				C3BEF70F27286E3600C65A2D /* AssetOverviewView.swift */,
 				C3424C52272B0F1B0098737D /* FullAssetView.swift */,
+				C303E8D8273B480500AA8160 /* SlideshowView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -717,6 +723,7 @@
 				C381093427270603004EF6C1 /* AccountTextStack.swift in Sources */,
 				C3AC6B1D272D7B37008A7636 /* SlideshowModel.swift in Sources */,
 				C3424C53272B0F1B0098737D /* FullAssetView.swift in Sources */,
+				C303E8D9273B480500AA8160 /* SlideshowView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -745,6 +752,7 @@
 				C381093527270603004EF6C1 /* AccountTextStack.swift in Sources */,
 				C3AC6B1E272D7B37008A7636 /* SlideshowModel.swift in Sources */,
 				C3424C54272B0F1B0098737D /* FullAssetView.swift in Sources */,
+				C303E8DA273B480500AA8160 /* SlideshowView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -757,6 +765,7 @@
 				C381092A27270408004EF6C1 /* OpenSeaModel.swift in Sources */,
 				C3BEF71227286E3600C65A2D /* AssetOverviewView.swift in Sources */,
 				C3BEF7222728A19800C65A2D /* OpenSeaAsset.swift in Sources */,
+				C303E8DB273B480500AA8160 /* SlideshowView.swift in Sources */,
 				C3810928272703C2004EF6C1 /* OpenSeaAccount.swift in Sources */,
 				C3AC6B1F272D7B37008A7636 /* SlideshowModel.swift in Sources */,
 				C3BEF70B2728461300C65A2D /* AccountInfo.swift in Sources */,
@@ -801,6 +810,7 @@
 				C381093627270603004EF6C1 /* AccountTextStack.swift in Sources */,
 				C3AC6B20272D7B37008A7636 /* SlideshowModel.swift in Sources */,
 				C3424C56272B0F1B0098737D /* FullAssetView.swift in Sources */,
+				C303E8DC273B480500AA8160 /* SlideshowView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

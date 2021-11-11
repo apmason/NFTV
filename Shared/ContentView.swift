@@ -13,7 +13,9 @@ struct ContentView: View {
     
     var body: some View {
         if let account = model.activeAccount {
-            AccountView(account: account)
+            NavigationView {
+                AccountView(account: account)
+            }
         } else {
             SignInView()
                 .preferredColorScheme(.light)

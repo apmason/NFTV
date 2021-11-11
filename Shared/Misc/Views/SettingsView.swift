@@ -38,7 +38,7 @@ struct SettingsView: View {
                             return
                         }
                         
-                        OpenSeaModel.shared.secondsPerSlide = newSecondsPerSlide
+                        OpenSeaModel.shared.secondsPerSlide = TimeInterval(newSecondsPerSlide)
                     }
             }
             

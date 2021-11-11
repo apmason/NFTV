@@ -7,29 +7,33 @@
 
 import Foundation
 import AVFoundation
+import SwiftUI
 
-class SlideshowModel {
+class SlideshowModel: ObservableObject {
     
-    let assets: [OpenSeaAsset]
+    var assets: [OpenSeaAsset] = []
+    
+    @Published var activeAsset: OpenSeaAsset = OpenSeaAsset(assetName: "", collectionName: "", imageURL: nil, animationURL: nil)
     
     // What asset in the array to show
     private var assetIndex: Int = 0
     
-    // Grab from EnvironmentObject?
-    // Time per slide in seconds
-    let timePerSlide: TimeInterval
+    var secondsPerSlide: TimeInterval
     
     var timer: Timer?
     
-    init(assets: [OpenSeaAsset], secondsPerSlide: Int) {
-        self.assets = assets
-        self.timePerSlide = TimeInterval(secondsPerSlide)
+    weak var observedPlayer: AVPlayer?
+    
+    init(secondsPerSlide: TimeInterval) {
+        self.secondsPerSlide = secondsPerSlide
     }
     
     func beginSlideshow() {
         guard assets.count > 0 else {
             return
         }
+        
+        assetIndex = 0
         
         setNewAsset()
         
@@ -39,15 +43,20 @@ class SlideshowModel {
     private var videoPlaying = false
     
     private func createAndStartTimer() {
-        timer = Timer.scheduledTimer(withTimeInterval: timePerSlide, repeats: true) { [weak self] timer in
+        timer?.invalidate()
+        timer = nil
+        timer = Timer.scheduledTimer(withTimeInterval: secondsPerSlide, repeats: true) { [weak self] timer in
+            print("NEXT")
             self?.nextSlide()
         }
     }
-    
-    var observedPlayer: AVPlayer?
-    
+        
     // A video has been started
     func videoStarted() {
+        guard !videoPlaying else {
+            return
+        }
+        
         self.videoPlaying = true
         
         // clear out the timer
@@ -56,9 +65,13 @@ class SlideshowModel {
     }
     
     func observe(player: AVPlayer) {
+        guard observedPlayer == nil else {
+            return
+        }
+        
         self.observedPlayer = player
         NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: player.currentItem, queue: .main) { [weak self] _ in
-            // can continue
+            // video is over, restart regular timer
             self?.removeNotif()
             self?.observedPlayer = nil
             self?.videoPlaying = false
@@ -68,9 +81,17 @@ class SlideshowModel {
         }
     }
     
-    private func removeNotif() {
+    func removeNotif() {
         guard let player = self.observedPlayer else { return }
         NotificationCenter.default.removeObserver(self, name: .AVPlayerItemDidPlayToEndTime, object: player)
+    }
+    
+    func stop() {
+        removeNotif()
+        timer?.invalidate()
+        timer = nil
+        assetIndex = 0
+        observedPlayer = nil
     }
     
     @objc private func nextSlide() {
@@ -90,6 +111,6 @@ class SlideshowModel {
     }
     
     private func setNewAsset() {
-        OpenSeaModel.shared.activeAsset = assets[assetIndex]
+        self.activeAsset = assets[assetIndex]
     }
 }
