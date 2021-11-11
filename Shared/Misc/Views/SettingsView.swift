@@ -11,22 +11,13 @@ struct SettingsView: View {
     @State var secondsPerSlide: String = "\(OpenSeaModel.shared.secondsPerSlide)"
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 20) {
-            Button {
-                OpenSeaModel.shared.exitSettings()
-            } label: {
-                Image(systemName: "xmark")
-            }
-            
+        VStack(alignment: .leading, spacing: 40) {
+
             Text("Settings")
-                .font(.largeTitle)
+                .font(.title)
                 .fontWeight(.regular)
             
             Divider()
-            
-            Button("Change OpenSea Account") {
-                OpenSeaModel.shared.signOutAccount()
-            }
             
             HStack {
                 Text("Seconds per slide: ")
@@ -40,6 +31,10 @@ struct SettingsView: View {
                         
                         OpenSeaModel.shared.secondsPerSlide = TimeInterval(newSecondsPerSlide)
                     }
+            }
+            
+            Button("Change OpenSea Account") {
+                OpenSeaModel.shared.signOutAccount()
             }
             
             Spacer()

@@ -22,9 +22,7 @@ class OpenSeaModel: ObservableObject {
     }
     
     @Published var showSlideshow: Bool = false
-    
-    @Published var showSettings: Bool = false
-    
+        
     @Published var slideshowModel: SlideshowModel
         
     // How long to show each slide, in seconds
@@ -36,12 +34,10 @@ class OpenSeaModel: ObservableObject {
     }
     
     private init() {
-        // Check if we have an account already signed in. We'll take the user directly to the account screen, but we'll need
-        // to fetch the assets.
+        self.slideshowModel = SlideshowModel(secondsPerSlide: secondsPerSlide)
+        
 //        self.activeAccount = OpenSeaAccount(address: "0xc3a8b0ee40098e32c1d749ebcdc6c144ada911cd")
 //        return
-    
-        self.slideshowModel = SlideshowModel(secondsPerSlide: secondsPerSlide)
 
         guard let account = AccountPersister.fetchPersistedAccount() else {
             return
@@ -85,12 +81,7 @@ class OpenSeaModel: ObservableObject {
     
     func signOutAccount() {
         activeAccount = nil
-        showSettings = false
         AccountPersister.clearPersistedData()
-    }
-    
-    func exitSettings() {
-        showSettings = false
     }
     
     private func setAccountDataAndMakeSlideshowModel(for account: OpenSeaAccount, data: (AccountInfo, [OpenSeaAsset])) {

@@ -14,49 +14,44 @@ struct AccountView: View {
     @Namespace var AccountViewSpace
     
     var body: some View {
-        if model.showSettings {
-            SettingsView()
-                .transition(.opacity)
-        }
-        else {
-            VStack(alignment: .leading, spacing: 10) {
-                AccountDetailView(accountInfo: account.accountInfo, namespace: AccountViewSpace)
+        VStack(alignment: .leading, spacing: 10) {
+            AccountDetailView(accountInfo: account.accountInfo, namespace: AccountViewSpace)
                 #if os(tvOS)
-                    .focusScope(AccountViewSpace)
+                .focusScope(AccountViewSpace)
                 #endif
-                Divider()
-                
-                HStack {
-                    NavigationLink {
-                        SlideshowView()
-                    } label: {
-                        Text("Start Slideshow")
-                    }
-
-                    #if os(tvOS)
-                    .prefersDefaultFocus(in: AccountViewSpace)
-                    #endif
-                    
-                    Spacer()
-                    
-                    Button("Settings") {
-                        model.showSettings = true
-                    }
-                    #if os(tvOS)
-                    .prefersDefaultFocus(false, in: AccountViewSpace)
-                    #endif
+            Divider()
+            
+            HStack {
+                NavigationLink {
+                    SlideshowView()
+                } label: {
+                    Text("Start Slideshow")
                 }
-                .padding()
                 
-                AssetOverviewView(assets: account.assets)
                 #if os(tvOS)
-                    .focusSection()
+                .prefersDefaultFocus(in: AccountViewSpace)
+                #endif
+                
+                Spacer()
+                
+                NavigationLink("Settings") {
+                    SettingsView()
+                }
+                
+                #if os(tvOS)
+                .prefersDefaultFocus(false, in: AccountViewSpace)
                 #endif
             }
-            #if os(tvOS)
-            .focusScope(AccountViewSpace)
-            #endif
+            .padding()
+            
+            AssetOverviewView(assets: account.assets)
+                #if os(tvOS)
+                .focusSection()
+                #endif
         }
+        #if os(tvOS)
+        .focusScope(AccountViewSpace)
+        #endif
     }
 }
 

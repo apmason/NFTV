@@ -376,13 +376,6 @@
 			path = Account;
 			sourceTree = "<group>";
 		};
-		C3AC6B21272D7BA2008A7636 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
-			sourceTree = "<group>";
-		};
 		C3AE51212726E4A30015DB81 /* SignIn */ = {
 			isa = PBXGroup;
 			children = (
@@ -402,7 +395,6 @@
 		C3AE512A2726E5120015DB81 /* Misc */ = {
 			isa = PBXGroup;
 			children = (
-				C3AC6B21272D7BA2008A7636 /* New Group */,
 				C3BEF71427288EE800C65A2D /* Models */,
 				C3AE512B2726E5190015DB81 /* Views */,
 			);
