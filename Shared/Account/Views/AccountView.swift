@@ -28,7 +28,7 @@ struct AccountView: View {
                 
                 HStack {
                     NavigationLink {
-                        SlideshowView(assets: model.assets, secondsPerSlide: model.secondsPerSlide)
+                        SlideshowView()
                     } label: {
                         Text("Start Slideshow")
                     }

@@ -7,33 +7,33 @@
 
 import Foundation
 import AVFoundation
+import SwiftUI
 
 class SlideshowModel: ObservableObject {
     
-    let assets: [OpenSeaAsset]
+    var assets: [OpenSeaAsset] = []
     
     @Published var activeAsset: OpenSeaAsset = OpenSeaAsset(assetName: "", collectionName: "", imageURL: nil, animationURL: nil)
     
     // What asset in the array to show
     private var assetIndex: Int = 0
     
-    // Grab from EnvironmentObject?
-    // Time per slide in seconds
-    let timePerSlide: TimeInterval
+    var secondsPerSlide: TimeInterval
     
     var timer: Timer?
     
-    var observedPlayer: AVPlayer?
+    weak var observedPlayer: AVPlayer?
     
-    init(assets: [OpenSeaAsset], secondsPerSlide: Int) {
-        self.assets = assets
-        self.timePerSlide = TimeInterval(secondsPerSlide)
+    init(secondsPerSlide: TimeInterval) {
+        self.secondsPerSlide = secondsPerSlide
     }
     
     func beginSlideshow() {
         guard assets.count > 0 else {
             return
         }
+        
+        assetIndex = 0
         
         setNewAsset()
         
@@ -43,13 +43,20 @@ class SlideshowModel: ObservableObject {
     private var videoPlaying = false
     
     private func createAndStartTimer() {
-        timer = Timer.scheduledTimer(withTimeInterval: timePerSlide, repeats: true) { [weak self] timer in
+        timer?.invalidate()
+        timer = nil
+        timer = Timer.scheduledTimer(withTimeInterval: secondsPerSlide, repeats: true) { [weak self] timer in
+            print("NEXT")
             self?.nextSlide()
         }
     }
         
     // A video has been started
     func videoStarted() {
+        guard !videoPlaying else {
+            return
+        }
+        
         self.videoPlaying = true
         
         // clear out the timer
@@ -58,10 +65,13 @@ class SlideshowModel: ObservableObject {
     }
     
     func observe(player: AVPlayer) {
+        guard observedPlayer == nil else {
+            return
+        }
+        
         self.observedPlayer = player
         NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: player.currentItem, queue: .main) { [weak self] _ in
-            print("inside observe")
-            // can continue
+            // video is over, restart regular timer
             self?.removeNotif()
             self?.observedPlayer = nil
             self?.videoPlaying = false
@@ -81,12 +91,10 @@ class SlideshowModel: ObservableObject {
         timer?.invalidate()
         timer = nil
         assetIndex = 0
-        //activeAsset = nil
+        observedPlayer = nil
     }
     
     @objc private func nextSlide() {
-        print("next slide")
-        
         // We want to go to the next slide but a video is playing. We'll wait for the callback to tell us when the video is over, then proceed
         guard !videoPlaying else {
             return
@@ -103,7 +111,6 @@ class SlideshowModel: ObservableObject {
     }
     
     private func setNewAsset() {
-        print("New asset, index is \(assetIndex)")
         self.activeAsset = assets[assetIndex]
     }
 }

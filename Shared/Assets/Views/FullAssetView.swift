@@ -20,7 +20,7 @@ struct FullAssetView: View {
     
     @Namespace var fullViewSpace
     
-    var slideshowModel: SlideshowModel?
+    weak var slideshowModel: SlideshowModel?
     
     init(asset: OpenSeaAsset, useSlideshow: Bool, slideshowModel: SlideshowModel? = nil) {
         self.asset = asset
@@ -50,13 +50,12 @@ struct FullAssetView: View {
             if asset.animationURL != nil, let player = asset.attemptToCreatePlayer(forSlideshow: useSlideshow) {
                 VideoPlayer(player: player)
                     .onAppear {
-                        // create/play asset here?
-                        asset.player?.seek(to: .zero)
-                        asset.player?.play()
-//                        if useSlideshow {
-//                            slideshowModel?.observe(player: player)
-//                            slideshowModel?.videoStarted()
-//                        }
+                        player.seek(to: .zero)
+                        player.play()
+                        if useSlideshow {
+                            slideshowModel?.observe(player: player)
+                            slideshowModel?.videoStarted()
+                        }
                     }
                     .onDisappear(perform: {
                         asset.clearPlayer()

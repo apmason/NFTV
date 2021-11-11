@@ -9,25 +9,21 @@ import SwiftUI
 
 struct SlideshowView: View {
     
-    @ObservedObject var slideshowModel: SlideshowModel
-    
-    init(assets: [OpenSeaAsset], secondsPerSlide: Int) {
-        self._slideshowModel = ObservedObject.init(initialValue: SlideshowModel(assets: assets, secondsPerSlide: secondsPerSlide))
-    }
+    @ObservedObject var model: SlideshowModel = OpenSeaModel.shared.slideshowModel
     
     var body: some View {
-        FullAssetView(asset: slideshowModel.activeAsset, useSlideshow: true, slideshowModel: slideshowModel)
+        FullAssetView(asset: model.activeAsset, useSlideshow: true, slideshowModel: model)
             .onAppear(perform: {
-                self.slideshowModel.beginSlideshow()
+                model.beginSlideshow()
             })
             .onDisappear {
-                slideshowModel.stop()
+                model.stop()
             }
     }
 }
 
 struct SlideshowView_Previews: PreviewProvider {
     static var previews: some View {
-        SlideshowView(assets: [], secondsPerSlide: 6)
+        SlideshowView()
     }
 }

@@ -12,7 +12,7 @@ class AccountPersister {
     static private let addressKey: String = "addressKey"
     static private let usernameKey: String = "usernameKey"
     
-    static private let secondsPerKey: String = "secondsPerKey"
+    static private let secondsPerSlideKey: String = "secondsPerKey"
     
     // TODO: - Maybe we just need to save the address and we'll pull the username from the API?
     static func persist(account: OpenSeaAccount) {
@@ -36,12 +36,12 @@ class AccountPersister {
         UserDefaults.standard.set(nil, forKey: usernameKey)
     }
     
-    static func persist(secondsPerSlide: Int) {
-        UserDefaults.standard.set(secondsPerSlide, forKey: secondsPerKey)
+    static func persist(secondsPerSlide: TimeInterval) {
+        UserDefaults.standard.set(secondsPerSlide, forKey: secondsPerSlideKey)
     }
     
-    static func fetchPersistedSecondsPerSlide() -> Int? {
-        let fetchedValue = UserDefaults.standard.integer(forKey: secondsPerKey)
-        return fetchedValue > 0 ? fetchedValue : nil
+    static func fetchPersistedSecondsPerSlide() -> TimeInterval? {
+        let fetchedValue = UserDefaults.standard.double(forKey: secondsPerSlideKey)
+        return fetchedValue > 0.0 ? fetchedValue : nil
     }
 }

@@ -24,21 +24,15 @@ class OpenSeaModel: ObservableObject {
     @Published var showSlideshow: Bool = false
     
     @Published var showSettings: Bool = false
+    
+    @Published var slideshowModel: SlideshowModel
         
     // How long to show each slide, in seconds
-    var secondsPerSlide: Int = AccountPersister.fetchPersistedSecondsPerSlide() ?? 5 {
+    var secondsPerSlide: TimeInterval = AccountPersister.fetchPersistedSecondsPerSlide() ?? 5 {
         didSet {
             AccountPersister.persist(secondsPerSlide: secondsPerSlide)
+            slideshowModel.secondsPerSlide = secondsPerSlide
         }
-    }
-    
-    var assets: [OpenSeaAsset] {
-        print("fetch assets")
-        guard let activeAccount = activeAccount else {
-            return []
-        }
-
-        return activeAccount.assets
     }
     
     private init() {
@@ -47,17 +41,19 @@ class OpenSeaModel: ObservableObject {
 //        self.activeAccount = OpenSeaAccount(address: "0xc3a8b0ee40098e32c1d749ebcdc6c144ada911cd")
 //        return
     
+        self.slideshowModel = SlideshowModel(secondsPerSlide: secondsPerSlide)
+
         guard let account = AccountPersister.fetchPersistedAccount() else {
             return
         }
-        
+                
         self.activeAccount = account
         
         OpenSeaAPI.fetchAssets(for: account.accountInfo.address) { result in
             switch result {
             case .success(let accountData):
                 DispatchQueue.main.async {
-                    self.setAccountData(for: account, data: accountData)
+                    self.setAccountDataAndMakeSlideshowModel(for: account, data: accountData)
                 }
                 
             case .failure(let error):
@@ -75,7 +71,7 @@ class OpenSeaModel: ObservableObject {
                     let account = OpenSeaAccount(address: address)
                     self.activeAccount = account
                     
-                    self.setAccountData(for: account, data: data)
+                    self.setAccountDataAndMakeSlideshowModel(for: account, data: data)
                     
                     completion(nil)
                 }
@@ -97,10 +93,12 @@ class OpenSeaModel: ObservableObject {
         showSettings = false
     }
     
-    private func setAccountData(for account: OpenSeaAccount, data: (AccountInfo, [OpenSeaAsset])) {
+    private func setAccountDataAndMakeSlideshowModel(for account: OpenSeaAccount, data: (AccountInfo, [OpenSeaAsset])) {
         account.accountInfo = data.0
         account.assets = data.1
         
         account.accountInfo.fetchProfile()
+     
+        slideshowModel.assets = account.assets
     }
 }
