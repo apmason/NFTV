@@ -13,11 +13,21 @@ enum OpenSeaAPIError: Error {
 }
 
 class OpenSeaAPI {
-    // Return an array of assets here
-    static func fetchAssets(for address: String, completion: @escaping ((Result<(AccountInfo, [OpenSeaAsset]), OpenSeaAPIError>) -> Void)) {
-        let url = URL(string: "https://api.opensea.io/api/v1/assets?owner=\(address)")!
+    
+    static var fetchLimit: Int = 50
+    
+    /// Recursively fetch all data
+    private static func fetchData(address: String,
+                                  index: Int,
+                                  accountInfo: AccountInfo,
+                                  updateAccountInfo: Bool,
+                                  inputAssets: [OpenSeaAsset],
+                                  completion: @escaping ((Result<[OpenSeaAsset], OpenSeaAPIError>) -> Void)) {
+        let url = URL(string: "https://api.opensea.io/api/v1/assets?owner=\(address)&limit=\(fetchLimit)&order_direction=desc&offset=\(index)")!
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
+        
+        var osAssets = inputAssets
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard error == nil, let data = data else {
@@ -27,7 +37,6 @@ class OpenSeaAPI {
                 } else {
                     completion(.failure(.badData))
                 }
-                
                 return
             }
             
@@ -39,12 +48,10 @@ class OpenSeaAPI {
                 
                 guard let assets = json["assets"] as? [[String: Any]] else {
                     print("No assets")
+                    completion(.success([]))
                     return
                 }
-                
-                var osAssets: [OpenSeaAsset] = []
-                
-                let accountInfo: AccountInfo = AccountInfo(address: address)
+                                
                 // Have we parsed an owner?
                 var haveParsedOwner = false
                 
@@ -68,7 +75,7 @@ class OpenSeaAPI {
                     
                     // Because we're getting assets for a specific owner, the owner key for all assets will be the same.
                     // We'll grab the first one and pass that back.
-                    if !haveParsedOwner, let owner = asset["owner"] as? [String: Any] {
+                    if updateAccountInfo && !haveParsedOwner, let owner = asset["owner"] as? [String: Any] {
                         haveParsedOwner = true
                         if let imagePath = owner["profile_img_url"] as? String, let imageURL = URL(string: imagePath)  {
                             accountInfo.profileImageURL = imageURL
@@ -93,12 +100,41 @@ class OpenSeaAPI {
                     osAssets.append(asset)
                 }
                 
-                completion(.success((accountInfo, osAssets)))
+                // Only handle first 500 photos, add logic for scrolling for more later.
+                if index < 10 && assets.count == fetchLimit {
+                    fetchData(address: address,
+                              index: index + 1,
+                              accountInfo: accountInfo,
+                              updateAccountInfo: false,
+                              inputAssets: osAssets,
+                              completion: completion)
+                } else {
+                    completion(.success(osAssets))
+                }
                 
             } catch {
                 completion(.failure(.defaultError(error)))
             }
         }
         task.resume()
+    }
+    
+    // Return an array of assets here
+    static func fetchAssets(for address: String, completion: @escaping ((Result<(AccountInfo, [OpenSeaAsset]), OpenSeaAPIError>) -> Void)) {
+        let accountInfo = AccountInfo(address: address)
+        
+        fetchData(address: address, index: 0,
+                  accountInfo: accountInfo,
+                  updateAccountInfo: true,
+                  inputAssets: []) { result in
+            switch result {
+            case .success(let assets):
+                completion(.success((accountInfo, assets)))
+                
+            case .failure(let error):
+                completion(.failure(error))
+                
+            }
+        }
     }
 }

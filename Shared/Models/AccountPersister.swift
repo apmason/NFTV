@@ -14,7 +14,6 @@ class AccountPersister {
     
     static private let secondsPerSlideKey: String = "secondsPerKey"
     
-    // TODO: - Maybe we just need to save the address and we'll pull the username from the API?
     static func persist(account: OpenSeaAccount) {
         UserDefaults.standard.set(account.accountInfo.address, forKey: addressKey)
         UserDefaults.standard.set(account.accountInfo.username, forKey: usernameKey)

@@ -24,6 +24,7 @@ struct AssetView: View {
                 .resizable()
                 .scaledToFit()
                 .background(Color.white)
+                .clipped()
             
             if asset.animationURL != nil {
                 Image(systemName: "play.circle.fill")
@@ -73,7 +74,6 @@ struct AssetOverviewView: View {
                         FullAssetView(asset: asset, useSlideshow: false)
                     } label: {
                         AssetView(asset: asset)
-                            .background(Color.white)
                     }
                     .aspectRatio(1, contentMode: .fit)
                     .buttonStyle(.plain)
