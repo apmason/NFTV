@@ -7,71 +7,6 @@
 
 import SwiftUI
 
-private extension AssetView {
-    struct WidthPreferenceKey: PreferenceKey {
-        static let defaultValue: CGFloat = 0
-
-        static func reduce(value: inout CGFloat,
-                           nextValue: () -> CGFloat) {
-            value = max(value, nextValue())
-        }
-    }
-}
-struct InnerImage: View {
-    
-    @ObservedObject var asset: OpenSeaAsset
-    @Binding var viewWidth: CGFloat?
-    
-    var body: some View {
-        ZStack {
-            #if os(macOS)
-            Image(nsImage: asset.imageWrapper?.image ?? NSImage())
-                .resizable()
-                .scaledToFit()
-                .frame(height: viewWidth)
-                .cornerRadius(5)
-                .background(
-                    Color.white
-                )
-            #else
-            Image(uiImage: asset.imageWrapper?.image ?? UIImage())
-                .resizable()
-                .scaledToFit()
-                .frame(height: viewWidth)
-                .cornerRadius(5)
-                .background(
-                    Color.white
-                )
-            #endif
-            
-            if asset.animationURL != nil {
-                Image(systemName: "play.circle.fill")
-                    .resizable()
-                    .scaleEffect(0.5)
-            }
-            
-            VStack(alignment: .leading) {
-                Spacer()
-                HStack {
-                    VStack(alignment: .leading) {
-                        Text(asset.assetName)
-                            .foregroundColor(.white)
-                            .font(.body)
-                        Text(asset.collectionName)
-                            .foregroundColor(.white)
-                            .font(.footnote)
-                    }
-                    .padding()
-                    Spacer()
-                }
-                .background(
-                    Color.black.opacity(0.4)
-                )
-            }
-        }
-    }
-}
-
 struct AssetView: View {
     
     @ObservedObject var asset: OpenSeaAsset
@@ -93,6 +28,7 @@ struct AssetView: View {
             if asset.animationURL != nil {
                 Image(systemName: "play.circle.fill")
                     .resizable()
+                    .foregroundStyle(.white)
                     .scaleEffect(0.5)
             }
             
