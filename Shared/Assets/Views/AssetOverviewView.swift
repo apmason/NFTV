@@ -81,9 +81,9 @@ struct AssetOverviewView: View {
             }
             .padding(32)
         }
-        .navigationBarHidden(false)
+        .navigationBarHidden(true)
         .navigationViewStyle(.automatic)
-        .navigationBarBackButtonHidden(false)
+        .navigationBarBackButtonHidden(true)
 #if os(tvOS)
         .focusSection()
 #endif
